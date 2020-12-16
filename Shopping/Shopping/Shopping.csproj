@@ -417,6 +417,7 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Seller\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Area_Bankcard\Data\" />
@@ -427,7 +428,6 @@
     <Folder Include="Areas\Area_Shop\Data\" />
     <Folder Include="Areas\Area_User\Data\" />
     <Folder Include="Views\Customer\" />
-    <Folder Include="Views\Seller\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
