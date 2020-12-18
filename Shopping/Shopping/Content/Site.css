@@ -1,5 +1,10 @@
 ﻿body {
-    padding-top: 50px;
+    /*
+        时间：2020/12/17
+        作者：zmx
+        操作：修改上填充，为了美观
+    */
+    padding-top: 5px;
     padding-bottom: 20px;
 }
 

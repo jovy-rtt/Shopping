@@ -174,3 +174,4 @@ F:\asus\桌面\ASP.NET\大作业\Shopping\Shopping\Shopping\bin\EntityFramework.
 F:\asus\桌面\ASP.NET\大作业\Shopping\Shopping\Shopping\bin\EntityFramework.xml
 F:\asus\桌面\ASP.NET\大作业\Shopping\Shopping\Shopping\bin\EntityFramework.SqlServer.xml
 F:\asus\桌面\ASP.NET\大作业\Shopping\Shopping\Shopping\bin\zh-Hans\EntityFramework.resources.dll
+F:\asus\桌面\ASP.NET\大作业\Shopping\Shopping\Shopping\bin\zh-Hans\EntityFramework.SqlServer.resources.dll

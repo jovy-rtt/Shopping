@@ -1,33 +1,69 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - 我的 ASP.NET 应用程序</title>
+    <title>Peach网，购物的天堂</title>
+    @Styles.Render("~/Content/themes/base/jqueryui")
     @Styles.Render("~/Content/css")
+
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jquery-ui")
+    @Scripts.Render("~/bundles/jquery-unobtrusive-ajax")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/bootstrap.js"></script>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("应用程序名称", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("主页", "Index", "Home")</li>
-                    <li>@Html.ActionLink("关于", "About", "Home")</li>
-                    <li>@Html.ActionLink("联系方式", "Contact", "Home")</li>
-                </ul>
-            </div>
-        </div>
+    <!-- Nav -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <!-- Brand -->
+        <a class="navbar-brand" href="#">
+            <img src="~/Images/Logo/logo.png" alt="logo" style="width:20px;height:20px" />
+        </a>
+
+        <!-- Toggler/collapsibe Button -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse"
+                data-target="#collapsibleNavbar">
+            <span class="sr-only">切换导航</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="nav navbar-nav">
+                <li><a href="#">超值特价</a></li>
+                <li><a href="#">帮助与联系</a></li>
+                <li><a href="#">收货地址</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        我的Peach<b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">jmeter</a></li>
+                        <li><a href="#">EJB</a></li>
+                        <li><a href="#">Jasper Report</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">分离的链接</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">另一个分离的链接</a></li>
+                    </ul>
+                </li>
+                <li><a href="#"><span class="glyphicon glyphicon-envelope"></span></a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-bell"></span></a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span></a></li>
+                
+            </ul>
     </div>
+
+    </nav>
+
+
+
     <div class="container body-content">
         @RenderBody()
         <hr />
