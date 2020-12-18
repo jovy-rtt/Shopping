@@ -1,0 +1,75 @@
+﻿
+@{
+    var ajaxOptions = new AjaxOptions
+    {
+        LoadingElementId = "loading",
+        UpdateTargetId = "mainWindow",
+        OnFailure = "OnFailure"
+    };
+}
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Peach购物管理系统", "Index", "Seller", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li style="margin-left :16px">@Html.ActionLink("主页", "Index", "Home")</li>
+                    <li style="margin-left :8px">@Html.ActionLink("关于", "About", "Home")</li>
+                    <li style="margin-left :0px">@Html.ActionLink("退出", "Contact", "Home")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="leftMenu" style="margin-top:10px">
+                    <h3 class="btn">账户信息</h3>
+                    <div class="list-group">
+                        @Html.ActionLink("我的账户", "Create", "Users", new { area = "Area_User" }, new { @class = "list-group-item" })
+                    </div>
+                    <h3 class="btn">我的店铺</h3>
+                    <div class="list-group">
+                        @Html.ActionLink("新建店铺", "Create", "Shops", new { area = "Area_Shop" }, new { @class = "list-group-item" })
+                        @Ajax.ActionLink("已有店铺", "Index", "Shops", new { area = "Area_Shop"}, ajaxOptions, new { @class = "list-group-item" })
+                        @Ajax.ActionLink("未读评论", "", "", new { area = "" }, ajaxOptions, new { @class = "list-group-item" })
+                    </div>
+                    <h3 class="btn">我的订单</h3>
+                    <div class="list-group">
+                        @Ajax.ActionLink("未处理订单", "Index", "Orders", null, ajaxOptions, new { @class = "list-group-item" })
+                        @Ajax.ActionLink("已处理订单", "Index", "Orders", null, ajaxOptions, new { @class = "list-group-item" })
+                    </div>
+                    <h3 class="btn">我的收益</h3>
+                    <div class="list-group">
+                        @Ajax.ActionLink("查看收益", "Index", "Orders", null, ajaxOptions, new { @class = "list-group-item" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div id="mainWindow" style="border:1px solid blue;margin-top:10px; padding:10px; overflow-y:auto; overflow-x:hidden">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            var menu = $(".leftMenu");
+            menu.accordion({ collapsible: true });
+            $("#mainWindow").css({ minHeight: menu.height() });
+        });
+        function OnFailure(xhr) {
+            $("body").html(xhr.responseText);
+        }
+    </script>
+
+</body>
