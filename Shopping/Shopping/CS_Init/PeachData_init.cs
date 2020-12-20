@@ -22,31 +22,31 @@ namespace Shopping.CS_Init
             var us = new List<User>
             {
                 new User { Password="123456",IdCard="410101192012146574"
-                ,PhoneNumber="19887423527",Name="超宇",Sex="男",Birthday=new DateTime(2000,1,20),MailBox="198874235@qq.com",TType="买家"},
+                ,PhoneNumber="19887423527",Name="超宇",Sex="男",Birthday=new DateTime(2000,1,20),MailBox="198874235@qq.com",TType="买家",Sign="123"},
 
                 new User { Password="123456",IdCard="410101192012147833"
-                ,PhoneNumber="13922575079",Name="龙荷珍",Sex="女",Birthday=new DateTime(1990,1,20),MailBox="139225750@qq.com",TType="买家"},
+                ,PhoneNumber="13922575079",Name="龙荷珍",Sex="女",Birthday=new DateTime(1990,1,20),MailBox="139225750@qq.com",TType="买家",Sign="123"},
 
                 new User { Password="123456",IdCard="150101192012149114"
-                ,PhoneNumber="17196874537",Name="吉旭伯",Sex="男",Birthday=new DateTime(1989,1,20),MailBox="171968745@qq.com",TType="买家"},
+                ,PhoneNumber="17196874537",Name="吉旭伯",Sex="男",Birthday=new DateTime(1989,1,20),MailBox="171968745@qq.com",TType="买家",Sign="123"},
 
                 new User { Password="123456",IdCard="410101192012146574"
-                ,PhoneNumber="18795687097",Name="闻腾河",Sex="男",Birthday=new DateTime(1965,1,20),MailBox="187956870@qq.com",TType="买家"},
+                ,PhoneNumber="18795687097",Name="闻腾河",Sex="男",Birthday=new DateTime(1965,1,20),MailBox="187956870@qq.com",TType="买家",Sign="123"},
 
                 new User { Password="123456",IdCard="150101192012149915"
-                ,PhoneNumber="15287209943",Name="叶贞",Sex="女",Birthday=new DateTime(1963,1,20),MailBox="265698733@qq.com",TType="买家"},
+                ,PhoneNumber="15287209943",Name="叶贞",Sex="女",Birthday=new DateTime(1963,1,20),MailBox="265698733@qq.com",TType="买家",Sign="123"},
 
                 new User { Password="123456",IdCard="21010119201214933X"
-                ,PhoneNumber="13306538832",Name="公羊江强",Sex="男",Birthday=new DateTime(2000,1,20),MailBox="84659712@qq.com",TType="买家"},
+                ,PhoneNumber="13306538832",Name="公羊江强",Sex="男",Birthday=new DateTime(2000,1,20),MailBox="84659712@qq.com",TType="买家",Sign="123"},
 
                 new User { Password="123456",IdCard="330101192012149257"
-                ,PhoneNumber="18596584590",Name="甄萱",Sex="女",Birthday=new DateTime(2000,1,20),MailBox="6549823@qq.com",TType="卖家"},
+                ,PhoneNumber="18596584590",Name="甄萱",Sex="女",Birthday=new DateTime(2000,1,20),MailBox="6549823@qq.com",TType="卖家",Sign="123"},
 
                 new User { Password="123456",IdCard="33010119201214603X"
-                ,PhoneNumber="18936025655",Name="卫进平",Sex="男",Birthday=new DateTime(2000,1,20),MailBox="55772727@qq.com",TType="卖家"},
+                ,PhoneNumber="18936025655",Name="卫进平",Sex="男",Birthday=new DateTime(2000,1,20),MailBox="55772727@qq.com",TType="卖家",Sign="123"},
 
                 new User { Password="123456",IdCard="430101192012148899"
-                ,PhoneNumber="15205239542",Name="荀蓓琛",Sex="男",Birthday=new DateTime(2000,1,20),MailBox="44321856@qq.com",TType="卖家"},
+                ,PhoneNumber="15205239542",Name="荀蓓琛",Sex="男",Birthday=new DateTime(2000,1,20),MailBox="44321856@qq.com",TType="卖家",Sign="123"}
             };
 
             var bank = new List<Bankcard>
@@ -94,9 +94,10 @@ namespace Shopping.CS_Init
             };
 
             //每条信息均录入
-            //us.ForEach(v => context.User.Add(v));
-            //bank.ForEach(v => context.Bankcard.Add(v));
-            //address.ForEach(v => context.DeliveryAddress.Add(v));
+            us.ForEach(v => context.User.Add(v));
+            context.SaveChanges();
+            bank.ForEach(v => context.Bankcard.Add(v));
+            address.ForEach(v => context.DeliveryAddress.Add(v));
             //com.ForEach(v => context.Commodity.Add(v));
             //fav.ForEach(v => context.Favorites.Add(v));
             //ord.ForEach(v => context.Order.Add(v));

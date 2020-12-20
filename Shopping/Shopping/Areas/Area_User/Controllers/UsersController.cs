@@ -14,10 +14,74 @@ namespace Shopping.Areas.Area_User.Controllers
     {
         private PeachMd db = new PeachMd();
 
+        //us是为了判断用于是否已经登录，如果已经登录，那么us中始终会有这个信息，所以登出的时候，需要把us再此设置为null
+        User us=null;
+
         // GET: Area_User/Users
+        //public ActionResult Index()
+        //{
+        //    return View(db.User.ToList());
+        //}
+
+        /*
+            作者：zmx
+            时间：2020/12/20
+            功能：查看用户信息
+            第一次修改
+         */
         public ActionResult Index()
         {
-            return View(db.User.ToList());
+            //为空证明用户还未登录
+            if (us == null)
+            {
+                return isajax("userLogin");
+            }
+            return isajax("userInfo");
+        }
+
+        //自定义的一个方法，自动返回视图
+        public ActionResult isajax(string name)
+        {
+            if (Request.IsAjaxRequest())
+                return PartialView(name);
+            return View(name);
+        }
+        //用户等录
+        /*
+            作者：zmx
+            时间：2020/12/20
+            功能：实现用户的登录功能
+         */
+        [HttpPost]
+        public ActionResult userLogin()
+        {
+            int account;
+            //尝试获取账号信息，账号信息是int类型
+            try
+            {
+                account = int.Parse(Request.Form["Account"]);
+            }catch
+            {
+                //失败
+                return isajax("userLogin");
+            }
+
+
+            var passwd = Request.Form["Password"];
+            var q = from t in db.User
+                    where t.Id == account
+                    select t;
+
+            if(q!=null)
+            {
+                //如果账号密码没错，那么us就可以等于该条信息
+                var tmp = q.FirstOrDefault();
+                if(tmp.TType=="买家" &&tmp.Password==passwd)
+                         us = tmp;
+            }
+            if (us == null)
+                return PartialView("userLogin");
+            return View("userInfo",us);
         }
 
         // GET: Area_User/Users/Details/5

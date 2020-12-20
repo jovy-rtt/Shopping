@@ -4,76 +4,56 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Peach网，购物的天堂</title>
-    @Styles.Render("~/Content/themes/base/jqueryui")
-    @Styles.Render("~/Content/css")
+    <title>Peach 购物网</title>
+    @Html.Partial("~/Views/Shared/Partialinfo.cshtml")
 
-    @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/jquery-ui")
-    @Scripts.Render("~/bundles/jquery-unobtrusive-ajax")
-    @Scripts.Render("~/bundles/bootstrap")
-    <script src="~/Scripts/bootstrap.js"></script>
 </head>
+@{
+    var ajaxop = new AjaxOptions
+    {
+        UpdateTargetId = "leftview",
+        OnFailure = "OnFailure"
+    };
+}
 <body>
-    <!-- Nav -->
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <!-- Brand -->
-        <a class="navbar-brand" href="#">
-            <img src="~/Images/Logo/logo.png" alt="logo" style="width:20px;height:20px" />
-        </a>
+    <div class="row" style="margin:0px;">
+            <div class="col-md-3 col-lg-3"  id="left" style="border-right:1px solid #C0C0C0 ;margin: 0px 5px 0px ;">
+                <div class="row">
+                    <!--Nav-->
+                    <nav class="navbar navbar-default">
+                        <!-- Brand -->
+                        <a class="navbar-brand" href="#">
+                            <img src="~/Images/Logo/logo.png" alt="logo" style="width:20px;height:20px;" />
+                        </a>
 
-        <!-- Toggler/collapsibe Button -->
-        <button type="button" class="navbar-toggle" data-toggle="collapse"
-                data-target="#collapsibleNavbar">
-            <span class="sr-only">切换导航</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-
-        <!-- Navbar links -->
-        <div class="collapse navbar-collapse" id="collapsibleNavbar">
-            <ul class="nav navbar-nav">
-                <li><a href="#">超值特价</a></li>
-                <li><a href="#">帮助与联系</a></li>
-                <li><a href="#">收货地址</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        我的Peach<b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">jmeter</a></li>
-                        <li><a href="#">EJB</a></li>
-                        <li><a href="#">Jasper Report</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">分离的链接</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">另一个分离的链接</a></li>
-                    </ul>
-                </li>
-                <li><a href="#"><span class="glyphicon glyphicon-envelope"></span></a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-bell"></span></a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span></a></li>
-                
-            </ul>
+                        <!-- Navbar links -->
+                        <ul class="nav navbar-nav pull-right">
+                            <li>@Ajax.ActionLink(" ", "Index", "Customer", new { id = "envelope" },ajaxop, new { @class = "glyphicon glyphicon-envelope" })</li>
+                            <li>@Html.ActionLink(" ", "Index", "Customer", new { id = "shopping-cart" }, new { @class = "glyphicon glyphicon-shopping-cart" })</li>
+                            <li>@Html.ActionLink(" ", "Index", "Customer", new { id = "bell" }, new { @class = "glyphicon glyphicon-bell" })</li>
+                            <li>@Ajax.ActionLink(" ", "Index", "Users", new { area="Area_User" },ajaxop, new { @class = "glyphicon glyphicon-user" })</li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="row" id="leftview">
+                    @*@Html.Partial("Left_index")*@
+                </div>
+            </div>
+            <div class="col-md-8 col-lg-8">
+                <div id="mainWindow" sstyle="overflow-y:auto; overflow-x:hidden">
+                    @RenderBody()
+                </div>
+            </div>
     </div>
-
-    </nav>
-
-
-
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - 我的 ASP.NET 应用程序</p>
-        </footer>
-    </div>
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    <script>
+        $(document).ready(function () {
+            var body = (document.compatMode && document.compatMode == 'CSS1Compat') ? document.documentElement : document.body;
+            $("#left").css({ minHeight: body.clientHeight });
+            $("#mainWindow").css({ minHeight: body.clientHeigh });
+        });
+        function OnFailure(xhr) {
+            $("body").html(xhr.responseText);
+        }
+    </script>
 </body>
 </html>

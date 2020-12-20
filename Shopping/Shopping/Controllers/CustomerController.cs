@@ -9,9 +9,13 @@ namespace Shopping.Controllers
     public class CustomerController : Controller
     {
         // GET: Customer
-        public ActionResult Index()
+        public ActionResult Index(string id)
         {
-            return View();
+            if (id == null)
+                id = "Index";
+            if (Request.IsAjaxRequest())
+                return PartialView(id);
+            return PartialView(id);
         }
         public ActionResult LoginForm()
         {

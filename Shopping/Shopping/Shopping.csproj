@@ -298,6 +298,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Areas\Area_User\Views\Users\userLogin.cshtml" />
+    <Content Include="Areas\Area_User\Views\Users\userInfo.cshtml" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.5.1.js" />
     <Content Include="Scripts\jquery-3.5.1.min.js" />
@@ -410,6 +412,11 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\Customer\_CarouselPage.cshtml" />
+    <Content Include="Views\Shared\Partialinfo.cshtml" />
+    <Content Include="Views\Customer\Left_Menu.cshtml" />
+    <Content Include="Views\Customer\Left_index.cshtml" />
+    <Content Include="Views\Customer\envelope.cshtml" />
+    <Content Include="Views\Customer\user.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Area_Bankcard\Data\" />

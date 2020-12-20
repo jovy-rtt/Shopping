@@ -1,0 +1,60 @@
+﻿@{var ajaxOptions = new AjaxOptions
+    {
+        LoadingElementId = "loading",
+        UpdateTargetId = "mainWindow",
+        OnFailure = "OnFailure"
+    }; }
+<div class="leftMenu">
+    <h3 class="btn-success ">练习1-布局页和主页设计</h3>
+    <div class="list-group">
+        @Ajax.ActionLink("Ajax主页", "Index", "Home", null, ajaxOptions, new { @class = "list-group-item" })
+        @Html.ActionLink("Html主页", "Index", "Home", null, new { @class = "list-group-item" })
+    </div>
+    <h3 class="btn-success">练习2-模型和基本操作</h3>
+    <div class="list-group">
+        @Html.ActionLink("ViewResult", "Index", "Lx2", new { area = "LX02", id = "1" }, new { @class = "list-group-item" })
+        @Ajax.ActionLink("PartialViewResult", "Index", "Lx2", new { area = "LX02", id = "2" }, ajaxOptions, new { @class = "list-group-item" })
+        @Ajax.ActionLink("RedirectResult", "Index", "Lx2", new { area = "LX02", id = "3" }, ajaxOptions, new { @class = "list-group-item" })
+    </div>
+    <h3 class="btn-success">练习3-数组排序</h3>
+    <div>
+        @Ajax.ActionLink("附加条件排序", "Lx3Index", "Lx3", new { area = "LX03" }, ajaxOptions, new { @class = "list-group-item" })
+    </div>
+    <h3 class="btn-success">练习4-图片浏览</h3>
+    <div>
+        @Ajax.ActionLink("多图片播放", "Lx4Index", "Lx4", new { area = "LX04" }, ajaxOptions, new { @class = "list-group-item" })
+    </div>
+    <h3 class="btn-success">练习5-表单交互</h3>
+    <div>
+        @Ajax.ActionLink("编辑用户信息", "Lx5Index", "Lx5", new { area = "LX05" }, ajaxOptions, new { @class = "list-group-item" })
+    </div>
+    <h3 class="btn-success">练习6-CSS和动画</h3>
+    <div>
+        @Ajax.ActionLink("定位控制和动画", "Lx6Index", "Lx6", new { area = "LX06" }, ajaxOptions, new { @class = "list-group-item" })
+    </div>
+    <h3 class="btn-success">练习7-数据库操作</h3>
+    <div>
+        @Ajax.ActionLink("显示电影信息", "Lx7Index", "Lx7", new { area = "LX07" }, ajaxOptions, new { @class = "list-group-item" })
+    </div>
+    <h3 class="btn-default">DIY-实验</h3>
+    <div class="list-group">
+        @Ajax.ActionLink("锚点定位练习", "SY2Index", "SY2", new { area = "SY02" }, ajaxOptions, new { @class = "list-group-item" })
+        @Html.ActionLink("表单提交练习-无验证", "SY4Index", "SY4", new { area = "SY04" }, new { @class = "list-group-item" })
+        @Ajax.ActionLink("表单提交练习-客户端验证", "SY4Index2", "SY4", new { area = "SY04" }, ajaxOptions, new { @class = "list-group-item" })
+        @Ajax.ActionLink("表单提交练习-服务端验证", "SY4Index3", "SY4", new { area = "SY04" }, ajaxOptions, new { @class = "list-group-item" })
+        @Html.ActionLink("数据库操作", "Index", "SY7", new { area = "SY07" }, new { @class = "list-group-item" })
+        @Ajax.ActionLink("轮播图", "Index", "SY5", new { area = "SY05" }, ajaxOptions, new { @class = "list-group-item" })
+    </div>
+</div>
+
+<script>
+        $(document).ready(function () {
+            var menu = $(".leftMenu");
+            var body = (document.compatMode && document.compatMode == 'CSS1Compat') ? document.documentElement : document.body;
+            menu.accordion({ collapsible: true });
+            $(".leftMenu").css({ minHeight: body.clientHeight });
+        });
+        function OnFailure(xhr) {
+            $("body").html(xhr.responseText);
+        }
+</script>

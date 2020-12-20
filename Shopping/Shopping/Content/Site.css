@@ -1,13 +1,4 @@
-﻿body {
-    /*
-        时间：2020/12/17
-        作者：zmx
-        操作：修改上填充，为了美观
-    */
-    padding-top: 5px;
-    padding-bottom: 20px;
-}
-
+﻿
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
