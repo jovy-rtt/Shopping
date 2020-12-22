@@ -1,8 +1,6 @@
 ﻿@model Shopping.Models.User
 
 <div>
-    <h4>User</h4>
-    <hr />
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Password)
@@ -75,11 +73,7 @@
         <dd>
             @Html.DisplayFor(model => model.TType)
         </dd>
-
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
 

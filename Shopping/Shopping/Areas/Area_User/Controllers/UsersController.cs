@@ -51,10 +51,23 @@ namespace Shopping.Areas.Area_User.Controllers
             作者：zmx
             时间：2020/12/20
             功能：实现用户的登录功能
+            Add：
+                时间：2020/12/21
+                作者：zmx
+                功能：添加用户的忘记密码、注册功能
          */
         [HttpPost]
         public ActionResult userLogin()
         {
+            var tt = Request["btn"];
+            if(tt=="注册")
+            {
+                return Create();
+            }
+            if(tt=="忘记密码")
+            {
+
+            }
             int account;
             //尝试获取账号信息，账号信息是int类型
             try
@@ -81,8 +94,39 @@ namespace Shopping.Areas.Area_User.Controllers
             }
             if (us == null)
                 return PartialView("userLogin");
+            if (Request.IsAjaxRequest())
+                return PartialView("userInfo", us);
             return View("userInfo",us);
         }
+
+        /*
+            作者：zmx
+            时间：2020/12/21
+            功能：忘记密码、找回
+         */
+        public ActionResult userforgetpasswd()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult userforgetpasswd([Bind(Include = "Id,Password,IdCard,PhoneNumber,Name,Sex,Birthday,MailBox,Sign,TType")] User user)
+        {
+            //验证通过
+            if (ModelState.IsValid)
+            {
+                User tmp = db.User.Find(user.Id);
+                //输入账号不对
+                if (tmp == null)
+                    return View();
+
+                db.Entry(user).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(user);
+        }
+
 
         // GET: Area_User/Users/Details/5
         public ActionResult Details(int? id)
@@ -99,10 +143,15 @@ namespace Shopping.Areas.Area_User.Controllers
             return View(user);
         }
 
+        /*
+            作者：zmx
+            时间：2020/12/21
+            功能：注册新的账号
+         */
         // GET: Area_User/Users/Create
         public ActionResult Create()
         {
-            return View();
+            return isajax("Create");
         }
 
         // POST: Area_User/Users/Create
