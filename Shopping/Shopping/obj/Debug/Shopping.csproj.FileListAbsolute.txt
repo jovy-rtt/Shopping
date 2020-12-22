@@ -164,7 +164,6 @@ F:\asus\桌面\ASP.NET\大作业\Shopping\Shopping\Shopping\bin\zh-Hans\System.W
 F:\asus\桌面\ASP.NET\大作业\Shopping\Shopping\Shopping\bin\zh-Hans\System.Web.WebPages.resources.dll
 F:\asus\桌面\ASP.NET\大作业\Shopping\Shopping\Shopping\bin\zh-Hans\System.Web.WebPages.Deployment.resources.dll
 F:\asus\桌面\ASP.NET\大作业\Shopping\Shopping\Shopping\bin\zh-Hans\System.Web.WebPages.Razor.resources.dll
-F:\asus\桌面\ASP.NET\大作业\Shopping\Shopping\Shopping\obj\Debug\Shopping.csprojAssemblyReference.cache
 F:\asus\桌面\ASP.NET\大作业\Shopping\Shopping\Shopping\obj\Debug\Shopping.csproj.CoreCompileInputs.cache
 F:\asus\桌面\ASP.NET\大作业\Shopping\Shopping\Shopping\obj\Debug\Shopping.csproj.CopyComplete
 F:\asus\桌面\ASP.NET\大作业\Shopping\Shopping\Shopping\obj\Debug\Shopping.dll
@@ -175,3 +174,4 @@ F:\asus\桌面\ASP.NET\大作业\Shopping\Shopping\Shopping\bin\EntityFramework.
 F:\asus\桌面\ASP.NET\大作业\Shopping\Shopping\Shopping\bin\EntityFramework.SqlServer.xml
 F:\asus\桌面\ASP.NET\大作业\Shopping\Shopping\Shopping\bin\zh-Hans\EntityFramework.resources.dll
 F:\asus\桌面\ASP.NET\大作业\Shopping\Shopping\Shopping\bin\zh-Hans\EntityFramework.SqlServer.resources.dll
+F:\asus\桌面\ASP.NET\大作业\Shopping\Shopping\Shopping\obj\Debug\Shopping.csprojAssemblyReference.cache

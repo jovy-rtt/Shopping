@@ -1,5 +1,10 @@
 ﻿@model Shopping.Models.User
-
+@{
+    var ajaxop2 = new AjaxOptions
+    {
+        UpdateTargetId = "leftview",
+    };
+}
 <div>
     <dl class="dl-horizontal">
         <dt>
@@ -74,6 +79,9 @@
             @Html.DisplayFor(model => model.TType)
         </dd>
     </dl>
+</div>
+<div class="btn-block">
+    @Ajax.ActionLink("登出", "Logout", "Users", new { area = "Area_User" }, ajaxop2, new { @class = "btn-block" })
 </div>
 
 

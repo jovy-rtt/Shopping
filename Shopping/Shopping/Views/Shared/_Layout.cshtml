@@ -9,6 +9,7 @@
 
 </head>
 @{
+    TempData["us"] = null;
     var ajaxop = new AjaxOptions
     {
         UpdateTargetId = "leftview",
@@ -28,10 +29,10 @@
 
                         <!-- Navbar links -->
                         <ul class="nav navbar-nav pull-right">
-                            <li>@Ajax.ActionLink(" ", "Index", "Customer", new { id = "envelope" },ajaxop, new { @class = "glyphicon glyphicon-envelope" })</li>
+                            <li>@Ajax.ActionLink(" ", "Index", "Customer", new { id = "envelope" },ajaxop, new { @class = "glyphicon glyphicon-folder-open" })</li>
                             <li>@Html.ActionLink(" ", "Index", "Customer", new { id = "shopping-cart" }, new { @class = "glyphicon glyphicon-shopping-cart" })</li>
                             <li>@Html.ActionLink(" ", "Index", "Customer", new { id = "bell" }, new { @class = "glyphicon glyphicon-bell" })</li>
-                            <li>@Ajax.ActionLink(" ", "Index", "Users", new { area="Area_User" },ajaxop, new { @class = "glyphicon glyphicon-user" })</li>
+                            <li>@Ajax.ActionLink(" ", "Index", "Users", new { area="Area_User"},ajaxop, new { @class = "glyphicon glyphicon-user" })</li>
                         </ul>
                     </nav>
                 </div>
