@@ -1,5 +1,30 @@
 ﻿<!--LoginForm做商家和买家的登陆界面-->
-
-
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link href="~/css/public.css" rel="stylesheet" />
+    <link href="~/css/login.css" rel="stylesheet" />
+</head>
+<body>
+    <!-------------------login-------------------------->
+    <div class="login">
+        <form action="#" method="post">
+            <h1>
+                
+            </h1>
+            <p></p>
+            <div class="msg-warn hide"><b></b>公共场所不建议自动登录，以防账号丢失</div>
+            <p><input type="text" name="" value="" placeholder="昵称/邮箱/手机号"></p>
+            <p><input type="text" name="" value="" placeholder="密码"></p>
+            <p><input type="submit" name="" value="登  录"></p>
+            <p class="txt"><a class="" href="reg.html">免费注册</a><a href="forget.html">忘记密码？</a></p>
+        </form>
+    </div>
+</body>
+</html>
 <!--这个是模拟商家登录转至管理界面-->
-@Html.ActionLink("商家登录", "Index", "Seller", new { area = "" }, new { @class = "navbar-brand" }) 
+@Html.ActionLink("商家登录", "Index", "Seller", new { area = "" }, new { @class = "navbar-brand" })
+
+

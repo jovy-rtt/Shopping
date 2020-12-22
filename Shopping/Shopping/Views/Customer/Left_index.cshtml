@@ -1,5 +1,22 @@
-﻿<div>
-    <pre>test</pre>
-    <p>mytest</p>
-    <p>       555555mytest</p>
+﻿@{
+    var ajaxop2 = new AjaxOptions
+    {
+        UpdateTargetId = "mainWindow",
+        OnFailure = "OnFailure"
+    };
+}
+<div style="display:table-cell; vertical-align:middle; text-align:center; width:300px; height:500px;">
+    <div style="display:inline-block; width:100%;">
+        <ul style="list-style-type:none">
+            <li>
+                <h2>浏览好物</h2>
+            </li>
+            <li>
+                @Ajax.ActionLink("热卖精品", "UserLeftIndex", "Commodities", new { area = "Area_Commodity", id= "UserLeftIndex_Hot" }, ajaxop2, new { @class = "list-group-item" })
+            </li>
+            <li>
+                @Ajax.ActionLink("···", "UserLeftIndex", "Commodities", new { area = "Area_Commodity", id = "" }, ajaxop2, new { @class = "list-group-item" })
+            </li>
+        </ul>
+    </div>
 </div>

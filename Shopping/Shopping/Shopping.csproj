@@ -223,6 +223,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Images\UserViewCommodity\hot_bottom.jpg" />
+    <Content Include="Images\UserViewCommodity\hot_pre.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\ckeditor.js.map" />
@@ -301,7 +303,8 @@
     <Content Include="Areas\Area_User\Views\Users\userLogin.cshtml" />
     <Content Include="Areas\Area_User\Views\Users\userInfo.cshtml" />
     <Content Include="Areas\Area_User\Views\Users\userForget.cshtml" />
-    <Content Include="Areas\Area_User\Views\Users\userCreate.cshtml" />
+    <Content Include="Areas\Area_Commodity\Views\Commodities\UserLeftIndex.cshtml" />
+    <Content Include="Areas\Area_Commodity\Views\Commodities\UserLeftIndex_Hot.cshtml" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.5.1.js" />
     <Content Include="Scripts\jquery-3.5.1.min.js" />
