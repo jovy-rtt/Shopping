@@ -12,42 +12,44 @@ namespace Shopping.Areas.Area_User.Controllers
 {
     public class UsersController : Controller
     {
+
+        #region 买家相关操作自定义方法
+
+        //数据上下文类
         private PeachMd db = new PeachMd();
 
-        //us是为了判断用于是否已经登录，如果已经登录，那么us中始终会有这个信息，所以登出的时候，需要把us再此设置为null
-        User us=null;
 
-        // GET: Area_User/Users
-        //public ActionResult Index()
-        //{
-        //    return View(db.User.ToList());
-        //}
+        //TempData["us"]是为了判断用于是否已经登录，如果已经登录，那么ta中始终会有这个信息，所以登出的时候，需要把ta再此设置为null
+        User us=null;
 
         /*
             作者：zmx
             时间：2020/12/20
-            功能：查看用户信息
+            功能：查看用户信息，点击用户按钮，如果还没登录，则提示登录，否则显示用户信息
             第一次修改
          */
         public ActionResult Index()
         {
-            //为空证明用户还未登录
-            if (us == null)
-            {
-                return isajax("userLogin");
-            }
-            return isajax("userInfo");
+            us = (User)TempData["us"];
+            //为空证明用户还未登录，否则显示信息
+            return us == null ? Isajax("userLogin") : Isajax("userInfo", us);
         }
 
-        //自定义的一个方法，自动返回视图
-        public ActionResult isajax(string name)
-        {
-            if (Request.IsAjaxRequest())
-                return PartialView(name);
-            return View(name);
-        }
-        //用户等录
         /*
+            作者：zmx
+            时间：2020/12/22
+            功能：登出
+            第一次修改
+         */
+        public ActionResult Logout()
+        {
+            TempData["us"]= us = null;
+            //为空证明用户还未登录，否则显示信息
+            return us == null ? Isajax("userLogin") : Isajax("userInfo", us);
+        }
+
+        /*
+         *  用户等录
             作者：zmx
             时间：2020/12/20
             功能：实现用户的登录功能
@@ -59,15 +61,19 @@ namespace Shopping.Areas.Area_User.Controllers
         [HttpPost]
         public ActionResult userLogin()
         {
+            //获取登录窗体内点击的按钮
             var tt = Request["btn"];
+
             if(tt=="注册")
             {
-                return Create();
+                return Isajax("userCreate");
             }
             if(tt=="忘记密码")
             {
-
+                return Isajax("userForget");
             }
+
+
             int account;
             //尝试获取账号信息，账号信息是int类型
             try
@@ -76,57 +82,81 @@ namespace Shopping.Areas.Area_User.Controllers
             }catch
             {
                 //失败
-                return isajax("userLogin");
+                return Isajax("userLogin");
             }
 
-
+            //根据账号，密码，类别，找到该条记录
             var passwd = Request.Form["Password"];
             var q = from t in db.User
-                    where t.Id == account
+                    where t.Id == account && t.Password == passwd && t.TType =="买家"
                     select t;
-
+            //找到
             if(q!=null)
-            {
-                //如果账号密码没错，那么us就可以等于该条信息
-                var tmp = q.FirstOrDefault();
-                if(tmp.TType=="买家" &&tmp.Password==passwd)
-                         us = tmp;
-            }
-            if (us == null)
-                return PartialView("userLogin");
-            if (Request.IsAjaxRequest())
-                return PartialView("userInfo", us);
-            return View("userInfo",us);
+                TempData["us"] = us = q.FirstOrDefault();
+
+            return us == null ? Isajax("userLogin") : Isajax("userInfo", us);
         }
 
         /*
             作者：zmx
             时间：2020/12/21
-            功能：忘记密码、找回
+            功能：忘记密码、找回,成功则返回登录界面，失败则还返回忘记密码界面
          */
-        public ActionResult userforgetpasswd()
-        {
-            return View();
-        }
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult userforgetpasswd([Bind(Include = "Id,Password,IdCard,PhoneNumber,Name,Sex,Birthday,MailBox,Sign,TType")] User user)
+        public ActionResult userForget([Bind(Include = "Id,IdCard,PhoneNumber,Name,Sex,MailBox,Password")] User user)
         {
             //验证通过
-            if (ModelState.IsValid)
-            {
-                User tmp = db.User.Find(user.Id);
-                //输入账号不对
-                if (tmp == null)
-                    return View();
+            //var q = from t in db.User
+            //        where t.Id == user.Id && t.IdCard == user.IdCard && t.PhoneNumber == user.PhoneNumber && t.Name == user.Name && t.Sex == user.Sex
+            //       && t.MailBox == user.MailBox
+            //        select t;
 
-                db.Entry(user).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(user);
+            /*这一段是test时专用*/
+            var q = from t in db.User
+                    where t.Id == user.Id
+                    select t;
+
+            var tmp = q.FirstOrDefault();
+            //为空则失败
+            if (tmp == null)
+                return Isajax("userForget");
+
+            tmp.Password = user.Password;
+        
+
+            db.SaveChanges();
+            return Isajax("userLogin");
         }
 
+        /*
+            作者：zmx
+            时间：2020/12/22
+            功能：注册账号、成功则返回登录界面、失败则返回注册界面
+         */
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult userCreate([Bind(Include = "Id,Password,IdCard,PhoneNumber,Name,Sex,Birthday,MailBox,Sign,TType")] User user)
+        {
+
+            if (ModelState.IsValid)
+            {
+                db.User.Add(user);
+                db.SaveChanges();
+                return Isajax("userLogin");
+            }
+
+            return Isajax("userCreate");
+        }
+        #endregion
+
+        #region 自动生成的原始代码
+        // GET: Area_User/Users
+        //public ActionResult Index()
+        //{
+        //    return View(db.User.ToList());
+        //}
 
         // GET: Area_User/Users/Details/5
         public ActionResult Details(int? id)
@@ -143,15 +173,10 @@ namespace Shopping.Areas.Area_User.Controllers
             return View(user);
         }
 
-        /*
-            作者：zmx
-            时间：2020/12/21
-            功能：注册新的账号
-         */
         // GET: Area_User/Users/Create
         public ActionResult Create()
         {
-            return isajax("Create");
+            return Isajax("Create");
         }
 
         // POST: Area_User/Users/Create
@@ -236,5 +261,23 @@ namespace Shopping.Areas.Area_User.Controllers
             }
             base.Dispose(disposing);
         }
+        #endregion
+
+        #region 可以共用的方法
+        //自定义的一个方法，自动返回视图
+        public ActionResult Isajax(string name)
+        {
+            if (Request.IsAjaxRequest())
+                return PartialView(name);
+            return View(name);
+        }
+        //重载Isajax方法，自动放回视图
+        public ActionResult Isajax(string name, object model)
+        {
+            if (Request.IsAjaxRequest())
+                return PartialView(name, model);
+            return View(name, model);
+        }
+        #endregion
     }
 }

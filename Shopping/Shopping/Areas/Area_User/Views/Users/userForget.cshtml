@@ -1,7 +1,7 @@
 ﻿@model Shopping.Models.User
 
 @{
-    var ajaxop = new AjaxOptions { UpdateTargetId = "leftview", HttpMethod = "Post", Url = Url.Action("userLogin", "Users") };
+    var ajaxop = new AjaxOptions { UpdateTargetId = "leftview", HttpMethod = "Post", Url = Url.Action("userForget", "Users") };
 }
 
 @using (Ajax.BeginForm(ajaxop))
@@ -15,14 +15,6 @@
         <div class="col-md-10">
             @Html.EditorFor(model => model.Id, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Id, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
         </div>
     </div>
 
@@ -59,14 +51,6 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Birthday, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Birthday, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Birthday, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
         @Html.LabelFor(model => model.MailBox, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.MailBox, new { htmlAttributes = new { @class = "form-control" } })
@@ -75,24 +59,16 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Sign, htmlAttributes: new { @class = "control-label col-md-2" })
+        <label class="control-label col-md-2">新密码：</label>
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Sign, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Sign, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.TType, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.TType, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.TType, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Save" class="btn btn-default" />
+            <input type="submit" value="提交" class="btn btn-default" />
         </div>
     </div>
 </div>

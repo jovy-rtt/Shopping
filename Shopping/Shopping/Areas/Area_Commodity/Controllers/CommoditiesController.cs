@@ -20,6 +20,23 @@ namespace Shopping.Areas.Area_Commodity.Controllers
             return View(db.Commodity.ToList());
         }
 
+        /// <summary>
+        /// 作者：                gz
+        /// 创建时间：            2020/12/22
+        /// 函数功能：            管理用户左下菜单的视图
+        /// 入口参数：            视图ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ActionResult UserLeftIndex(string id)
+        {
+            if (id == null)
+                id = "Index";
+            if (Request.IsAjaxRequest())
+                return PartialView(id);
+            return PartialView(id);
+        }
+
         // GET: Area_Commodity/Commodities/Details/5
         public ActionResult Details(int? id)
         {
