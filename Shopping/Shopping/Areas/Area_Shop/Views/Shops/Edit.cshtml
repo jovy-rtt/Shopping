@@ -91,3 +91,17 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
+
+<script>
+    ClassicEditor
+        .create(document.querySelector('#Image'), {
+        })
+        .then(editor => {
+            window.editor = editor;
+        })
+        .catch(err => {
+            console.error(err.stack);
+        })
+
+</script>
