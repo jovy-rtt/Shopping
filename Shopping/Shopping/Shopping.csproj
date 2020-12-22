@@ -300,6 +300,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Areas\Area_User\Views\Users\userLogin.cshtml" />
     <Content Include="Areas\Area_User\Views\Users\userInfo.cshtml" />
+    <Content Include="Areas\Area_User\Views\Users\userForget.cshtml" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.5.1.js" />
     <Content Include="Scripts\jquery-3.5.1.min.js" />
