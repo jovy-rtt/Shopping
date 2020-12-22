@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Shopping.Controllers;
 using Shopping.Models;
 
 namespace Shopping.Areas.Area_User.Controllers
@@ -148,6 +149,83 @@ namespace Shopping.Areas.Area_User.Controllers
             }
 
             return Isajax("userCreate");
+        }
+        #endregion
+
+        #region 商家相关操作自定义方法
+        //数据上下文类
+        private PeachMd db1 = new PeachMd();
+        public ActionResult SellerCreate()
+        {
+            return View("SellerCreate");
+        }
+
+        // POST: Area_User/Users/Create
+        // 为了防止“过多发布”攻击，请启用要绑定到的特定属性；有关
+        // 更多详细信息，请参阅 https://go.microsoft.com/fwlink/?LinkId=317598。
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SellerCreate(User user)
+        {
+            user.IdCard = "S" + user.Id.ToString();
+            user.TType = "商家";
+            if (ModelState.IsValid)
+            {
+                db1.User.Add(user);
+                db1.SaveChanges();
+                return View("CreateWin",user);
+            }
+
+            return View(user);
+        }
+        public ActionResult CreateWin()
+        {
+            return View();
+        }
+        public ActionResult SellerLogin()
+        {
+            return View("SellerLogin");
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SellerLogin(User user)
+        {
+            var t = Request["btn"];
+
+            if (t == "忘记密码")
+            {
+                return Isajax("userForget");
+            }
+            int account;
+            //尝试获取账号信息，账号信息是int类型
+            try
+            {
+                account = int.Parse(Request.Form["Account"]);
+            }
+            catch
+            {
+                //失败
+                return Isajax("SellerLogin");
+            }
+
+            //根据账号，密码，类别，找到该条记录
+            var passwd = Request.Form["Password"];
+            var q1 = from w in db1.User
+                    where w.Id == account && w.Password == passwd && w.TType == "商家"
+                    select w;
+            //找到
+            if (q1 != null)
+                TempData["us"] = us = q1.FirstOrDefault();
+            if(us==null)
+            {
+                return View("SellerLogin");
+            }
+            else
+            {
+                ControllerContext a = new ControllerContext(ControllerContext.RequestContext, new SellerController());
+                ViewEngineResult ve = ViewEngines.Engines.FindView(a, "Index", "_Layout.cshtml");
+                return View(ve.View, us);
+            }
         }
         #endregion
 

@@ -289,7 +289,6 @@
     <Content Include="Areas\Area_Shop\Views\Shops\Index.cshtml" />
     <Content Include="Areas\Area_User\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Area_User\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Area_User\Views\Users\Create.cshtml" />
     <Content Include="Areas\Area_User\Views\Users\Delete.cshtml" />
     <Content Include="Areas\Area_User\Views\Users\Details.cshtml" />
     <Content Include="Areas\Area_User\Views\Users\Edit.cshtml" />
@@ -305,6 +304,9 @@
     <Content Include="Areas\Area_User\Views\Users\userForget.cshtml" />
     <Content Include="Areas\Area_Commodity\Views\Commodities\UserLeftIndex.cshtml" />
     <Content Include="Areas\Area_Commodity\Views\Commodities\UserLeftIndex_Hot.cshtml" />
+    <Content Include="Areas\Area_User\Views\Users\SellerCreate.cshtml" />
+    <Content Include="Areas\Area_User\Views\Users\CreateWin.cshtml" />
+    <Content Include="Areas\Area_User\Views\Users\SellerLogin.cshtml" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.5.1.js" />
     <Content Include="Scripts\jquery-3.5.1.min.js" />
