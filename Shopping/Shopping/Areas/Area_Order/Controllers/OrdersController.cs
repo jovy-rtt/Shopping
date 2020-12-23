@@ -22,6 +22,36 @@ namespace Shopping.Areas.Area_Order.Controllers
         }
 
         // GET: Area_Order/Orders/Details/5
+
+        //已处理订单
+        public ActionResult order_done()
+        {
+            var order = db.Order.Include(o => o.Commodity).Include(o => o.User).Include(o => o.User1).Where(o=>o.State == "已处理");
+             
+            return View(order.ToList());
+        }
+
+        //未处理订单
+        public ActionResult order_undone()
+        {
+            var order = db.Order.Include(o => o.Commodity).Include(o => o.User).Include(o => o.User1).Where(o => o.State == "未处理");
+            return View(order.ToList());
+        }
+
+        //订单收益
+        public ActionResult profit()
+        {
+            double profit = 0.0;
+            var order = db.Order.Include(o => o.Commodity).Include(o => o.User).Include(o => o.User1).Where(o => o.State == "已处理").ToList();
+            foreach (var v in order)
+            {
+                profit += v.Commodity.Price;
+            }
+           
+            return View(order.ToList());
+        }
+
+
         public ActionResult Details(int? id)
         {
             if (id == null)

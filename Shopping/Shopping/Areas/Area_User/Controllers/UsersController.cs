@@ -23,7 +23,7 @@ namespace Shopping.Areas.Area_User.Controllers
         //TempData["us"]是为了判断用于是否已经登录，如果已经登录，那么ta中始终会有这个信息，所以登出的时候，需要把ta再此设置为null
         User us=null;
 
-        /*
+        /* 
             作者：zmx
             时间：2020/12/20
             功能：查看用户信息，点击用户按钮，如果还没登录，则提示登录，否则显示用户信息
