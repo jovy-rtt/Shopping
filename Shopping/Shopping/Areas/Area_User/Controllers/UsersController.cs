@@ -232,7 +232,7 @@ namespace Shopping.Areas.Area_User.Controllers
         {
             Session.Remove("username");
             Session.Remove("userid");
-            return Redirect("/Seller/Index");
+            return Redirect("/Area_User/Users/SellerLogin");
         }
 
         //修改密码
@@ -284,6 +284,25 @@ namespace Shopping.Areas.Area_User.Controllers
                     return View();
                 }
             }
+        }
+
+        public ActionResult SellerDetail()
+        {
+            int account;
+            account = int.Parse(Session["useerid"].ToString());
+            var q1 = from w in db.User
+                     where w.Id == account
+                     select w;
+            if (q1.Count() > 0)
+            {
+                var us = q1.First();
+                return View(us);
+            }
+            else
+            {
+                return View();
+            }
+                
         }
         #endregion
 

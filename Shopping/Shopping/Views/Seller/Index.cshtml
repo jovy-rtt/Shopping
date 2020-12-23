@@ -47,7 +47,7 @@
                 <div class="leftMenu">
                     <h3 class="btn">账户信息</h3>
                     <div class="list-group">
-                        @Html.ActionLink("我的账户", "Create", "Users", new { area = "Area_User" }, new { @class = "list-group-item" })
+                        @Ajax.ActionLink("我的账户", "Create", "Users", new { area = "Area_User" }, ajaxOptions, new { @class = "list-group-item" })
                         @Ajax.ActionLink("我的银行卡", "SellerCreate", "Users", new { area = "Area_User" }, ajaxOptions, new { @class = "list-group-item" })
                         @Html.ActionLink("修改密码","SellerEditPwd","Users",new { area="Area_User"}, new { @class = "list-group-item" })
                     </div>
