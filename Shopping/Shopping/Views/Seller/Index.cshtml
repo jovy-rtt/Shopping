@@ -27,8 +27,8 @@
                     @{
                         if (Model == null)
                         {
-                            <li style="margin-left :24px">@Html.ActionLink("登录", "SellerLogin", "Users", ajaxOptions, new { area = "Area_User" })</li>
-                            <li style="margin-left :16px">@Html.ActionLink("注册", "SellerCreate", "Users", ajaxOptions, new { area = "Area_User" })</li>
+                            <li style="margin-left :24px"><a href="/Area_User/Users/SellerLogin">登录</a></li>
+                            <li style="margin-left :16px"><a href ="/Area_User/Users/SellerCreate">注册</a></li>
                         }
                         else
                         {
