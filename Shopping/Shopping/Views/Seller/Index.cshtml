@@ -32,6 +32,7 @@
                         else
                         {
                             <li style="margin-left :24px;color:white;margin-top:15px">欢迎，@Session["username"]</li>
+                            <li style="margin-left :16px">@Html.ActionLink("退出","LoginOut","Users", new { area = "Area_User" } ,ajaxOptions)</li>
 
                         }
                     }
@@ -48,6 +49,7 @@
                     <div class="list-group">
                         @Html.ActionLink("我的账户", "Create", "Users", new { area = "Area_User" }, new { @class = "list-group-item" })
                         @Ajax.ActionLink("我的银行卡", "SellerCreate", "Users", new { area = "Area_User" }, ajaxOptions, new { @class = "list-group-item" })
+                        @Html.ActionLink("修改密码","SellerEditPwd","Users",new { area="Area_User"}, new { @class = "list-group-item" })
                     </div>
                     <h3 class="btn">我的店铺</h3>
                     <div class="list-group">

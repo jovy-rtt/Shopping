@@ -153,16 +153,13 @@ namespace Shopping.Areas.Area_User.Controllers
         #endregion
 
         #region 商家相关操作自定义方法
-
+        //商家注册
         [HttpGet]
         public ActionResult SellerCreate()
         {
             return View("SellerCreate");
         }
 
-        // POST: Area_User/Users/Create
-        // 为了防止“过多发布”攻击，请启用要绑定到的特定属性；有关
-        // 更多详细信息，请参阅 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult SellerCreate(User user)
@@ -175,11 +172,12 @@ namespace Shopping.Areas.Area_User.Controllers
             db.SaveChanges();
             return View("CreateWin",user);
         }
+        //注册成功
         public ActionResult CreateWin()
         {
             return View();
         }
-
+        //商家登录
         [HttpGet]
         public ActionResult SellerLogin()
         {
@@ -227,6 +225,64 @@ namespace Shopping.Areas.Area_User.Controllers
             {
                 ViewBag.message = "账号或密码错误!";
                 return View("SellerLogin");
+            }
+        }
+        //退出账户
+        public ActionResult LoginOut()
+        {
+            Session.Remove("username");
+            Session.Remove("userid");
+            return Redirect("/Seller/Index");
+        }
+
+        //修改密码
+        [HttpGet]
+        public ActionResult SellerEditPwd()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SellerEditPwd(User user)
+        {
+            int account;
+            if(Session["userid"]==null)
+            {
+                ViewBag.message = "请先进行登录";
+                return View();
+            }
+            else
+            {
+                account = int.Parse(Session["userid"].ToString());
+                var q1 = from w in db.User
+                         where w.Id == account
+                         select w;
+                if(q1.Count()>0)
+                {
+                    var us = q1.First();
+                    string s = Request["pwd"];
+                    string s1 = Request["pwd1"];
+                    string s2 = Request["pwd2"];
+                    if(s1!=s2)
+                    {
+                        ViewBag.message = "重置密码不一致";
+                    }
+                    if(s==us.Password)
+                    {
+                        us.Password = s1;
+                        db.SaveChanges();
+                        ViewBag.message = "修改成功，请重新登录";
+                        Session.Remove("username");
+                        Session.Remove("userid");
+                        return View();
+                    }
+                    return View();
+                }
+                else
+                {
+                    ViewBag.message = "修改失败";
+                    return View();
+                }
             }
         }
         #endregion
