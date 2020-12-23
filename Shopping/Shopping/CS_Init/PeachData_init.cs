@@ -40,13 +40,13 @@ namespace Shopping.CS_Init
                 ,PhoneNumber="13306538832",Name="公羊江强",Sex="男",Birthday=new DateTime(2000,1,20),MailBox="84659712@qq.com",TType="买家",Sign="123"},
 
                 new User { Password="123456",IdCard="330101192012149257"
-                ,PhoneNumber="18596584590",Name="甄萱",Sex="女",Birthday=new DateTime(2000,1,20),MailBox="6549823@qq.com",TType="卖家",Sign="123"},
+                ,PhoneNumber="18596584590",Name="甄萱",Sex="女",Birthday=new DateTime(2000,1,20),MailBox="6549823@qq.com",TType="商家",Sign="123"},
 
                 new User { Password="123456",IdCard="33010119201214603X"
-                ,PhoneNumber="18936025655",Name="卫进平",Sex="男",Birthday=new DateTime(2000,1,20),MailBox="55772727@qq.com",TType="卖家",Sign="123"},
+                ,PhoneNumber="18936025655",Name="卫进平",Sex="男",Birthday=new DateTime(2000,1,20),MailBox="55772727@qq.com",TType="商家",Sign="123"},
 
                 new User { Password="123456",IdCard="430101192012148899"
-                ,PhoneNumber="15205239542",Name="荀蓓琛",Sex="男",Birthday=new DateTime(2000,1,20),MailBox="44321856@qq.com",TType="卖家",Sign="123"}
+                ,PhoneNumber="15205239542",Name="荀蓓琛",Sex="男",Birthday=new DateTime(2000,1,20),MailBox="44321856@qq.com",TType="商家",Sign="123"}
             };
 
             var bank = new List<Bankcard>
