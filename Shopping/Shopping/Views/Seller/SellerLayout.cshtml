@@ -1,0 +1,29 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peach 购物网</title>
+    @Html.Partial("~/Views/Shared/Partialinfo.cshtml")
+
+</head>
+<body>
+
+    <div id="mainWindow" sstyle="overflow-y:auto; overflow-x:hidden">
+        @RenderBody()
+    </div>
+    <script>
+        $(document).ready(function () {
+            var body = (document.compatMode && document.compatMode == 'CSS1Compat') ? document.documentElement : document.body;
+            $("#left").css({ minHeight: body.clientHeight });
+            $("#mainWindow").css({ minHeight: body.clientHeigh });
+        });
+        function OnFailure(xhr) {
+            $("body").html(xhr.responseText);
+        }
+    </script>
+</body>
+</html>
+

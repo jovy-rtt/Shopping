@@ -1,25 +1,24 @@
-﻿<div style="margin-top:60px">
-    <div class="form-horizontal">
-        <div class="form-group">
-            <label class="col-md-3 control-label">账号：</label>
-            <div class="col-md-6">
-                <input class="form-control" name="Account" type="text" placeholder="请输入账号" />
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="col-md-3 control-label">密码：</label>
-            <div class="col-md-6">
-                <input class="form-control" name="Password" type="password" placeholder="密码" />
-            </div>
-        </div>
-
-
-        <div class="form-group">
-            <div class="col-md-offset-3">
-                <button style="width:80px" class="btn btn-primary" type="submit" name="btn" value="提交">提交</button>
-                <button style="width:80px" class="btn btn-primary" type="submit" name="btn" value="忘记密码">忘记密码</button>
-            </div>
-        </div>
+﻿@{
+    Layout = "~/Views/Seller/SellerLayout.cshtml";
+}
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link href="~/css/public.css" rel="stylesheet" />
+    <link href="~/css/login.css" rel="stylesheet" />
+</head>
+<body>
+    <!-------------------login-------------------------->
+    <div class="login">
+        <form action="#" method="post">
+            <h1>
+            </h1>
+            <p></p>
+            <div class="msg-warn hide"><b></b>公共场所不建议自动登录，以防账号丢失</div>
+            <p><input type="text" name="" value="" placeholder="昵称/邮箱/手机号"></p>
+            <p><input type="text" name="" value="" placeholder="密码"></p>
+            <p><input type="submit" name="" value="登  录"></p>
+            <p class="txt"><a class="" href="reg.html">免费注册</a><a href="forget.html">忘记密码？</a></p>
+        </form>
     </div>
-</div>
+</body>
