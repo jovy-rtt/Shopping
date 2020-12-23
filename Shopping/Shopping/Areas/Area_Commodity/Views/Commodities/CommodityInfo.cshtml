@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Shopping.Models.Commodity>
+
+@{
+    var ajaxOptions = new AjaxOptions
+    {
+        LoadingElementId = "loading",
+        UpdateTargetId = "mainWindow",
+        OnFailure = "OnFailure"
+    };
+}
+@using (Ajax.BeginForm(new AjaxOptions { UpdateTargetId = "mainWindow" }))
+{
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div>
+                <br><br><br>
+            </div>
+            <label class="col-md-4 control-label">好物搜：</label>
+            <div class="col-md-4">
+                <input type="text" name="search" value="@ViewBag.search" class="form-control" placeholder="全部">
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-success">搜索</button>
+            </div>
+        </div>
+    </div>
+}
+<h4 class="text-center">搜索结果</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>图片</th>
+            <th>商品名</th>
+            <th>类别</th>
+            <th>价格</th>
+            <th>简介</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var m in Model)
+        {
+            <tr>
+                <th>@Html.DisplayFor(modelItem => m.Image)</th>
+                <th>
+                    @Ajax.ActionLink(m.Name.ToString(), "CommodityDetails", new { id = m.Id }, ajaxOptions)
+                </th>
+                <th>@Html.DisplayFor(modelItem => m.Type)</th>
+                <th>@Html.DisplayFor(modelItem => m.Price)</th>
+                <th>@Html.DisplayFor(modelItem => m.Introduction)</th>
+            </tr>
+        }
+    </tbody>
+</table>

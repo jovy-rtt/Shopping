@@ -21,6 +21,24 @@ namespace Shopping.Areas.Area_Shop.Controllers
             return View(shop.ToList());
         }
 
+
+        //上传图片
+        //[HttpPost]
+        //public ActionResult UploadImg()
+        //{
+
+
+        //    if (Request.Files.Count > 0)
+        //    {
+        //        HttpPostedFileBase f = Request.Files["图片"];
+        //        f.SaveAs(@"~/Images/commodity_pic" + f.FileName);
+
+        //    }
+        //    return View();
+        //}
+
+
+
         // GET: Area_Shop/Shops/Details/5
         public ActionResult Details(int? id)
         {
@@ -43,9 +61,7 @@ namespace Shopping.Areas.Area_Shop.Controllers
             return View();
         }
 
-        // POST: Area_Shop/Shops/Create
-        // 为了防止“过多发布”攻击，请启用要绑定到的特定属性；有关
-        // 更多详细信息，请参阅 https://go.microsoft.com/fwlink/?LinkId=317598。
+       
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name,Image,SellerId,Score,Address,CreatTime,LicenseId,FansNumber")] Shop shop)
@@ -54,8 +70,10 @@ namespace Shopping.Areas.Area_Shop.Controllers
             {
                 db.Shop.Add(shop);
                 db.SaveChanges();
+                
                 return RedirectToAction("Index");
             }
+
 
             ViewBag.SellerId = new SelectList(db.User, "Id", "Password", shop.SellerId);
             return View(shop);

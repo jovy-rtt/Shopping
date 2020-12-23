@@ -1,0 +1,22 @@
+﻿@{
+    Layout = "~/Views/Seller/SellerLayout.cshtml";
+}
+
+<link href="~/css/public.css" rel="stylesheet" />
+<link href="~/css/login.css" rel="stylesheet" />
+<div style="margin-top:10%;margin-left:30%">
+    <h2>修改密码</h2>
+</div>
+    <div style="margin-left:30%">
+        <div class="login">
+            <form action="#" method="post">
+                @Html.AntiForgeryToken()
+                <p><input type="text" name="pwd" value="" placeholder="原始密码"></p>
+                <p><input type="text" name="pwd1" value="" placeholder="新密码"></p>
+                <p><input type="text" name="pwd2" value="" placeholder="再次输入新密码"></p>
+                <p style="color:red">@ViewBag.message</p>
+                <p><input type="submit" name="" value="修  改"></p>
+                <p><a href="~/Seller/Index">返回主页面</a> <a href="~/Area_User/Users/SellerLogin">返回登录</a></p>
+            </form>
+        </div>
+    </div>
