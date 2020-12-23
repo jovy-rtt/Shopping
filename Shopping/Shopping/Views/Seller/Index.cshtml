@@ -1,4 +1,8 @@
-﻿@model Shopping.Models.User
+﻿@{ 
+    Layout = "~/Views/Seller/SellerLayout.cshtml";
+}
+
+@model Shopping.Models.User
 @{
     var ajaxOptions = new AjaxOptions
     {
@@ -23,14 +27,15 @@
                     @{
                         if (Model == null)
                         {
-                            <li style="margin-left :24px">@Html.ActionLink("登录", "SellerLogin", "Users", new { area = "Area_User" })</li>
+                            <li style="margin-left :24px">@Html.ActionLink("登录", "SellerLogin", "Users", ajaxOptions, new { area = "Area_User" })</li>
+                            <li style="margin-left :16px">@Html.ActionLink("注册", "SellerCreate", "Users", ajaxOptions, new { area = "Area_User" })</li>
                         }
                         else
                         {
                             <li style="margin-left :24px">@Html.ActionLink(Model.Name, "Index", "Seller", new { area = "" })</li>
                         }
                     }
-                    <li style="margin-left :16px">@Html.ActionLink("注册", "Index", "Home")</li>
+                    
                     <li style="margin-left :8px">@Html.ActionLink("关于", "About", "Home")</li>
                     <li style="margin-left :0px">@Html.ActionLink("退出", "Contact", "Home")</li>
                 </ul>
@@ -40,8 +45,8 @@
 
     <div class="container body-content">
         <div class="row">
-            <div class="col-md-3">
-                <div class="leftMenu" style="margin-top:10px">
+            <div class="col-md-3" style="margin-top:60px">
+                <div class="leftMenu" >
                     <h3 class="btn">账户信息</h3>
                     <div class="list-group">
                         @Html.ActionLink("我的账户", "Create", "Users", new { area = "Area_User" }, new { @class = "list-group-item" })
