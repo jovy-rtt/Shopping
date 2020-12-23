@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Edit";
 }
-
+<script src="~/Scripts/ckeditor.js"></script>
 <h2>Edit</h2>
 
 @using (Html.BeginForm())
@@ -59,7 +59,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Introduction, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Introduction, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextAreaFor(model => model.Introduction, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Introduction, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -75,3 +75,16 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
+<script>
+    ClassicEditor
+        .create(document.querySelector('#Introduction'), {
+        })
+        .then(editor => {
+            window.editor = editor;
+        })
+        .catch(err => {
+            console.error(err.stack);
+        })
+
+</script>

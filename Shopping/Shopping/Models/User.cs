@@ -24,6 +24,7 @@ namespace Shopping.Models
 
         [Required]
         [StringLength(30)]
+        [Display(Name ="密码")]
         public string Password { get; set; }
 
         [Required]
@@ -32,23 +33,31 @@ namespace Shopping.Models
 
         [Required]
         [StringLength(30)]
+        [Display(Name = "电话号码")]
         public string PhoneNumber { get; set; }
 
         [Required]
         [StringLength(30)]
+        [Display(Name = "昵称")]
         public string Name { get; set; }
 
         [Required]
         [StringLength(2)]
+        [Display(Name = "性别")]
         public string Sex { get; set; }
 
+        [Required]
+        [DataType(DataType.Date)]
+        [Display(Name = "生日")]
         public DateTime Birthday { get; set; }
 
         [Required]
         [StringLength(30)]
+        [Display(Name = "邮箱")]
         public string MailBox { get; set; }
 
         [Required]
+        [Display(Name = "简介")]
         public string Sign { get; set; }
 
         [Required]

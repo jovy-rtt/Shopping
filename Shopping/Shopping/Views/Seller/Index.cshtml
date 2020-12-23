@@ -1,4 +1,4 @@
-﻿
+﻿@model Shopping.Models.User
 @{
     var ajaxOptions = new AjaxOptions
     {
@@ -20,7 +20,17 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li style="margin-left :16px">@Html.ActionLink("主页", "Index", "Home")</li>
+                    @{
+                        if (Model == null)
+                        {
+                            <li style="margin-left :24px">@Html.ActionLink("登录", "SellerLogin", "Users", new { area = "Area_User" })</li>
+                        }
+                        else
+                        {
+                            <li style="margin-left :24px">@Html.ActionLink(Model.Name, "Index", "Seller", new { area = "" })</li>
+                        }
+                    }
+                    <li style="margin-left :16px">@Html.ActionLink("注册", "Index", "Home")</li>
                     <li style="margin-left :8px">@Html.ActionLink("关于", "About", "Home")</li>
                     <li style="margin-left :0px">@Html.ActionLink("退出", "Contact", "Home")</li>
                 </ul>
@@ -39,7 +49,7 @@
                     <h3 class="btn">我的店铺</h3>
                     <div class="list-group">
                         @Html.ActionLink("新建店铺", "Create", "Shops", new { area = "Area_Shop" }, new { @class = "list-group-item" })
-                        @Ajax.ActionLink("已有店铺", "Details", "Commodities", new { area = "Area_Commodity"}, ajaxOptions, new { @class = "list-group-item" })
+                        @Ajax.ActionLink("已有店铺", "Index", "Shops", new { area = "Area_Shop" }, ajaxOptions, new { @class = "list-group-item" })
                         @Ajax.ActionLink("未读评论", "", "", new { area = "" }, ajaxOptions, new { @class = "list-group-item" })
                     </div>
                     <h3 class="btn">我的订单</h3>
