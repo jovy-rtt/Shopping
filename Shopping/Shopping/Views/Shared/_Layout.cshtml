@@ -40,7 +40,7 @@
 
                     <ul class="nav navbar-nav pull-right">
                         <!--购物车-->
-                        <li>@Ajax.ActionLink(" ", "Index", "Favorites", new { area = "Area_Favorites" }, ajaxmainwindow, new { @class = "glyphicon glyphicon-shopping-cart" })</li>
+                        <li id="mystate"></li>
                         <!--订单通知-->
                         <li>@Ajax.ActionLink(" ", "Index", "Orders", new { area = "Area_Order" }, ajaxop, new { @class = "glyphicon glyphicon-bell" })</li>
                         <!--用户信息-->
@@ -50,12 +50,11 @@
                 </nav>
             </div>
             <div class="row" id="leftview">
-                @Html.Partial("~/Views/Customer/Left_index.cshtml")
-                
+                @Html.Partial("~/Views/Customer/Left_index.cshtml")                
             </div>
         </div>
         <div class="col-md-8 col-lg-8">
-            <div id="mainWindow" sstyle="overflow-y:auto; overflow-x:hidden">
+            <div id="mainWindow" style="overflow-y:auto; overflow-x:hidden">
                 @RenderBody()
             </div>
         </div>
@@ -65,7 +64,25 @@
             var body = (document.compatMode && document.compatMode == 'CSS1Compat') ? document.documentElement : document.body;
             $("#left").css({ minHeight: body.clientHeight });
             $("#mainWindow").css({ minHeight: body.clientHeigh });
+            IsState();
         });
+
+        function IsState() {
+            var c = '@TempData["us"]';
+            //alert(c);
+            //if (Session["us"] == null)
+            //    alert(0);
+            //alert(0);
+            var LoginLink = "<li><a class=\"glyphicon glyphicon-shopping - cart\" data-ajax=\"true\" data-ajax-failure=\"OnFailure\" data-ajax-mode=\"replace\" data-ajax-update=\"#mainWindow\" href=\" / Area_Favorites / Favorites\"> </a></li>";
+            //alert(LoginLink);
+            var CartLink = "<a class=\"glyphicon glyphicon-shopping-cart\" data-ajax=\"true\" data-ajax-failure=\"OnFailure\" data-ajax-mode=\"replace\" data-ajax-update=\"#leftview\" href=\"/Area_User/Users\"> </a>";
+            if ( c == '')
+                // alert(LoginLink);
+                $("#mystate").html(LoginLink);
+            else
+                $("#mystate").html(LoginLink);
+        }
+
         function OnFailure(xhr) {
             $("body").html(xhr.responseText);
         }

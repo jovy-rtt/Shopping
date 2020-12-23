@@ -145,8 +145,6 @@ F:\asus\桌面\ASP.NET\大作业\Shopping\Shopping\Shopping\obj\Debug\Shopping.c
 F:\asus\桌面\ASP.NET\大作业\Shopping\Shopping\Shopping\obj\Debug\Shopping.csproj.CopyComplete
 F:\asus\桌面\ASP.NET\大作业\Shopping\Shopping\Shopping\obj\Debug\Shopping.dll
 F:\asus\桌面\ASP.NET\大作业\Shopping\Shopping\Shopping\obj\Debug\Shopping.pdb
-F:\asus\桌面\ASP.NET\大作业\Shopping\Shopping\Shopping\bin\EntityFramework.dll
-F:\asus\桌面\ASP.NET\大作业\Shopping\Shopping\Shopping\bin\EntityFramework.SqlServer.dll
 F:\asus\桌面\ASP.NET\大作业\Shopping\Shopping\Shopping\bin\EntityFramework.xml
 F:\asus\桌面\ASP.NET\大作业\Shopping\Shopping\Shopping\bin\EntityFramework.SqlServer.xml
 F:\asus\桌面\ASP.NET\大作业\Shopping\Shopping\Shopping\bin\zh-Hans\EntityFramework.resources.dll

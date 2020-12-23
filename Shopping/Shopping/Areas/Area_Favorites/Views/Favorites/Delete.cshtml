@@ -1,40 +1,23 @@
 ﻿@model Shopping.Models.Favorites
 
 @{
-    ViewBag.Title = "Delete";
+    var ajaxmainwindow = new AjaxOptions
+    {
+        UpdateTargetId = "mainWindow",
+        OnFailure = "OnFailure"
+    };
 }
+<div class="center-block text-center" style="margin-top:30%">
+    <h3>确定要删除该条记录吗？</h3>
+    <div>
+        @using (Ajax.BeginForm(ajaxmainwindow))
+        {
+            @Html.AntiForgeryToken()
 
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Favorites</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.User.Password)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.User.Password)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Link)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Link)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
+            <div class="form-actions no-color">
+                <input type="submit" value="删除" class="btn btn-danger" /> |
+                @Html.ActionLink("取消", "Index")
+            </div>
+        }
+    </div>
 </div>
