@@ -1,25 +1,28 @@
-﻿<div style="margin-top:60px">
-    <div class="form-horizontal">
-        <div class="form-group">
-            <label class="col-md-3 control-label">账号：</label>
-            <div class="col-md-6">
-                <input class="form-control" name="Account" type="text" placeholder="请输入账号" />
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="col-md-3 control-label">密码：</label>
-            <div class="col-md-6">
-                <input class="form-control" name="Password" type="password" placeholder="密码" />
-            </div>
-        </div>
-
-
-        <div class="form-group">
-            <div class="col-md-offset-3">
-                <button style="width:80px" class="btn btn-primary" type="submit" name="btn" value="提交">提交</button>
-                <button style="width:80px" class="btn btn-primary" type="submit" name="btn" value="忘记密码">忘记密码</button>
-            </div>
+﻿@{
+    Layout = "~/Views/Seller/SellerLayout.cshtml";
+}
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link href="~/css/public.css" rel="stylesheet" />
+    <link href="~/css/login.css" rel="stylesheet" />
+</head>
+<body>
+    
+    <!-------------------login-------------------------->
+    <div style="margin-top:10%;margin-left:30%">
+        <div class="login">
+            <form action="#" method="post">
+                @Html.AntiForgeryToken()
+                <h1>登录
+                </h1>
+                <p></p>
+                <p><input type="text" name="userid" value="" placeholder="昵称/邮箱/手机号"></p>
+                <p><input type="text" name="userpwd" value="" placeholder="密码"></p>
+                <p style="color:red">@ViewBag.message</p>
+                <p><input type="submit" name="" value="登  录"></p>
+                <p class="txt"><a class="" href="~/Area_User/Users/SellerCreate">免费注册</a>  <a class="" href="~">返回初始界面</a></p>
+            </form>
         </div>
     </div>
-</div>
+</body>

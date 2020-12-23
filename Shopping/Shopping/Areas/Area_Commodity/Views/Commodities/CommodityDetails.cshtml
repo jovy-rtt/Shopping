@@ -1,0 +1,26 @@
+﻿@model Shopping.Models.Commodity
+@{
+    ViewBag.Title = "CommodityDetails";
+}
+
+<br>
+<br>
+<h2 class="text-center">商品详情</h2>
+<br>
+<hr>
+
+<div>
+    <div class="col-md-5 col-lg-5">
+
+    </div>
+    <div class="col-md-1 col-lg-1"></div>
+    <div class="col-md-5 col-lg-5">
+        <div class="title">
+            <h4>[@Html.DisplayFor(model => model.Type)]@Html.DisplayFor(model => model.Name)</h4><br>
+            <p>@Html.DisplayFor(model => model.Introduction)</p><br>
+            <span>￥@Html.DisplayFor(model => model.Price)</span><br>
+        </div>
+        <p>数量&nbsp;&nbsp;库存<span>@Html.DisplayFor(model => model.Number)</span>件</p>
+    </div>
+</div>
+<hr>

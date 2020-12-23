@@ -29,13 +29,13 @@
                 <!--Nav-->
                 <nav class="navbar navbar-default">
                     <!-- Brand -->
-                    <a class="navbar-brand" href="https://localhost:44370/Customer">
+                    <a class="navbar-brand" href="https://localhost:44370">
                         <img src="~/Images/Logo/logo.png" alt="logo" style="width:20px;height:20px;" />
                     </a>
 
                     <!-- Navbar links -->
                     <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("商家版", "LoginForm", "Customer")</li>
+                        <li>@Html.ActionLink("商家版", "SellerLogin", "Users", new { area = "Area_User" }, new { @class = "list-group-item" })</li>
                     </ul>
 
                     <ul class="nav navbar-nav pull-right">

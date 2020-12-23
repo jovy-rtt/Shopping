@@ -154,7 +154,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SellerController.cs" />
     <Compile Include="CS_Init\PeachData_init.cs" />
-    <Compile Include="CS_Init\UserLoginstate.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -323,6 +322,13 @@
     <Content Include="Areas\Area_User\Views\Users\userForget.cshtml" />
     <Content Include="Areas\Area_Commodity\Views\Commodities\UserLeftIndex.cshtml" />
     <Content Include="Areas\Area_Commodity\Views\Commodities\UserLeftIndex_Hot.cshtml" />
+    <Content Include="Areas\Area_User\Views\Users\SellerLogin.cshtml" />
+    <Content Include="Areas\Area_User\Views\Users\SellerCreate.cshtml" />
+    <Content Include="Areas\Area_User\Views\Users\CreateWin.cshtml" />
+    <Content Include="Areas\Area_Bankcard\Views\Bankcards\SellerCreateBank.cshtml" />
+    <Content Include="Areas\Area_Bankcard\Views\Bankcards\SellerShowBank.cshtml" />
+    <Content Include="Areas\Area_User\Views\Users\SellerEditPwd.cshtml" />
+    <Content Include="Areas\Area_User\Views\Users\SellerDetail.cshtml" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.5.1.js" />
     <Content Include="Scripts\jquery-3.5.1.min.js" />
@@ -441,10 +447,8 @@
     <Content Include="Views\Customer\Left_index.cshtml" />
     <Content Include="Views\Customer\envelope.cshtml" />
     <Content Include="Views\Customer\user.cshtml" />
-    <Content Include="Views\Shared\Layout备份.cshtml" />
-    <Content Include="Views\Home\原Index.cshtml" />
-    <Content Include="Views\Customer\Pay.cshtml" />
-    <Content Include="Views\Customer\PayOver.cshtml" />
+    <Content Include="Views\Seller\Index.cshtml" />
+    <Content Include="Views\Seller\SellerLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Area_Bankcard\Data\" />
@@ -454,9 +458,9 @@
     <Folder Include="Areas\Area_Order\Data\" />
     <Folder Include="Areas\Area_Shop\Data\" />
     <Folder Include="Areas\Area_User\Data\" />
+    <Folder Include="Images\commodity_pic\" />
     <Folder Include="Images\Logo\" />
     <Folder Include="Images\Shoppingcart\" />
-    <Folder Include="Views\Seller\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

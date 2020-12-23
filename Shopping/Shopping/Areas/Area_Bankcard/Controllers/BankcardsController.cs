@@ -13,7 +13,17 @@ namespace Shopping.Areas.Area_Bankcard.Controllers
     public class BankcardsController : Controller
     {
         private PeachMd db = new PeachMd();
+        #region 商家管理操作
+        public ActionResult SellerCreateBank()
+        {
+            return View();
+        }
 
+        public ActionResult SellerShowBank()
+        {
+            return View();
+        }
+        #endregion
         // GET: Area_Bankcard/Bankcards
         public ActionResult Index()
         {

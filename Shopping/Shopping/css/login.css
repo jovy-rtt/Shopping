@@ -22,7 +22,7 @@ html, body {
 }
 
 .login form, .reg form {
-    position: fixed;
+    position:center;
     top: 15%;
     right: 140px;
     padding: 20px 0;
