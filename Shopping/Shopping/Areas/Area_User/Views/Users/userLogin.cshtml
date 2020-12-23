@@ -1,5 +1,5 @@
 ﻿@{
-    var ajaxop = new AjaxOptions { UpdateTargetId = "leftview", HttpMethod = "Post", Url = Url.Action("userLogin", "Users") };
+    var ajaxop = new AjaxOptions { UpdateTargetId = "leftview", HttpMethod = "Post", Url = Url.Action("userLogin", "Users",new { area="Area_User"}) };
 }
 @* 登录时，要采用局部刷新的形式 *@
 

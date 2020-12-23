@@ -154,6 +154,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SellerController.cs" />
     <Compile Include="CS_Init\PeachData_init.cs" />
+    <Compile Include="CS_Init\UserLoginstate.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -442,6 +443,8 @@
     <Content Include="Views\Customer\user.cshtml" />
     <Content Include="Views\Shared\Layout备份.cshtml" />
     <Content Include="Views\Home\原Index.cshtml" />
+    <Content Include="Views\Customer\Pay.cshtml" />
+    <Content Include="Views\Customer\PayOver.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Area_Bankcard\Data\" />

@@ -1,0 +1,74 @@
+﻿@{
+    var ajaxmainwindow = new AjaxOptions
+    {
+        UpdateTargetId = "mainWindow",
+        OnFailure = "OnFailure"
+    };
+}
+<hr />
+<div class="row text-center">
+    <div class="col-md-3"><h3>订单确认</h3></div>
+    <div class="col-md-6"><img src="~/Images/Shoppingcart/cartTop02.png" /></div>
+</div>
+<hr />
+<!--左侧-->
+<div class="col-md-6" style="margin-left:8%">
+    <!--地址信息-->
+    <div class="row">
+        <h3>收件地址<small class="pull-right"><a>新增地址</a></small></h3>
+        <hr />
+        <div class="col-md-6" style="border:2px red solid ;">
+            <div class="row">
+                <p>张三<span>[默认地址]</span> <span class="pull-right"><a>删除</a>|<a>编辑</a></span></p>
+            </div>
+            <div class="row" style="background:#dbdbdc">
+                <p>河北省&nbsp;唐山市&nbsp;路北区&nbsp;大学生公寓村</p>
+                <p>15732570937</p>
+            </div>
+        </div>
+    </div>
+    <!--支付方式-->
+    <div class="row">
+        <h3>支付方式</h3>
+        <hr />
+        <img style="border:2px red solid ;" src="~/Images/Shoppingcart/way01.jpg" />
+        <img style="border:1px #cdcdcd solid ;" src="~/Images/Shoppingcart/way02.jpg" />
+        <img style="border:1px #cdcdcd solid ;" src="~/Images/Shoppingcart/way03.jpg" />
+        <img style="border:1px #cdcdcd solid ;" src="~/Images/Shoppingcart/way04.jpg" />
+    </div>
+    <!--选择快递-->
+    <div class="row">
+        <h3>选择快递</h3>
+        <hr />
+        <span style="border:2px red solid ;">顺丰快递</span>
+        <span style="border:1px #cdcdcd solid ;">百世汇通</span>
+        <span style="border:1px #cdcdcd solid ;">圆通快递</span>
+        <span style="border:1px #cdcdcd solid ;">中通快递</span>
+    </div>
+</div>
+<!--右侧-->
+<div class="col-md-4" style="margin-left:8%">
+    <div class="row" style="background:#f5f5f5">
+        <p>订单内容<a>返回购物车</a></p>
+        <hr />
+        <div class="row">
+            <img class="col-md-3" src="~/Images/Shoppingcart/order01.jpg" />
+            <div class="col-md-6">
+                <p>创意现代简约干花花瓶摆件</p>
+                <p>颜色分类：烟灰色玻璃瓶</p>
+                <p>数量：1</p>
+            </div>
+            <span>￥69.90</span>
+        </div>
+    </div>
+    <p>商品金额：</p>
+    <p>商品金额：</p>
+    <p>商品金额：</p>
+    <hr />
+    <h2>合计:</h2>
+    @using (Ajax.BeginForm("PayOver",ajaxmainwindow))
+    {
+        <button class="btn-danger">支付</button>
+        @Html.AntiForgeryToken()
+    }
+</div>

@@ -1,32 +1,17 @@
 ﻿@model IEnumerable<Shopping.Models.Favorites>
+@{
+    var ajaxmainwindow = new AjaxOptions
+    {
+        UpdateTargetId = "mainWindow",
+        OnFailure = "OnFailure"
+    }; 
+ }
+<hr />
+<div class="row text-center">
+    <div class="col-md-3"><h3 >购物车</h3></div>
+    <div class="col-md-6"><img src="~/Images/Shoppingcart/cartTop01.png" /></div>
+</div>
 
-<h2 class="text-center">购物车</h2>
-@*<table class="table">
-        <tr>
-            <th class="text-center">
-                订单号
-            </th>
-            <th class="text-center">
-               商品链接
-            </th>
-            <th class="text-center">
-                操作
-            </th>
-        </tr>
-    @foreach (var item in Model) {
-        <tr>
-            <td class="text-center">
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td class="text-center">
-                @Html.ActionLink(item.Link,"Details",new { id=item.Id})
-            </td>
-            <td class="text-center">
-                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-            </td>
-        </tr>
-    }
-    </table>*@
 
 <table class="table">
     <tr>
@@ -68,11 +53,16 @@
 </table>
 <hr />
 <div class="row">
-    <input class="col-md-2 checkall" type="checkbox" />
-    <label class="col-md-2">全选</label>
-    <a class="col-md-2">删除</a>
-    <p class="col-md-2">共<span>0</span>件商品</p>
-    <p class="col-md-2">合计<span>￥0.00</span>件商品</p>
-    <button>结算</button>
+    <div class="col-md-2">
+        <input class="checkall" type="checkbox" />
+        <label class="">全选</label>
+    </div>
+    @using (Ajax.BeginForm("Pay","Customer",new {area="" },ajaxmainwindow))
+    {
+        <button class="mybtn btn-default active col-md-2 pull-right" style="margin-right:20px">结算</button>
+        @Html.AntiForgeryToken()
+    }
+    <p class="col-md-2 pull-right">合计<span id="money">￥0.00</span></p>
+    <p class="col-md-2 pull-right">共<span id="allnumber">0</span>件商品</p>
 </div>
 <script src="~/Scripts/cart.js"></script>

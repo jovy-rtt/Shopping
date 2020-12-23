@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Home Page";
 }
 <!--这里做商品界面下面的商品-->
@@ -17,7 +16,7 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li style="margin-left :16px">@Html.ActionLink("用户登录", "Index", "Customer")</li> <!--转至用户登录界面-->
-                <li style="margin-left :16px">@Html.ActionLink("商家登录", "LoginForm", "Customer")</li> <!--转至商家登录界面-->
+                <li style="margin-left :16px">@Html.ActionLink("商家登录", "SellerLogin", "Users", new { area = "Area_User" })</li> <!--转至商家登录界面-->
                 <li style="margin-left :8px">@Html.ActionLink("关于", "About", "Home")</li>
                 <li style="margin-left :0px">@Html.ActionLink("退出", "Contact", "Home")</li>
             </ul>
