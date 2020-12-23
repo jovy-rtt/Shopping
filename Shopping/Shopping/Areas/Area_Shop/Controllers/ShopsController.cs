@@ -21,6 +21,21 @@ namespace Shopping.Areas.Area_Shop.Controllers
             return View(shop.ToList());
         }
 
+
+        //上传图片
+        [HttpPost]
+        public ActionResult UploadImg()
+        {
+            if (Request.Files.Count > 0)
+            {
+                HttpPostedFileBase f = Request.Files["file1"];
+                f.SaveAs(@"~/Images/commodity_pic" + f.FileName);
+            }
+            return View();
+        }
+
+
+
         // GET: Area_Shop/Shops/Details/5
         public ActionResult Details(int? id)
         {

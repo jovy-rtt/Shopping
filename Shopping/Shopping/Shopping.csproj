@@ -435,6 +435,7 @@
     <Folder Include="Areas\Area_Order\Data\" />
     <Folder Include="Areas\Area_Shop\Data\" />
     <Folder Include="Areas\Area_User\Data\" />
+    <Folder Include="Images\commodity_pic\" />
     <Folder Include="Images\Logo\" />
   </ItemGroup>
   <ItemGroup>
