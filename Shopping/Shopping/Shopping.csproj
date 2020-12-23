@@ -217,16 +217,33 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="css\bg_caption.png.html" />
+    <Content Include="css\forget.css" />
+    <Content Include="css\idea.css" />
+    <Content Include="css\index.css" />
+    <Content Include="css\login.css" />
+    <Content Include="css\mygrxx.css" />
+    <Content Include="css\mygxin.css" />
+    <Content Include="css\myorder.css" />
+    <Content Include="css\proList.css" />
+    <Content Include="css\public.css" />
+    <Content Include="css\userLogin.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Images\peach\download_20201222133818.jpg" />
+    <Content Include="Images\peach\download_20201222133830.jpg" />
+    <Content Include="Images\peach\download_20201222133843.jpg" />
+    <Content Include="Images\peach\download_20201222133954.jpg" />
+    <Content Include="Images\peach\download_20201222134117.jpg" />
     <Content Include="Images\UserViewCommodity\hot_bottom.jpg" />
     <Content Include="Images\UserViewCommodity\hot_pre.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\cart.js" />
     <Content Include="Scripts\ckeditor.js.map" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
@@ -387,6 +404,7 @@
     <Content Include="Scripts\src\utils\setAttributes.js" />
     <Content Include="Scripts\src\utils\setStyles.js" />
     <Content Include="Scripts\src\utils\setupEventListeners.js" />
+    <Content Include="Scripts\three.min.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
@@ -422,6 +440,8 @@
     <Content Include="Views\Customer\Left_index.cshtml" />
     <Content Include="Views\Customer\envelope.cshtml" />
     <Content Include="Views\Customer\user.cshtml" />
+    <Content Include="Views\Shared\Layout备份.cshtml" />
+    <Content Include="Views\Home\原Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Area_Bankcard\Data\" />
@@ -432,6 +452,7 @@
     <Folder Include="Areas\Area_Shop\Data\" />
     <Folder Include="Areas\Area_User\Data\" />
     <Folder Include="Images\Logo\" />
+    <Folder Include="Images\Shoppingcart\" />
     <Folder Include="Views\Seller\" />
   </ItemGroup>
   <ItemGroup>

@@ -14,6 +14,12 @@
         UpdateTargetId = "leftview",
         OnFailure = "OnFailure"
     };
+
+    var ajaxmainwindow = new AjaxOptions
+    {
+        UpdateTargetId = "mainWindow",
+        OnFailure = "OnFailure"
+    };
 }
 
 <body>
@@ -28,12 +34,19 @@
                     </a>
 
                     <!-- Navbar links -->
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("商家版", "LoginForm", "Customer")</li>
+                    </ul>
+
                     <ul class="nav navbar-nav pull-right">
-                        <li>@Ajax.ActionLink(" ", "Index", "Customer", new { id = "envelope" }, ajaxop, new { @class = "glyphicon glyphicon-envelope" })</li>
-                        <li>@Html.ActionLink(" ", "Index", "Customer", new { id = "shopping-cart" }, new { @class = "glyphicon glyphicon-shopping-cart" })</li>
-                        <li>@Html.ActionLink(" ", "Index", "Customer", new { id = "bell" }, new { @class = "glyphicon glyphicon-bell" })</li>
+                        <!--购物车-->
+                        <li>@Ajax.ActionLink(" ", "Index", "Favorites", new { area = "Area_Favorites" }, ajaxmainwindow, new { @class = "glyphicon glyphicon-shopping-cart" })</li>
+                        <!--订单通知-->
+                        <li>@Ajax.ActionLink(" ", "Index", "Orders", new { area = "Area_Order" }, ajaxop, new { @class = "glyphicon glyphicon-bell" })</li>
+                        <!--用户信息-->
                         <li>@Ajax.ActionLink(" ", "Index", "Users", new { area = "Area_User" }, ajaxop, new { @class = "glyphicon glyphicon-user" })</li>
                     </ul>
+
                 </nav>
             </div>
             <div class="row" id="leftview">

@@ -164,7 +164,6 @@ F:\asus\桌面\ASP.NET\大作业\Shopping\Shopping\Shopping\bin\zh-Hans\System.W
 F:\asus\桌面\ASP.NET\大作业\Shopping\Shopping\Shopping\bin\zh-Hans\System.Web.WebPages.resources.dll
 F:\asus\桌面\ASP.NET\大作业\Shopping\Shopping\Shopping\bin\zh-Hans\System.Web.WebPages.Deployment.resources.dll
 F:\asus\桌面\ASP.NET\大作业\Shopping\Shopping\Shopping\bin\zh-Hans\System.Web.WebPages.Razor.resources.dll
-F:\asus\桌面\ASP.NET\大作业\Shopping\Shopping\Shopping\obj\Debug\Shopping.csprojAssemblyReference.cache
 F:\asus\桌面\ASP.NET\大作业\Shopping\Shopping\Shopping\obj\Debug\Shopping.csproj.CoreCompileInputs.cache
 F:\asus\桌面\ASP.NET\大作业\Shopping\Shopping\Shopping\obj\Debug\Shopping.csproj.CopyComplete
 F:\asus\桌面\ASP.NET\大作业\Shopping\Shopping\Shopping\obj\Debug\Shopping.dll
@@ -257,3 +256,4 @@ F:\GitHub文件库\asp\Shopping\Shopping\Shopping\obj\Debug\Shopping.csproj.Core
 F:\GitHub文件库\asp\Shopping\Shopping\Shopping\obj\Debug\Shopping.csproj.CopyComplete
 F:\GitHub文件库\asp\Shopping\Shopping\Shopping\obj\Debug\Shopping.dll
 F:\GitHub文件库\asp\Shopping\Shopping\Shopping\obj\Debug\Shopping.pdb
+F:\asus\桌面\ASP.NET\大作业\Shopping\Shopping\Shopping\obj\Debug\Shopping.csprojAssemblyReference.cache
