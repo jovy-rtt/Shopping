@@ -179,6 +179,8 @@ namespace Shopping.Areas.Area_User.Controllers
         {
             return View();
         }
+
+        [HttpGet]
         public ActionResult SellerLogin()
         {
             return View("SellerLogin");
@@ -187,41 +189,44 @@ namespace Shopping.Areas.Area_User.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult SellerLogin(User user)
         {
-            var t = Request["btn"];
-
-            if (t == "忘记密码")
-            {
-                return Isajax("userForget");
-            }
             int account;
             //尝试获取账号信息，账号信息是int类型
             try
             {
-                account = int.Parse(Request.Form["Account"]);
+                account = int.Parse(Request["userid"]);
             }
             catch
             {
                 //失败
-                return Isajax("SellerLogin");
+                ViewBag.message = "账号错误!";
+                return View("SellerLogin");
             }
 
             //根据账号，密码，类别，找到该条记录
-            var passwd = Request.Form["Password"];
-            var q1 = from w in db.User
-                    where w.Id == account && w.Password == passwd && w.TType == "商家"
-                    select w;
+            var passwd = Request["userpwd"];
+            var q1 =  from w in db.User
+                      where w.Id == account && w.TType == "商家"
+                      select w;
             //找到
-            if (q1 != null)
-                TempData["us"] = us = q1.FirstOrDefault();
-            if(us==null)
+            if (q1.Count()>0)
             {
-                return View("SellerLogin");
+                var us = q1.First();
+                if(us.Password!=passwd)
+                {
+                    ViewBag.message = "密码错误!";
+                    return View("SellerLogin");
+                }
+                else
+                {
+                    Session.Add("userid", us.Id);
+                    Session.Add("username", us.Name);
+                    return Redirect("/Seller/Index");
+                }
             }
             else
             {
-                ControllerContext a = new ControllerContext(ControllerContext.RequestContext, new SellerController());
-                ViewEngineResult ve = ViewEngines.Engines.FindView(a, "Index", "_Layout.cshtml");
-                return View(ve.View, us);
+                ViewBag.message = "账号或密码错误!";
+                return View("SellerLogin");
             }
         }
         #endregion

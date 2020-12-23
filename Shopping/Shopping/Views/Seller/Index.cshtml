@@ -24,15 +24,14 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     @{
-                        if (Model == null)
+                        if (@Session["username"] == null)
                         {
                             <li style="margin-left :24px"><a href="~/Area_User/Users/SellerLogin">登录</a> </li>
                             <li style="margin-left :16px"><a href="~/Area_User/Users/SellerCreate">注册</a></li>
                         }
                         else
                         {
-                            <li style="margin-left :24px">@Html.ActionLink(Model.Name, "Index", "Seller", new { area = "" })</li>
-                            <li style="margin-left :16px"><a href="~/Areas/Area_User/Views/Users/SellerCreate.cshtml">添加银行卡</a></li>
+                            <li style="margin-left :24px;color:white;margin-top:15px">欢迎，@Session["username"]</li>
 
                         }
                     }
@@ -48,6 +47,7 @@
                     <h3 class="btn">账户信息</h3>
                     <div class="list-group">
                         @Html.ActionLink("我的账户", "Create", "Users", new { area = "Area_User" }, new { @class = "list-group-item" })
+                        @Ajax.ActionLink("我的银行卡", "SellerCreate", "Users", new { area = "Area_User" }, ajaxOptions, new { @class = "list-group-item" })
                     </div>
                     <h3 class="btn">我的店铺</h3>
                     <div class="list-group">
