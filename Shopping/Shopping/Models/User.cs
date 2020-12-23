@@ -42,7 +42,7 @@ namespace Shopping.Models
         public string Name { get; set; }
 
         [Required]
-        [StringLength(2)]
+        [StringLength(10)]
         [Display(Name = "ÐÔ±ð")]
         public string Sex { get; set; }
 
@@ -61,7 +61,7 @@ namespace Shopping.Models
         public string Sign { get; set; }
 
         [Required]
-        [StringLength(2)]
+        [StringLength(10)]
         public string TType { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

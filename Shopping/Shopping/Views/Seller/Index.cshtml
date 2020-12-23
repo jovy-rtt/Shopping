@@ -1,4 +1,7 @@
-﻿@model Shopping.Models.User
+﻿@{
+    Layout = "~/Views/Seller/SellerLayout.cshtml";
+}
+@model Shopping.Models.User
 @{
     var ajaxOptions = new AjaxOptions
     {
@@ -21,18 +24,17 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     @{
-                        if (Model == null)
+                        if (@Session["username"] == null)
                         {
-                            <li style="margin-left :24px">@Html.ActionLink("登录", "SellerLogin", "Users", new { area = "Area_User" })</li>
+                            <li style="margin-left :24px"><a href="~/Area_User/Users/SellerLogin">登录</a> </li>
+                            <li style="margin-left :16px"><a href="~/Area_User/Users/SellerCreate">注册</a></li>
                         }
                         else
                         {
-                            <li style="margin-left :24px">@Html.ActionLink(Model.Name, "Index", "Seller", new { area = "" })</li>
+                            <li style="margin-left :24px;color:white;margin-top:15px">欢迎，@Session["username"]</li>
+
                         }
                     }
-                    <li style="margin-left :16px">@Html.ActionLink("注册", "Index", "Home")</li>
-                    <li style="margin-left :8px">@Html.ActionLink("关于", "About", "Home")</li>
-                    <li style="margin-left :0px">@Html.ActionLink("退出", "Contact", "Home")</li>
                 </ul>
             </div>
         </div>
@@ -40,11 +42,12 @@
 
     <div class="container body-content">
         <div class="row">
-            <div class="col-md-3">
-                <div class="leftMenu" style="margin-top:10px">
+            <div class="col-md-3" style="margin-top:60px">
+                <div class="leftMenu">
                     <h3 class="btn">账户信息</h3>
                     <div class="list-group">
                         @Html.ActionLink("我的账户", "Create", "Users", new { area = "Area_User" }, new { @class = "list-group-item" })
+                        @Ajax.ActionLink("我的银行卡", "SellerCreate", "Users", new { area = "Area_User" }, ajaxOptions, new { @class = "list-group-item" })
                     </div>
                     <h3 class="btn">我的店铺</h3>
                     <div class="list-group">
@@ -64,7 +67,7 @@
                 </div>
             </div>
             <div class="col-md-9">
-                <div id="mainWindow" style="border:1px solid blue;margin-top:10px; padding:10px; overflow-y:auto; overflow-x:hidden">
+                <div id="mainWindow" style="border-left:2px solid ;margin-top:10px; padding:10px; overflow-y:auto; overflow-x:hidden">
 
                 </div>
             </div>
