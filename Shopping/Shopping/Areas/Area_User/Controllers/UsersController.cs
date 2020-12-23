@@ -286,21 +286,19 @@ namespace Shopping.Areas.Area_User.Controllers
             }
         }
 
-        public ActionResult SellerDetail()
+        public ActionResult SellerDetail(int? id)
         {
-            int account;
-            account = int.Parse(Session["useerid"].ToString());
             var q1 = from w in db.User
-                     where w.Id == account
+                     where w.Id == id
                      select w;
             if (q1.Count() > 0)
             {
                 var us = q1.First();
-                return View(us);
+                return PartialView(us);
             }
             else
             {
-                return View();
+                return PartialView();
             }
                 
         }
