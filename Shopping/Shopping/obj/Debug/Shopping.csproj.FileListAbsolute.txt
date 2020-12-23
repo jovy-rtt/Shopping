@@ -208,8 +208,6 @@ F:\GitHub文件库\asp\Shopping\Shopping\Shopping\bin\roslyn\vbc.rsp
 F:\GitHub文件库\asp\Shopping\Shopping\Shopping\bin\roslyn\VBCSCompiler.exe
 F:\GitHub文件库\asp\Shopping\Shopping\Shopping\bin\roslyn\VBCSCompiler.exe.config
 F:\GitHub文件库\asp\Shopping\Shopping\Shopping\bin\Antlr3.Runtime.dll
-F:\GitHub文件库\asp\Shopping\Shopping\Shopping\bin\EntityFramework.dll
-F:\GitHub文件库\asp\Shopping\Shopping\Shopping\bin\EntityFramework.SqlServer.dll
 F:\GitHub文件库\asp\Shopping\Shopping\Shopping\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 F:\GitHub文件库\asp\Shopping\Shopping\Shopping\bin\Microsoft.Web.Infrastructure.dll
 F:\GitHub文件库\asp\Shopping\Shopping\Shopping\bin\Newtonsoft.Json.dll

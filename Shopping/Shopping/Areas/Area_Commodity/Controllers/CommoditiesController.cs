@@ -12,13 +12,10 @@ namespace Shopping.Areas.Area_Commodity.Controllers
 {
     public class CommoditiesController : Controller
     {
-        private PeachMd db = new PeachMd();
 
-        // GET: Area_Commodity/Commodities
-        public ActionResult Index()
-        {
-            return View(db.Commodity.ToList());
-        }
+        #region 用户相关操作自定义方法
+        //数据上下文类
+        private PeachMd dbView = new PeachMd();
 
         /// <summary>
         /// 作者：                gz
@@ -31,10 +28,66 @@ namespace Shopping.Areas.Area_Commodity.Controllers
         public ActionResult UserLeftIndex(string id)
         {
             if (id == null)
-                id = "Index";
+                id = "UserLeftIndex";
             if (Request.IsAjaxRequest())
                 return PartialView(id);
             return PartialView(id);
+        }
+
+        /// <summary>
+        /// 作者：                 gz
+        /// 创建时间：             2020/12/23
+        /// 函数功能：             实现商品查询
+        /// 入口参数：             search
+        /// </summary>
+        /// <param name="search"></param>
+        /// <returns></returns>
+        public ActionResult CommodityInfo(string search)
+        {
+            ViewBag.search = search;
+            var t = dbView.Commodity.ToList();
+            if (string.IsNullOrEmpty(search) == false)
+            {
+                t = t.Where(m => m.Type.Contains(search) ||
+                            m.Name.Contains(search)).ToList();
+            }
+
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView(t);
+            }
+            return PartialView(t);
+        }
+        /// <summary>
+        /// 作者：             gz
+        /// 创建时间：         2020/12/23
+        /// 函数功能：         商品详情页
+        /// 入口参数：         id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ActionResult CommodityDetails(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Commodity commodity = dbView.Commodity.Find(id);
+            if (commodity == null)
+            {
+                return HttpNotFound();
+            }
+            return PartialView(commodity);
+        }
+        #endregion
+
+        #region 自动生成的原始代码
+        private PeachMd db = new PeachMd();
+
+        // GET: Area_Commodity/Commodities
+        public ActionResult Index()
+        {
+            return View(db.Commodity.ToList());
         }
 
         // GET: Area_Commodity/Commodities/Details/5
@@ -140,5 +193,6 @@ namespace Shopping.Areas.Area_Commodity.Controllers
             }
             base.Dispose(disposing);
         }
+        #endregion
     }
 }

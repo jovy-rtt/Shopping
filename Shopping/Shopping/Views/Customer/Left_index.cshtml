@@ -12,13 +12,13 @@
                 <h2>浏览好物</h2>
             </li>
             <li>
-                @Ajax.ActionLink("圣诞有礼", "UserLeftIndex", "Commodities", new { area = "Area_Commodity", id= "UserLeftIndex_Hot" }, ajaxop2, new { @class = "list-group-item" })
+                @Ajax.ActionLink("圣诞有礼", "UserLeftIndex", "Commodities", new { area = "Area_Commodity"}, ajaxop2, new { @class = "list-group-item" })
             </li>
             <li>
-                @Ajax.ActionLink("搜索商品", "UserLeftIndex", "Commodities", new { area = "Area_Commodity", id = "User_SearchCommodity" }, ajaxop2, new { @class = "list-group-item" })
+                @Ajax.ActionLink("搜索商品", "CommodityInfo", "Commodities", new { area = "Area_Commodity"}, ajaxop2, new { @class = "list-group-item" })
             </li>
             <li>
-                @Ajax.ActionLink("搜索店铺", "UserLeftIndex", "Commodities", new { area = "Area_Commodity", id = "User_SearchSeller" }, ajaxop2, new { @class = "list-group-item" })
+                @Ajax.ActionLink("搜索店铺", "UserLeftIndex", "Commodities", new { area = "Area_Commodity"}, ajaxop2, new { @class = "list-group-item" })
             </li>
         </ul>
     </div>
