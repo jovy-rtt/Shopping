@@ -12,8 +12,6 @@ namespace Shopping.Controllers
         // GET: Customer
         public ActionResult Index(string id)
         {
-            PeachData_init context = new PeachData_init();
-            context.InitializeDatabase(new Models.PeachMd());
             if (id == null)
                 id = "Index";
             if (Request.IsAjaxRequest())

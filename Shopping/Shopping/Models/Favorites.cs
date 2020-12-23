@@ -16,5 +16,18 @@ namespace Shopping.Models
         public string Link { get; set; }
 
         public virtual User User { get; set; }
+
+        /*购物车 新添显示数据
+         作者：zmx
+         时间：2020/12/22
+         */
+
+        public string imagepath { get; set; }
+        public string type { get; set; }
+        public string name { get; set; }
+
+        public double price { get; set; }
+        public int number { get; set; }
+
     }
 }

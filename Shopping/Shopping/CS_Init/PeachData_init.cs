@@ -76,20 +76,61 @@ namespace Shopping.CS_Init
 
             var com =new List<Commodity>
             { 
-                
+                new Commodity{Name="连衣裙",Type="女装",Price=53,Number=100,Introduction="这是一个物品。",Image="null"},
+                new Commodity{Name="毛衣",Type="女装",Price=89,Number=100,Introduction="这是一个物品。",Image="null"},
+                new Commodity{Name="西服一套",Type="男装",Price=213,Number=100,Introduction="这是一个物品。",Image="null"},
+                new Commodity{Name="T恤",Type="男装",Price=26,Number=100,Introduction="这是一个物品。",Image="null"}
             };
 
             var fav = new List<Favorites>
             { 
+                new Favorites{UserId=1,Link="null"},
+                new Favorites{UserId=1,Link="null"},
+                new Favorites{UserId=1,Link="null"},
+                new Favorites{UserId=2,Link="null"},
+                new Favorites{UserId=2,Link="null"},
+                new Favorites{UserId=2,Link="null"}
             };
+            int tmp = 1;
+            Random rm = new Random();
+            foreach (var item in fav)
+            {
+                item.imagepath = "/Images/Shoppingcart/cart0" + tmp.ToString()+".jpg";
+                item.price = rm.Next(100, 1000) / 10.0;
+                int ww = rm.Next(0, 4);
+                item.type = com[ww].Type;
+                item.name = com[ww].Name;
+                tmp++;
+            }
 
             var ord = new List<Order>
             {
-
+                //外键这里设置为空了
+                new Order{Id=1,State="进行中",Logistics="运输中",StartTime=new DateTime(2020,12,20),CustomerID=1,SellerID=7,CommodityID=1},
+                new Order{Id=2,State="已完成",Logistics="已签收",StartTime=new DateTime(2020,12,20),CustomerID=1,SellerID=7,CommodityID=2},
+                new Order{Id=3,State="退货中",Logistics="运输中",StartTime=new DateTime(2020,12,20),CustomerID=1,SellerID=7,CommodityID=3},
+                new Order{Id=4,State="进行中",Logistics="运输中",StartTime=new DateTime(2020,12,20),CustomerID=1,SellerID=7,CommodityID=4},
+                new Order{Id=5,State="进行中",Logistics="运输中",StartTime=new DateTime(2020,12,20),CustomerID=1,SellerID=7,CommodityID=3},
+                new Order{Id=6,State="进行中",Logistics="运输中",StartTime=new DateTime(2020,12,20),CustomerID=1,SellerID=7,CommodityID=4},
             };
 
+            //7、8、9是卖家
             var shop = new List<Shop>
             { 
+                new Shop{Image="null",Name="Shop71",SellerId=7,Score=9,Address="河南省开封市XXXX",CreatTime=new DateTime(2009,1,25)
+                ,LicenseId="123456789",FansNumber=12345},
+
+                new Shop{Image="null",Name="Shop81",SellerId=8,Score=9,Address="河南省开封市XXXX",CreatTime=new DateTime(2009,1,25)
+                ,LicenseId="123456789",FansNumber=12345},
+
+                new Shop{Image="null",Name="Shop91",SellerId=9,Score=9,Address="河南省开封市XXXX",CreatTime=new DateTime(2009,1,25)
+                ,LicenseId="123456789",FansNumber=12345},
+
+                new Shop{Image="null",Name="Shop72",SellerId=7,Score=9,Address="河南省开封市XXXX",CreatTime=new DateTime(2009,1,25)
+                ,LicenseId="123456789",FansNumber=12345},
+
+                new Shop{Image="null",Name="Shop73",SellerId=7,Score=9,Address="河南省开封市XXXX",CreatTime=new DateTime(2009,1,25)
+                ,LicenseId="123456789",FansNumber=12345},
 
             };
 
@@ -98,10 +139,11 @@ namespace Shopping.CS_Init
             context.SaveChanges();
             bank.ForEach(v => context.Bankcard.Add(v));
             address.ForEach(v => context.DeliveryAddress.Add(v));
-            //com.ForEach(v => context.Commodity.Add(v));
-            //fav.ForEach(v => context.Favorites.Add(v));
-            //ord.ForEach(v => context.Order.Add(v));
-            //shop.ForEach(v => context.Shop.Add(v));
+            com.ForEach(v => context.Commodity.Add(v));
+            context.SaveChanges();
+            fav.ForEach(v => context.Favorites.Add(v));
+            ord.ForEach(v => context.Order.Add(v));
+            shop.ForEach(v => context.Shop.Add(v));
 
             context.SaveChanges();
 

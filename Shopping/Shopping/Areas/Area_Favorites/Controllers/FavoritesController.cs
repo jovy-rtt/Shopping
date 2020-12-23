@@ -13,12 +13,11 @@ namespace Shopping.Areas.Area_Favorites.Controllers
     public class FavoritesController : Controller
     {
         private PeachMd db = new PeachMd();
-
+        
         // GET: Area_Favorites/Favorites
         public ActionResult Index()
         {
-            var favorites = db.Favorites.Include(f => f.User);
-            return View(favorites.ToList());
+            return Isajax("Index", db.Favorites.ToList());
         }
 
         // GET: Area_Favorites/Favorites/Details/5
@@ -128,5 +127,22 @@ namespace Shopping.Areas.Area_Favorites.Controllers
             }
             base.Dispose(disposing);
         }
+
+        #region 可以共用的方法
+        //自定义的一个方法，自动返回视图
+        public ActionResult Isajax(string name)
+        {
+            if (Request.IsAjaxRequest())
+                return PartialView(name);
+            return View(name);
+        }
+        //重载Isajax方法，自动放回视图
+        public ActionResult Isajax(string name, object model)
+        {
+            if (Request.IsAjaxRequest())
+                return PartialView(name, model);
+            return View(name, model);
+        }
+        #endregion
     }
 }

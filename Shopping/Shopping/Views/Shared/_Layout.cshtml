@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Peach 购物网站</title>
+    <title>Peach 购物网</title>
     @Html.Partial("~/Views/Shared/Partialinfo.cshtml")
 
 </head>
@@ -14,13 +14,52 @@
         UpdateTargetId = "leftview",
         OnFailure = "OnFailure"
     };
+
+    var ajaxmainwindow = new AjaxOptions
+    {
+        UpdateTargetId = "mainWindow",
+        OnFailure = "OnFailure"
+    };
 }
 
 <body>
-    <div id="mainWindow" sstyle="overflow-y:auto; overflow-x:hidden">
-        @RenderBody()
-    </div>
+    <div class="row" style="margin:0px;">
+        <div class="col-md-3 col-lg-3" id="left" style="border-right:1px solid #C0C0C0 ;margin: 0px 5px 0px ;">
+            <div class="row">
+                <!--Nav-->
+                <nav class="navbar navbar-default">
+                    <!-- Brand -->
+                    <a class="navbar-brand" href="https://localhost:44370/Customer">
+                        <img src="~/Images/Logo/logo.png" alt="logo" style="width:20px;height:20px;" />
+                    </a>
 
+                    <!-- Navbar links -->
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("商家版", "LoginForm", "Customer")</li>
+                    </ul>
+
+                    <ul class="nav navbar-nav pull-right">
+                        <!--购物车-->
+                        <li>@Ajax.ActionLink(" ", "Index", "Favorites", new { area = "Area_Favorites" }, ajaxmainwindow, new { @class = "glyphicon glyphicon-shopping-cart" })</li>
+                        <!--订单通知-->
+                        <li>@Ajax.ActionLink(" ", "Index", "Orders", new { area = "Area_Order" }, ajaxop, new { @class = "glyphicon glyphicon-bell" })</li>
+                        <!--用户信息-->
+                        <li>@Ajax.ActionLink(" ", "Index", "Users", new { area = "Area_User" }, ajaxop, new { @class = "glyphicon glyphicon-user" })</li>
+                    </ul>
+
+                </nav>
+            </div>
+            <div class="row" id="leftview">
+                @Html.Partial("~/Views/Customer/Left_index.cshtml")
+                
+            </div>
+        </div>
+        <div class="col-md-8 col-lg-8">
+            <div id="mainWindow" sstyle="overflow-y:auto; overflow-x:hidden">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
     <script>
         $(document).ready(function () {
             var body = (document.compatMode && document.compatMode == 'CSS1Compat') ? document.documentElement : document.body;
