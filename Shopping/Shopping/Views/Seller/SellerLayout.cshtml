@@ -66,8 +66,8 @@
                     </div>
                     <h3 class="btn">我的订单</h3>
                     <div class="list-group">
-                        @Ajax.ActionLink("未处理订单", "Index", "Orders", null, ajaxOptions, new { @class = "list-group-item" })
-                        @Ajax.ActionLink("已处理订单", "Index", "Orders", null, ajaxOptions, new { @class = "list-group-item" })
+                        @Ajax.ActionLink("未处理订单", "order_undone", "Orders", new { area = "Area_Order" }, ajaxOptions, new { @class = "list-group-item" })
+                        @Ajax.ActionLink("已处理订单", "order_done", "Orders", new { area = "Area_Order" }, ajaxOptions, new { @class = "list-group-item" })
                     </div>
                     <h3 class="btn">我的收益</h3>
                     <div class="list-group">

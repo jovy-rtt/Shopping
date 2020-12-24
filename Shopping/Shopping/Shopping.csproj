@@ -342,6 +342,9 @@
     <Content Include="Areas\Area_Bankcard\Views\Bankcards\SellerShowBank.cshtml" />
     <Content Include="Areas\Area_User\Views\Users\SellerEditPwd.cshtml" />
     <Content Include="Areas\Area_User\Views\Users\SellerDetail.cshtml" />
+    <Content Include="Areas\Area_Order\Views\Orders\order_done.cshtml" />
+    <Content Include="Areas\Area_Order\Views\Orders\order_undone.cshtml" />
+    <Content Include="Areas\Area_Order\Views\Orders\profit.cshtml" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.5.1.js" />
     <Content Include="Scripts\jquery-3.5.1.min.js" />
