@@ -475,6 +475,7 @@
     <Content Include="Views\Seller\Index.cshtml" />
     <Content Include="Views\Seller\SellerLayout.cshtml" />
     <Content Include="Views\Shared\fileupload_PartialRef.cshtml" />
+    <Content Include="Views\Seller\SellerLayout2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Area_Bankcard\Data\" />

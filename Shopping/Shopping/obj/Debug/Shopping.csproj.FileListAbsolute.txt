@@ -230,10 +230,6 @@ C:\Users\24369\source\repos\jovy-rtt\Shopping\Shopping\Shopping\bin\roslyn\Syste
 C:\Users\24369\source\repos\jovy-rtt\Shopping\Shopping\Shopping\bin\roslyn\System.Memory.dll
 C:\Users\24369\source\repos\jovy-rtt\Shopping\Shopping\Shopping\bin\roslyn\System.Numerics.Vectors.dll
 C:\Users\24369\source\repos\jovy-rtt\Shopping\Shopping\Shopping\bin\roslyn\System.Runtime.CompilerServices.Unsafe.dll
-C:\Users\24369\source\repos\jovy-rtt\Shopping\Shopping\Shopping\bin\EntityFramework.xml
-C:\Users\24369\source\repos\jovy-rtt\Shopping\Shopping\Shopping\bin\EntityFramework.SqlServer.xml
-C:\Users\24369\source\repos\jovy-rtt\Shopping\Shopping\Shopping\bin\zh-Hans\EntityFramework.resources.dll
-C:\Users\24369\source\repos\jovy-rtt\Shopping\Shopping\Shopping\bin\zh-Hans\EntityFramework.SqlServer.resources.dll
 D:\学校\大三\ASP.NET\大作业\Shopping\Shopping\Shopping\bin\Shopping.dll.config
 D:\学校\大三\ASP.NET\大作业\Shopping\Shopping\Shopping\bin\Shopping.dll
 D:\学校\大三\ASP.NET\大作业\Shopping\Shopping\Shopping\bin\Shopping.pdb
