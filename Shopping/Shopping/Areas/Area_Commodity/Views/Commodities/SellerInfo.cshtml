@@ -1,0 +1,28 @@
+﻿
+@{
+    var ajaxOptions = new AjaxOptions
+    {
+        LoadingElementId = "loading",
+        UpdateTargetId = "mainWindow",
+        OnFailure = "OnFailure"
+    };
+}
+@using (Ajax.BeginForm(new AjaxOptions { UpdateTargetId = "mainWindow" }))
+{
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div>
+                <br><br><br>
+            </div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <input style="border-bottom:1px solid #808080; width:100%" type="text" name="search" value="@ViewBag.searchSeller" class="form-control" placeholder="全部">
+            </div>
+            <div class="col-md-1">
+                <button type="submit" style="background:none; border:none; width:100%"><img src="~/Images/UserViewCommodity/search.png"></button>
+            </div>
+        </div>
+    </div>
+}
+<hr>
+
