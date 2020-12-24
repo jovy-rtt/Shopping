@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Shopping.Controllers;
+using Shopping.CS_Init;
 using Shopping.Models;
 
 namespace Shopping.Areas.Area_User.Controllers
@@ -21,21 +22,56 @@ namespace Shopping.Areas.Area_User.Controllers
 
 
         //TempData["us"]是为了判断用于是否已经登录，如果已经登录，那么ta中始终会有这个信息，所以登出的时候，需要把ta再此设置为null
-        User us=null;
+        //User us=null;
 
         /* 
             作者：zmx
             时间：2020/12/20
-            功能：查看用户信息，点击用户按钮，如果还没登录，则提示登录，否则显示用户信息
+            功能：查看用户信息，点击用户按钮，如果还没登录，则提示登录，否则显示个人信息
             第一次修改
          */
         public ActionResult Index()
         {
-            us = (User)TempData["us"];
+            //用于删除用户
+            TempData["deleteid"] = UserLoginstate.usstate== null ? 0 : UserLoginstate.usstate.Id;
             //为空证明用户还未登录，否则显示信息
-            return us == null ? Isajax("userLogin") : Isajax("userInfo", us);
+            //return UserLoginstate.usstate == null ? Isajax("userIndex") : Isajax("userInfo", UserLoginstate.usstate);
+            return UserLoginstate.usstate == null ? Isajax("userIndex") : Isajax("userIndex2",UserLoginstate.usstate);
+            //return Isajax("userIndex2",UserLoginstate.usstate);
         }
 
+        //显示用户信息
+        public ActionResult showinfo()
+        {
+            return Isajax("userinfo", UserLoginstate.usstate);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult userinfo([Bind(Include = "Id,Password,IdCard,PhoneNumber,Name,Sex,Birthday,MailBox,Sign,TType")] User user)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(user).State = EntityState.Modified;
+                db.SaveChanges();
+                UserLoginstate.usstate = user;
+                //这个地方需要改
+                return RedirectToAction("Index");
+            }
+            return View(user);
+        }
+
+        public ActionResult grzx()
+        {
+            return Isajax("grzx", UserLoginstate.usstate);
+        }
+
+        //用户登录
+        public ActionResult Login()
+        {
+            return Isajax("userLogin");
+        }
         /*
             作者：zmx
             时间：2020/12/22
@@ -44,10 +80,11 @@ namespace Shopping.Areas.Area_User.Controllers
          */
         public ActionResult Logout()
         {
-            TempData["us"]= us = null;
+            UserLoginstate.usstate = null;
             //为空证明用户还未登录，否则显示信息
-            return us == null ? Isajax("userLogin") : Isajax("userInfo", us);
+            return UserLoginstate.usstate == null ? Isajax("userLogin") : Isajax("userInfo", UserLoginstate.usstate);
         }
+
 
         /*
          *  用户等录
@@ -64,6 +101,12 @@ namespace Shopping.Areas.Area_User.Controllers
         {
             //获取登录窗体内点击的按钮
             var tt = Request["btn"];
+            var code = Request["mycode"];
+            var inputcode = Request["inputcode"];
+
+            //验证码
+            //if (code == inputcode)
+            //    return Isajax("userLogin");
 
             if(tt=="注册")
             {
@@ -73,7 +116,6 @@ namespace Shopping.Areas.Area_User.Controllers
             {
                 return Isajax("userForget");
             }
-
 
             int account;
             //尝试获取账号信息，账号信息是int类型
@@ -93,9 +135,9 @@ namespace Shopping.Areas.Area_User.Controllers
                     select t;
             //找到
             if(q!=null)
-                TempData["us"] = us = q.FirstOrDefault();
+                UserLoginstate.usstate = q.FirstOrDefault();
 
-            return us == null ? Isajax("userLogin") : Isajax("userInfo", us);
+            return UserLoginstate.usstate == null ? Isajax("userLogin") : Isajax("userInfo", UserLoginstate.usstate);
         }
 
         /*
@@ -150,6 +192,45 @@ namespace Shopping.Areas.Area_User.Controllers
 
             return Isajax("userCreate");
         }
+
+        /*
+            作者：zmx
+            时间：2020/12/24
+            功能，注销账号
+         */
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            User user = db.User.Find(id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            return Isajax("Delete",user);
+        }
+
+        //修改密码
+        public ActionResult userchangepw()
+        {
+            if(Request.HttpMethod=="POST")
+            {
+                var code = Request["mycode"];
+                var inputcode = Request["inputcode"];
+                var pre = Request["pre"];
+                var pwd1 = Request["pwd1"];
+                var pwd0 = Request["pwd0"];
+                if (code == inputcode && pre == UserLoginstate.usstate.Password && pwd0 == pwd1)
+                    UserLoginstate.usstate.Password = pwd0;
+                return Isajax("userInfo",UserLoginstate.usstate);
+            }
+            else
+                return Isajax("userchangepw");
+        }
+
+
         #endregion
 
         #region 商家相关操作自定义方法
@@ -294,7 +375,7 @@ namespace Shopping.Areas.Area_User.Controllers
         //    return View(db.User.ToList());
         //}
 
-        // GET: Area_User/Users/Details/5
+        //GET: Area_User/Users/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -364,19 +445,19 @@ namespace Shopping.Areas.Area_User.Controllers
         }
 
         // GET: Area_User/Users/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            User user = db.User.Find(id);
-            if (user == null)
-            {
-                return HttpNotFound();
-            }
-            return View(user);
-        }
+        //public ActionResult Delete(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    User user = db.User.Find(id);
+        //    if (user == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(user);
+        //}
 
         // POST: Area_User/Users/Delete/5
         [HttpPost, ActionName("Delete")]
@@ -384,7 +465,8 @@ namespace Shopping.Areas.Area_User.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             User user = db.User.Find(id);
-            db.User.Remove(user);
+            user.Password = "******";
+            UserLoginstate.usstate = null;
             db.SaveChanges();
             return RedirectToAction("Index");
         }

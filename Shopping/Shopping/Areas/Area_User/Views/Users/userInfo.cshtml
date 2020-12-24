@@ -1,87 +1,107 @@
 ﻿@model Shopping.Models.User
+
 @{
-    var ajaxop2 = new AjaxOptions
+    var ajaxop = new AjaxOptions
     {
         UpdateTargetId = "leftview",
+        OnFailure = "OnFailure"
+    };
+
+    var ajaxmainwindow = new AjaxOptions
+    {
+        UpdateTargetId = "mainWindow",
+        OnFailure = "OnFailure"
     };
 }
-<div>
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
+<div class="center-block text-center" style="width:50%;margin-top:10%">
+    @using (Ajax.BeginForm(ajaxmainwindow))
+    {
+        @Html.AntiForgeryToken()
 
-        <dd>
-            @Html.DisplayFor(model => model.Password)
-        </dd>
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
 
-        <dt>
-            @Html.DisplayNameFor(model => model.IdCard)
-        </dt>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </div>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.IdCard)
-        </dd>
+            <div class="form-group">
+                @Html.LabelFor(model => model.IdCard, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.IdCard, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.IdCard, "", new { @class = "text-danger" })
+                </div>
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </dt>
+            <div class="form-group">
+                @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.PhoneNumber)
-        </dd>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Sex, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Sex, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Sex, "", new { @class = "text-danger" })
+                </div>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Birthday, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Birthday, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Birthday, "", new { @class = "text-danger" })
+                </div>
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Sex)
-        </dt>
+            <div class="form-group">
+                @Html.LabelFor(model => model.MailBox, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.MailBox, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MailBox, "", new { @class = "text-danger" })
+                </div>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Sex)
-        </dd>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Sign, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Sign, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Sign, "", new { @class = "text-danger" })
+                </div>
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Birthday)
-        </dt>
+            <div class="form-group">
+                @Html.LabelFor(model => model.TType, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.TType, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.TType, "", new { @class = "text-danger" })
+                </div>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Birthday)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MailBox)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MailBox)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Sign)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Sign)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TType)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TType)
-        </dd>
-    </dl>
-</div>
-<div class="btn-block">
-    @Ajax.ActionLink("登出", "Logout", "Users", new { area = "Area_User" }, ajaxop2, new { @class = "btn-block" })
+            <div class="form-group">
+                <div class="col-md-10">
+                    <input type="submit" value="保存更改" class="btn btn-primary" style="width:100%"/>
+                </div>
+            </div>
+        </div>
+    }
 </div>
 
 

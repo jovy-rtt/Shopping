@@ -38,7 +38,7 @@ namespace Shopping.Models
 
         [Required]
         [StringLength(30)]
-        [Display(Name = "Í«≥∆")]
+        [Display(Name = "–’√˚")]
         public string Name { get; set; }
 
         [Required]

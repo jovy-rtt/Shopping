@@ -4,93 +4,91 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3 class="text-center">确定注销该用户吗?</h3>
 <div>
-    <h4>User</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
+    <div class="center-block" style="width:50%">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Password)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Password)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Password)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.IdCard)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.IdCard)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.IdCard)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.IdCard)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.PhoneNumber)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.PhoneNumber)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Sex)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Sex)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Sex)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Sex)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Birthday)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Birthday)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Birthday)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Birthday)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.MailBox)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.MailBox)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.MailBox)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.MailBox)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Sign)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Sign)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Sign)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Sign)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TType)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.TType)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.TType)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.TType)
+            </dd>
 
-    </dl>
-
+        </dl>
+    </div>
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+        <div class="form-actions" style="margin-left:30%">
+            <input type="submit" value="确认注销" class="btn btn-danger" style="width:300px;" /> 
         </div>
     }
 </div>

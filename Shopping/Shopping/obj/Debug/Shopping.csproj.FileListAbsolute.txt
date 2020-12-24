@@ -145,10 +145,6 @@ F:\asus\桌面\ASP.NET\大作业\Shopping\Shopping\Shopping\obj\Debug\Shopping.c
 F:\asus\桌面\ASP.NET\大作业\Shopping\Shopping\Shopping\obj\Debug\Shopping.csproj.CopyComplete
 F:\asus\桌面\ASP.NET\大作业\Shopping\Shopping\Shopping\obj\Debug\Shopping.dll
 F:\asus\桌面\ASP.NET\大作业\Shopping\Shopping\Shopping\obj\Debug\Shopping.pdb
-F:\asus\桌面\ASP.NET\大作业\Shopping\Shopping\Shopping\bin\EntityFramework.xml
-F:\asus\桌面\ASP.NET\大作业\Shopping\Shopping\Shopping\bin\EntityFramework.SqlServer.xml
-F:\asus\桌面\ASP.NET\大作业\Shopping\Shopping\Shopping\bin\zh-Hans\EntityFramework.resources.dll
-F:\asus\桌面\ASP.NET\大作业\Shopping\Shopping\Shopping\bin\zh-Hans\EntityFramework.SqlServer.resources.dll
 F:\GitHub文件库\asp\Shopping\Shopping\Shopping\bin\Shopping.dll.config
 F:\GitHub文件库\asp\Shopping\Shopping\Shopping\bin\Shopping.dll
 F:\GitHub文件库\asp\Shopping\Shopping\Shopping\bin\Shopping.pdb
@@ -229,7 +225,6 @@ F:\GitHub文件库\asp\Shopping\Shopping\Shopping\obj\Debug\Shopping.csproj.Core
 F:\GitHub文件库\asp\Shopping\Shopping\Shopping\obj\Debug\Shopping.csproj.CopyComplete
 F:\GitHub文件库\asp\Shopping\Shopping\Shopping\obj\Debug\Shopping.dll
 F:\GitHub文件库\asp\Shopping\Shopping\Shopping\obj\Debug\Shopping.pdb
-F:\asus\桌面\ASP.NET\大作业\Shopping\Shopping\Shopping\obj\Debug\Shopping.csprojAssemblyReference.cache
 C:\Users\24369\source\repos\jovy-rtt\Shopping\Shopping\Shopping\bin\roslyn\System.Buffers.dll
 C:\Users\24369\source\repos\jovy-rtt\Shopping\Shopping\Shopping\bin\roslyn\System.Memory.dll
 C:\Users\24369\source\repos\jovy-rtt\Shopping\Shopping\Shopping\bin\roslyn\System.Numerics.Vectors.dll
@@ -238,3 +233,4 @@ C:\Users\24369\source\repos\jovy-rtt\Shopping\Shopping\Shopping\bin\EntityFramew
 C:\Users\24369\source\repos\jovy-rtt\Shopping\Shopping\Shopping\bin\EntityFramework.SqlServer.xml
 C:\Users\24369\source\repos\jovy-rtt\Shopping\Shopping\Shopping\bin\zh-Hans\EntityFramework.resources.dll
 C:\Users\24369\source\repos\jovy-rtt\Shopping\Shopping\Shopping\bin\zh-Hans\EntityFramework.SqlServer.resources.dll
+F:\asus\桌面\ASP.NET\大作业\Shopping\Shopping\Shopping\obj\Debug\Shopping.csprojAssemblyReference.cache

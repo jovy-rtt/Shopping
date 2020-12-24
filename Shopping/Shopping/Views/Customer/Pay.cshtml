@@ -1,74 +1,159 @@
-﻿@{
+﻿@*@model IEnumerable<Shopping.Models.DeliveryAddress>*@
+@model Shopping.Models.PeachMd
+@{
+    var sum = 0.0;
     var ajaxmainwindow = new AjaxOptions
     {
         UpdateTargetId = "mainWindow",
         OnFailure = "OnFailure"
     };
+    var cnt = 0;
 }
+<style>
+  
+    .row > p {
+        margin-left: 10px;
+        margin-top: 10px;
+    }
+
+    .row > label{
+        width:24%;
+    }
+
+    .row > p > span {
+            margin-left: 5px;
+    }
+
+    .myclick {
+        border: 2px #cdcdcd solid;
+    }
+
+    .mycheck {
+        border: 2px red solid;
+    }
+</style>
 <hr />
 <div class="row text-center">
     <div class="col-md-3"><h3>订单确认</h3></div>
     <div class="col-md-6"><img src="~/Images/Shoppingcart/cartTop02.png" /></div>
 </div>
 <hr />
-<!--左侧-->
-<div class="col-md-6" style="margin-left:8%">
-    <!--地址信息-->
-    <div class="row">
-        <h3>收件地址<small class="pull-right"><a>新增地址</a></small></h3>
-        <hr />
-        <div class="col-md-6" style="border:2px red solid ;">
-            <div class="row">
-                <p>张三<span>[默认地址]</span> <span class="pull-right"><a>删除</a>|<a>编辑</a></span></p>
-            </div>
-            <div class="row" style="background:#dbdbdc">
-                <p>河北省&nbsp;唐山市&nbsp;路北区&nbsp;大学生公寓村</p>
-                <p>15732570937</p>
-            </div>
-        </div>
-    </div>
-    <!--支付方式-->
-    <div class="row">
-        <h3>支付方式</h3>
-        <hr />
-        <img style="border:2px red solid ;" src="~/Images/Shoppingcart/way01.jpg" />
-        <img style="border:1px #cdcdcd solid ;" src="~/Images/Shoppingcart/way02.jpg" />
-        <img style="border:1px #cdcdcd solid ;" src="~/Images/Shoppingcart/way03.jpg" />
-        <img style="border:1px #cdcdcd solid ;" src="~/Images/Shoppingcart/way04.jpg" />
-    </div>
-    <!--选择快递-->
-    <div class="row">
-        <h3>选择快递</h3>
-        <hr />
-        <span style="border:2px red solid ;">顺丰快递</span>
-        <span style="border:1px #cdcdcd solid ;">百世汇通</span>
-        <span style="border:1px #cdcdcd solid ;">圆通快递</span>
-        <span style="border:1px #cdcdcd solid ;">中通快递</span>
-    </div>
-</div>
-<!--右侧-->
-<div class="col-md-4" style="margin-left:8%">
-    <div class="row" style="background:#f5f5f5">
-        <p>订单内容<a>返回购物车</a></p>
-        <hr />
+<div class="row">
+    <!--左侧-->
+    <div class="col-md-6" style="margin-left:8%">
+        <!--地址信息-->
         <div class="row">
-            <img class="col-md-3" src="~/Images/Shoppingcart/order01.jpg" />
-            <div class="col-md-6">
-                <p>创意现代简约干花花瓶摆件</p>
-                <p>颜色分类：烟灰色玻璃瓶</p>
-                <p>数量：1</p>
+            <h3>收件地址<small class="pull-right"><a>新增地址</a></small></h3>
+            <hr />
+            @foreach (var item in Model.DeliveryAddress.ToList())
+            {
+                if (cnt % 2 == 0)
+                {
+                    <div class="col-md-5 myclick" style="margin-left:30px;margin-top:20px">
+                        <div class="row">
+                            <p>@item.Name<span>[默认地址]</span> <span class="pull-right" style="margin-right:10px;"><a>删除</a>|<a>编辑</a></span></p>
+                        </div>
+                        <div class="row" style="background:#dbdbdc">
+                            <p>@item.Province&nbsp;@item.City&nbsp;@item.Street</p>
+                            <p>@item.Address</p>
+                            <p>@item.PhoneNumber</p>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="col-md-5 pull-right myclick" style="margin-right:30px;margin-top:20px">
+                        <div class="row">
+                            <p>@item.Name<span>[默认地址]</span> <span class="pull-right" style="margin-right:10px;"><a>删除</a>|<a>编辑</a></span></p>
+                        </div>
+                        <div class="row" style="background:#dbdbdc">
+                            <p>@item.Province&nbsp;@item.City&nbsp;@item.Street</p>
+                            <p>@item.Address</p>
+                            <p>@item.PhoneNumber</p>
+                        </div>
+                    </div>
+                }
+                cnt++;
+            }
+        </div>
+        <!--支付方式-->
+        <div class="row">
+            <h3>支付方式</h3>
+            <hr />
+            <img class="myclick mycheck" style="width:24%" src="~/Images/Shoppingcart/way01.jpg" />
+            <img class="myclick" style="width:24% " src="~/Images/Shoppingcart/way02.jpg" />
+            <img class="myclick" style="width:24%" src="~/Images/Shoppingcart/way03.jpg" />
+            <img class="myclick" style="width:24%" src="~/Images/Shoppingcart/way04.jpg" />
+            @*<div class="row">
+                    <img style="border:2px red solid; margin-left:10%" src="~/Images/Shoppingcart/way01.jpg" />
+                    <img class="pull-right" style="border:1px #cdcdcd solid; margin-right:10px" src="~/Images/Shoppingcart/way02.jpg" />
+                </div>
+                <div class="row">
+                    <img style="border:1px #cdcdcd solid ;" src="~/Images/Shoppingcart/way03.jpg" />
+                    <img style="border:1px #cdcdcd solid ;" src="~/Images/Shoppingcart/way04.jpg" />
+                </div>*@
+        </div>
+        <!--选择快递-->
+        <div class="row">
+            <h3>选择快递</h3>
+            <hr />
+            <div class="row text-center">
+                <label class="myclick mycheck">顺丰快递</label>
+                <label class="myclick">百世汇通</label>
+                <label class="myclick">圆通快递</label>
+                <label class="myclick">中通快递</label>
             </div>
-            <span>￥69.90</span>
         </div>
     </div>
-    <p>商品金额：</p>
-    <p>商品金额：</p>
-    <p>商品金额：</p>
-    <hr />
-    <h2>合计:</h2>
-    @using (Ajax.BeginForm("PayOver",ajaxmainwindow))
-    {
-        <button class="btn-danger">支付</button>
-        @Html.AntiForgeryToken()
-    }
+
+
+    <!--右侧-->
+    <div class="col-md-4" style="margin-left:8%">
+        <div class="row" style="background:#f5f5f5">
+            <p style="width:90%">订单内容 @Ajax.ActionLink("返回购物车","Index", "Favorites", new { area= "Area_Favorites" },ajaxmainwindow,new { @class= "pull-right"})</p>
+            <hr />
+            @foreach (var item in Model.Favorites.ToList())
+            {
+                sum += @item.price;
+                <div class="row">
+                    <img class="col-md-3" src=@item.imagepath  style="margin-top:5%;margin-left:5%"/>
+                    <div class="col-md-5">
+                        <p>@Html.DisplayFor(modelItem => item.name)</p>
+                        <p>类别：@Html.DisplayFor(modelItem => item.type)</p>
+                        <p>数量：@Html.DisplayFor(modelItem => item.number)</p>
+                    </div>
+                    <label  style="width:15%;margin-top:10%">￥@Html.DisplayFor(modelItem => item.price)</label>
+                </div>
+                <hr />
+            }
+        </div>
+        <p>商品金额：<span class="pull-right">￥@sum</span></p>
+        <p>优惠金额：<span class="pull-right">￥0.00</span></p>
+        <p>运费：<span class="pull-right">免运费</span></p>
+        <hr />
+        <h2 style="color:red">合计:<span class="pull-right">￥@sum</span></h2>
+        @using (Ajax.BeginForm("PayOver", ajaxmainwindow))
+        {
+            <button class="btn-danger btn" style="width:100%;margin-top:5%">支付</button>
+            @Html.AntiForgeryToken()
+        }
+    </div>
 </div>
+
+<hr />
+<div class="footer" style="padding-bottom:50px;">
+    <a class="col-md-3" href="#"><img src="~/Images/Shoppingcart/foot1.png" /><span> 七天无理由退货</span></a>
+    <a class="col-md-3" href="#"><img src="~/Images/Shoppingcart/foot2.png" /><span> 15天免费换货</span></a>
+    <a class="col-md-3" href="#"><img src="~/Images/Shoppingcart/foot3.png" /><span> 满49包邮</span></a>
+    <a class="col-md-3" href="#"><img src="~/Images/Shoppingcart/foot4.png" /><span> 贴心售后服务</span></a>
+</div>
+<hr />
+<script>
+    $(".myclick").click(function () {
+        $(this).addClass("mycheck");
+        $(this).siblings(".myclick").each(function () {
+            $(this).removeClass("mycheck")
+        });
+
+    });
+</script>

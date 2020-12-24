@@ -1,0 +1,100 @@
+﻿@{var ajaxmainwindow = new AjaxOptions
+    {
+        UpdateTargetId = "mainWindow",
+        OnFailure = "OnFailure"
+    };
+}
+<style>
+    .form-group {
+        margin-left: 50px;
+        width: 600px;
+    }
+</style>
+<h2>修改密码</h2>
+<hr />
+
+@using (Ajax.BeginForm(ajaxmainwindow))
+{
+<div class="center-block" style="width:50%;border:1px #cdcdcd solid;margin-top:20%">
+    @*<div >
+        <img class="myleft" src="~/Images/left0.jpg" style="width:100px;height:100px;" />
+        <img class="myright pull-right" src="~/Images/right0.jpg" style="width:100px;height:100px;" />
+    </div>*@
+    <div class="form-horizontal" style="margin-top:20px">
+        <div class="form-group">
+            <label class="col-md-3 control-label">原始密码：</label>
+            <div class="col-md-6">
+                <input class="form-control" name="pre" type="text" placeholder="请输入原始密码" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-3 control-label">新密码：</label>
+            <div class="col-md-6">
+                <input class="form-control" name="pwd0" type="password" placeholder="请输入新密码" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-3 control-label">确认密码：</label>
+            <div class="col-md-6">
+                <input class="form-control" name="pwd1" type="password" placeholder="请输入确认密码" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-3 control-label">验证码：</label>
+            <div class="col-md-3">
+                <input class="form-control" name="inputcode" type="text">
+            </div>
+            <input class="col-md-3 btn-default" type="button" id="code" onclick="change();" style="height:35px;width:135px">
+        </div>
+
+        <div class="row">
+            <button style="width:70%;margin-left:15% ;margin-bottom:5%" class="btn btn-primary" type="submit" name="btn" value="提交">提交</button>
+        </div>
+
+
+    </div>
+    <input type="text" name="mycode" class="mycode" hidden style="display:none" />
+</div>
+ }
+
+<script type="text/javascript">
+
+    var SEPARATION = 100, AMOUNTX = 60, AMOUNTY = 40;
+    var container;
+    var camera, scene, renderer;
+    var particles, particle, count = 0;
+    var mouseX = 0, mouseY = 0;
+    var windowHalfX = window.innerWidth / 2;
+    var windowHalfY = window.innerHeight / 2;
+
+    $(function () {
+        change();	//验证码
+    });
+
+    //验证码
+    function change() {
+        code = $("#code");
+        // 验证码组成库
+        var arrays = new Array(
+            '1', '2', '3', '4', '5', '6', '7', '8', '9', '0',
+            'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
+            'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
+            'u', 'v', 'w', 'x', 'y', 'z',
+            'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
+            'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
+            'U', 'V', 'W', 'X', 'Y', 'Z'
+        );
+        codes = '';// 重新初始化验证码
+        for (var i = 0; i < 4; i++) {
+            // 随机获取一个数组的下标
+            var r = parseInt(Math.random() * arrays.length);
+            codes += arrays[r];
+        }
+        // 验证码添加到input里
+        code.val(codes);
+        $(".mycode").val(codes);
+    }
+</script>

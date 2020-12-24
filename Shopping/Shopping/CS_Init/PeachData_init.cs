@@ -66,12 +66,14 @@ namespace Shopping.CS_Init
 
             var address = new List<DeliveryAddress>
             {
-                new DeliveryAddress{Province="河南",City="开封",Street="龙亭",Address="无",Name="张飒",PhoneNumber="18622521042",UserId=1},
-                new DeliveryAddress{Province="北京",City="北京",Street="天安",Address="无",Name="当当",PhoneNumber="15663123725",UserId=2},
-                new DeliveryAddress{Province="湖南",City="长沙",Street="天心",Address="无",Name="蒋罡",PhoneNumber="18116891131",UserId=3},
-                new DeliveryAddress{Province="福建",City="厦门",Street="思明",Address="无",Name="莘鹏功",PhoneNumber="17576966030",UserId=4},
-                new DeliveryAddress{Province="吉林",City="长春",Street="南关",Address="无",Name="奚士聪",PhoneNumber="13151291019",UserId=5},
-                new DeliveryAddress{Province="山东",City="烟台",Street="福山",Address="无",Name="邵海",PhoneNumber="13333346645",UserId=5}
+                new DeliveryAddress{Province="河南省",City="开封市",Street="龙亭区",Address="河南大学金明校区",Name="张飒",PhoneNumber="18622521042",UserId=1},
+                new DeliveryAddress{Province="北京省",City="北京市",Street="天安区",Address="北京大学雁鸣湖",Name="当当",PhoneNumber="15663123725",UserId=1},
+                new DeliveryAddress{Province="湖南省",City="长沙市",Street="天心区",Address="天心广场五楼",Name="蒋罡",PhoneNumber="18116891131",UserId=1},
+                new DeliveryAddress{Province="北京省",City="北京市",Street="天安区",Address="北京大学雁鸣湖",Name="当当",PhoneNumber="15663123725",UserId=2},
+                new DeliveryAddress{Province="湖南省",City="长沙市",Street="天心区",Address="天心广场五楼",Name="蒋罡",PhoneNumber="18116891131",UserId=3},
+                new DeliveryAddress{Province="福建省",City="厦门市",Street="思明区",Address="商品大厦一楼",Name="莘鹏功",PhoneNumber="17576966030",UserId=4},
+                new DeliveryAddress{Province="吉林省",City="长春市",Street="南关区",Address="暖向社区居委会",Name="奚士聪",PhoneNumber="13151291019",UserId=5},
+                new DeliveryAddress{Province="山东省",City="烟台市",Street="福山区",Address="你好小区17单元",Name="邵海",PhoneNumber="13333346645",UserId=5}
             };
 
             var com =new List<Commodity>
@@ -84,12 +86,12 @@ namespace Shopping.CS_Init
 
             var fav = new List<Favorites>
             { 
-                new Favorites{UserId=1,Link="null"},
-                new Favorites{UserId=1,Link="null"},
-                new Favorites{UserId=1,Link="null"},
-                new Favorites{UserId=2,Link="null"},
-                new Favorites{UserId=2,Link="null"},
-                new Favorites{UserId=2,Link="null"}
+                new Favorites{UserId=1,Link="null",number=1},
+                new Favorites{UserId=1,Link="null",number=1},
+                new Favorites{UserId=1,Link="null",number=1},
+                new Favorites{UserId=2,Link="null",number=1},
+                new Favorites{UserId=2,Link="null",number=1},
+                new Favorites{UserId=2,Link="null",number=1}
             };
             int tmp = 1;
             Random rm = new Random();
@@ -113,6 +115,17 @@ namespace Shopping.CS_Init
                 new Order{Id=5,State="进行中",Logistics="运输中",StartTime=new DateTime(2020,12,20),CustomerID=1,SellerID=7,CommodityID=3},
                 new Order{Id=6,State="进行中",Logistics="运输中",StartTime=new DateTime(2020,12,20),CustomerID=1,SellerID=7,CommodityID=4},
             };
+            tmp = 1;
+            foreach (var item in ord)
+            {
+                item.imagepath = "/Images/Shoppingcart/cart0" + tmp.ToString() + ".jpg";
+                item.price = rm.Next(100, 1000) / 10.0;
+                int ww = rm.Next(1, 5);
+                item.username = us[item.CustomerID==null?0:(int)item.CustomerID-1].Name;
+                item.number = ww;
+                item.comname = com[item.CommodityID == null ? 0 : (int)item.CommodityID - 1].Name;
+                tmp++;
+            }
 
             //7、8、9是卖家
             var shop = new List<Shop>

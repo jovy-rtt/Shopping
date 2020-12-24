@@ -14,6 +14,7 @@ namespace Shopping.Areas.Area_Order.Controllers
     {
         private PeachMd db = new PeachMd();
 
+        #region 商家
         // GET: Area_Order/Orders
         public ActionResult Index()
         {
@@ -166,5 +167,31 @@ namespace Shopping.Areas.Area_Order.Controllers
             }
             base.Dispose(disposing);
         }
+
+        #endregion
+
+        #region 用户订单操作
+        public ActionResult userindex()
+        {
+            return Isajax("userindex",db.Order.ToList());
+        }
+
+
+
+
+        public ActionResult Isajax(string name)
+        {
+            if (Request.IsAjaxRequest())
+                return PartialView(name);
+            return View(name);
+        }
+        //重载Isajax方法，自动放回视图
+        public ActionResult Isajax(string name, object model)
+        {
+            if (Request.IsAjaxRequest())
+                return PartialView(name, model);
+            return View(name, model);
+        }
+        #endregion
     }
 }
