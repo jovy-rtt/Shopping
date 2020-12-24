@@ -234,6 +234,12 @@
     <Content Include="Content\Site.css" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Images\commodity_pic\T恤.jpg" />
+    <Content Include="Images\commodity_pic\大衣.jpg" />
+    <Content Include="Images\commodity_pic\羽绒服.jpg" />
+    <Content Include="Images\commodity_pic\裤子.jpg" />
+    <Content Include="Images\commodity_pic\西装.jpg" />
+    <Content Include="Images\commodity_pic\连衣裙.jpg" />
     <Content Include="Images\peach\download_20201222133818.jpg" />
     <Content Include="Images\peach\download_20201222133830.jpg" />
     <Content Include="Images\peach\download_20201222133843.jpg" />
@@ -466,6 +472,7 @@
     <Content Include="Views\Customer\user.cshtml" />
     <Content Include="Views\Seller\Index.cshtml" />
     <Content Include="Views\Seller\SellerLayout.cshtml" />
+    <Content Include="Views\Shared\fileupload_PartialRef.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Area_Bankcard\Data\" />
@@ -475,7 +482,6 @@
     <Folder Include="Areas\Area_Order\Data\" />
     <Folder Include="Areas\Area_Shop\Data\" />
     <Folder Include="Areas\Area_User\Data\" />
-    <Folder Include="Images\commodity_pic\" />
     <Folder Include="Images\Logo\" />
     <Folder Include="Images\Shoppingcart\" />
   </ItemGroup>
