@@ -115,9 +115,20 @@ namespace Shopping.Areas.Area_Commodity.Controllers
         // 为了防止“过多发布”攻击，请启用要绑定到的特定属性；有关
         // 更多详细信息，请参阅 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
+        //[ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name,Type,Image,Price,Number,Introduction")] Commodity commodity)
         {
+            string FileName = DateTime.Now.ToString("yyyyMMddhhmmss");//防止文件夹中出现同名文件
+            string DirPath = (@"~\Images\shop_pic\");
+            string FilePath = "";
+            //if (Request.Files.Count > 0)
+            //{
+                HttpPostedFileBase f = Request.Files["commodity_pic"];//获得上传的图片
+                FilePath = DirPath + f.FileName;//组成要保存到数据库中的路径
+                f.SaveAs(FilePath);//将图片保存到本地image相应文件夹下
+            //}
+            commodity.Image = FilePath;
             if (ModelState.IsValid)
             {
                 db.Commodity.Add(commodity);
