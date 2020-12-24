@@ -2,6 +2,13 @@
 @{
     ViewBag.Title = "CommodityDetails";
 }
+@{
+    var ajaxOptions = new AjaxOptions
+    {
+        UpdateTargetId = "adWindow",
+        OnFailure = "OnFailure"
+    };
+}
 
 <br>
 <br>
@@ -20,8 +27,14 @@
             <p>@Html.DisplayFor(model => model.Introduction)</p><br>
             <span style="color:red; font-size:18px">￥@Html.DisplayFor(model => model.Price)</span><br>
         </div>
-        <p>数量&nbsp;&nbsp;库存<span style="color:red">@Html.DisplayFor(model => model.Number)</span>件</p>
+        <hr>
 
+        <p>数量&nbsp;&nbsp;库存<span style="color:red">@Html.DisplayFor(model => model.Number)</span>件</p>
+        <div class="num clearfix">
+            <img class="sub" src="~/Images/Shoppingcart/sub.jpg" />
+            <span id="numspan" contenteditable="true">1</span>
+            <img class="add" src="~/Images/Shoppingcart/add.jpg" />
+        </div>
         <hr>
 
         <div>
@@ -51,10 +64,28 @@
             </div>
         }
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4" id="adWindow">
         <hr>
-        <span>同类商品</span>
+        @Ajax.ActionLink("同类商品", "CommodityAd", "Commodities", new { area = "Area_Commodity", stype = Model.Type }, ajaxOptions)
         <hr>
-        
+
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+        $(".add").click(function () {
+            var c = parseInt($(this).siblings("#numspan").text());
+            c++;
+            $(this).siblings("#numspan").text(c);
+        });
+
+        $(".sub").click(function () {
+            var c = parseInt($(this).siblings("#numspan").text());
+            if (c >= 1) {
+                c--;
+                $(this).siblings("#numspan").text(c);
+            }
+        });
+
+    });
+</script>

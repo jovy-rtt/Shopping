@@ -79,7 +79,22 @@ namespace Shopping.Areas.Area_Commodity.Controllers
             }
             return PartialView(commodity);
         }
-        
+
+        public ActionResult CommodityAd(string stype)
+        {
+            ViewBag.search = stype;
+            var t = dbView.Commodity.ToList();
+            if (string.IsNullOrEmpty(stype) == false)
+            {
+                t = t.Where(m => m.Type.Contains(stype)).ToList();
+            }
+
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView(t);
+            }
+            return PartialView(t);
+        }
         /// <summary>
         /// 作者：             gz
         /// 创建时间：         2020/12/24
@@ -91,7 +106,17 @@ namespace Shopping.Areas.Area_Commodity.Controllers
         public ActionResult SellerInfo(string searchSeller)
         {
             ViewBag.search = searchSeller;
-            return PartialView();
+            var t = dbView.Shop.ToList();
+            if (string.IsNullOrEmpty(searchSeller) == false)
+            {
+                t = t.Where(m => m.Name.Contains(searchSeller)).ToList();
+            }
+
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView(t);
+            }
+            return PartialView(t);
         }
         #endregion
 
