@@ -218,6 +218,7 @@
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="css\bg_caption.png.html" />
+    <Content Include="css\Create.css" />
     <Content Include="css\forget.css" />
     <Content Include="css\idea.css" />
     <Content Include="css\index.css" />
@@ -245,6 +246,12 @@
     <Content Include="Images\peach\download_20201222133843.jpg" />
     <Content Include="Images\peach\download_20201222133954.jpg" />
     <Content Include="Images\peach\download_20201222134117.jpg" />
+    <Content Include="Images\shop_pic\logo_1.jpg" />
+    <Content Include="Images\shop_pic\logo_2.jpg" />
+    <Content Include="Images\shop_pic\logo_3.jpg" />
+    <Content Include="Images\shop_pic\logo_4.jpg" />
+    <Content Include="Images\shop_pic\logo_5.jpg" />
+    <Content Include="Images\shop_pic\logo_6.jpg" />
     <Content Include="Images\UserViewCommodity\hot_bottom.jpg" />
     <Content Include="Images\UserViewCommodity\hot_pre.jpg" />
     <Content Include="Scripts\bootstrap.js" />

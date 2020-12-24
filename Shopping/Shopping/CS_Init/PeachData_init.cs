@@ -76,10 +76,10 @@ namespace Shopping.CS_Init
 
             var com =new List<Commodity>
             { 
-                new Commodity{Name="连衣裙",Type="女装",Price=53,Number=100,Introduction="这是一个物品。",Image="null"},
-                new Commodity{Name="毛衣",Type="女装",Price=89,Number=100,Introduction="这是一个物品。",Image="null"},
-                new Commodity{Name="西服一套",Type="男装",Price=213,Number=100,Introduction="这是一个物品。",Image="null"},
-                new Commodity{Name="T恤",Type="男装",Price=26,Number=100,Introduction="这是一个物品。",Image="null"}
+                new Commodity{Name="连衣裙",Type="女装",Price=53,Number=100,Introduction="这是一个物品。",Image="null",shopID = 1},
+                new Commodity{Name="毛衣",Type="女装",Price=89,Number=100,Introduction="这是一个物品。",Image="null",shopID = 2},
+                new Commodity{Name="西服一套",Type="男装",Price=213,Number=100,Introduction="这是一个物品。",Image="null",shopID = 3},
+                new Commodity{Name="T恤",Type="男装",Price=26,Number=100,Introduction="这是一个物品。",Image="null",shopID = 4}
             };
 
             var fav = new List<Favorites>
