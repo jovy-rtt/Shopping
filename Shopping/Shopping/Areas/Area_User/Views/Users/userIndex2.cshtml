@@ -1,0 +1,45 @@
+﻿@model Shopping.Models.User
+@{
+    var ajaxop = new AjaxOptions
+    {
+        UpdateTargetId = "leftview",
+        OnFailure = "OnFailure"
+    };
+
+    var ajaxmainwindow = new AjaxOptions
+    {
+        UpdateTargetId = "mainWindow",
+        OnFailure = "OnFailure"
+    };
+}
+<style>
+    h4 {
+        text-align: center;
+    }
+</style>
+<div class="center-block text-center" style="width:50%;border:1px #cdcdcd solid">
+    <div class="row">
+        <img src="~/Images/Shoppingcart/tx.png" style="margin-top:20px;" />
+    </div>
+    <div class="row" style="margin-top:10px;">
+        <label>@Model.Name |</label>
+        <label>@Ajax.ActionLink("登出", "Logout", "Users", new { area = "Area_User" }, ajaxmainwindow, new { @class = "" })</label>
+    </div>
+    <hr />
+    <div class="row list-group">
+        <h4>我的交易</h4>
+        <p>@Ajax.ActionLink("我的购物车", "Index", "Favorites", new { area = "Area_Favorites" }, ajaxmainwindow, new { @class = "" })</p>
+        <p>@Ajax.ActionLink("我的订单", "userindex", "Orders", new { area = "Area_Order" }, ajaxmainwindow, new { @class = "" })</p>
+    </div>
+    <div class="row">
+        <h4>个人中心</h4>
+        <p>@Ajax.ActionLink("我的中心", "grzx", "Users", new { area = "Area_User" }, ajaxmainwindow, new { @class = "" })</p>
+        <p>@Ajax.ActionLink("地址管理", "Index", "Favorites", new { area = "Area_Favorites" }, ajaxmainwindow, new { @class = "" })</p>
+    </div>
+    <div class="row">
+        <h4>账户管理</h4>
+        <p>@Ajax.ActionLink("个人信息", "showinfo", "Users", new { area = "Area_User" }, ajaxmainwindow, new { @class = "" })</p>
+        <p>@Ajax.ActionLink("修改密码", "userchangepw", "Users", new { area = "Area_User" }, ajaxmainwindow, new { @class = "" })</p>
+        <p>@Ajax.ActionLink("注销账户", "Delete", "Users", new { area = "Area_User", id = TempData["deleteid"] }, ajaxmainwindow, new { @class = "" })</p>
+    </div>
+</div>

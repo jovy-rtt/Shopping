@@ -40,11 +40,11 @@
 
                     <ul class="nav navbar-nav pull-right">
                         <!--购物车-->
-                        <li id="mystate"></li>
+                        <li class="mystat" id="mystate">@Ajax.ActionLink(" ","Index", "Favorites", new { area= "Area_Favorites" },ajaxmainwindow,new { @class= "glyphicon glyphicon-shopping-cart"})</li>
                         <!--订单通知-->
-                        <li>@Ajax.ActionLink(" ", "Index", "Orders", new { area = "Area_Order" }, ajaxop, new { @class = "glyphicon glyphicon-bell" })</li>
+                        <li class="mystat">@Ajax.ActionLink(" ", "userindex", "Orders", new { area = "Area_Order" }, ajaxmainwindow, new { @class = "glyphicon glyphicon-bell" })</li>
                         <!--用户信息-->
-                        <li>@Ajax.ActionLink(" ", "Index", "Users", new { area = "Area_User" }, ajaxop, new { @class = "glyphicon glyphicon-user" })</li>
+                        <li class="mystat">@Ajax.ActionLink(" ", "Index", "Users", new { area = "Area_User" }, ajaxop, new { @class = "glyphicon glyphicon-user" })</li>
                     </ul>
 
                 </nav>
@@ -59,29 +59,39 @@
             </div>
         </div>
     </div>
+
+    <div class="footer text-center " style="background:black;">
+
+        <p style="color:white; padding-top:20px;padding-bottom:20px">
+            技术支持：<a href="https://github.com/jovy-rtt/Shopping" target="_blank">公主CP扛定了小组</a><br />
+            Henu&copy;2018C#小组版权所有  编号：2020/12/25<br />
+            联系我们：0000-0123456789，本网站架构MVC,承载于ISS，数据库为SQL Server 2019
+        </p>
+    </div>
     <script>
         $(document).ready(function () {
             var body = (document.compatMode && document.compatMode == 'CSS1Compat') ? document.documentElement : document.body;
             $("#left").css({ minHeight: body.clientHeight });
             $("#mainWindow").css({ minHeight: body.clientHeigh });
+            //IsState();
+        });
+
+        @*$(".mystat").click(function () {
+            alert(0);
             IsState();
         });
 
         function IsState() {
             var c = '@TempData["us"]';
-            //alert(c);
-            //if (Session["us"] == null)
-            //    alert(0);
-            //alert(0);
-            var LoginLink = "<li><a class=\"glyphicon glyphicon-shopping - cart\" data-ajax=\"true\" data-ajax-failure=\"OnFailure\" data-ajax-mode=\"replace\" data-ajax-update=\"#mainWindow\" href=\" / Area_Favorites / Favorites\"> </a></li>";
+            var CartLink = "<li><a class=\"glyphicon glyphicon-shopping - cart\" data-ajax=\"true\" data-ajax-failure=\"OnFailure\" data-ajax-mode=\"replace\" data-ajax-update=\"#mainWindow\" href=\"/Area_Favorites/Favorites\"> </a></li>";
             //alert(LoginLink);
-            var CartLink = "<a class=\"glyphicon glyphicon-shopping-cart\" data-ajax=\"true\" data-ajax-failure=\"OnFailure\" data-ajax-mode=\"replace\" data-ajax-update=\"#leftview\" href=\"/Area_User/Users\"> </a>";
+            var LoginLink = "<a class=\"glyphicon glyphicon-shopping-cart\" data-ajax=\"true\" data-ajax-failure=\"OnFailure\" data-ajax-mode=\"replace\" data-ajax-update=\"#leftview\" href=\"/Area_User/Users\"> </a>";
             if ( c == '')
                 // alert(LoginLink);
                 $("#mystate").html(LoginLink);
             else
-                $("#mystate").html(LoginLink);
-        }
+                $("#mystate").html(CartLink);
+        }*@
 
         function OnFailure(xhr) {
             $("body").html(xhr.responseText);

@@ -1,0 +1,73 @@
+﻿@model Shopping.Models.User
+@{
+    var ajaxop = new AjaxOptions
+    {
+        UpdateTargetId = "leftview",
+        OnFailure = "OnFailure"
+    };
+
+    var ajaxmainwindow = new AjaxOptions
+    {
+        UpdateTargetId = "mainWindow",
+        OnFailure = "OnFailure"
+    };
+}
+<div class="center-block" style="border: 1px #cdcdcd solid;margin-top:10%">
+    <div class="row">
+        <div class="col-md-2">
+            <img src="~/Images/Shoppingcart/tx.png" style="margin-left:20%" />
+        </div>
+        <div class="col-md-3">
+            <label style="width:100%;margin-top:10%;">@Model.Name</label>
+            <label>@Ajax.ActionLink("修改个人信息>", "showinfo", "Users", new { area = "Area_User" }, ajaxmainwindow, new { @class = "" })</label>
+        </div>
+        <div class="col-md-4 pull-right">
+            <label style="margin-top:30px;margin-right:30px;">绑定的邮箱：@Model.MailBox</label>
+        </div>
+    </div>
+    <hr />
+    <div>
+        <div class="row">
+            <div>
+                <div class="col-md-2">
+                    <img src="~/Images/Shoppingcart/gxin1.jpg" style="margin-left:20%" />
+                </div>
+                <div class="col-md-3">
+                    <label style="width:100%;margin-top:10%;">待支付的订单：<span style="color:red">0</span></label>
+                    <label>@Ajax.ActionLink("查看待支付的订单>", "userindex", "Orders", new { area = "Area_Order" }, ajaxmainwindow, new { @class = "" })</label>
+                </div>
+            </div>
+
+            <div>
+                <div class="col-md-2">
+                    <img src="~/Images/Shoppingcart/gxin2.jpg" style="margin-left:20%" />
+                </div>
+                <div class="col-md-3">
+                    <label style="width:100%;margin-top:10%;">待收货的订单：<span style="color:red">0</span></label>
+                    <label>@Ajax.ActionLink("查看待收货的订单>", "userindex", "Orders", new { area = "Area_Order" }, ajaxmainwindow, new { @class = "" })</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div>
+                <div class="col-md-2">
+                    <img src="~/Images/Shoppingcart/gxin3.jpg" style="margin-left:20%" />
+                </div>
+                <div class="col-md-3">
+                    <label style="width:100%;margin-top:10%;">待评价的订单：<span style="color:red">0</span></label>
+                    <label>@Ajax.ActionLink("查看待评价的订单>", "userindex", "Orders", new { area = "Area_Order" }, ajaxmainwindow, new { @class = "" })</label>
+                </div>
+            </div>
+            <div>
+                <div class="col-md-2">
+                    <img src="~/Images/Shoppingcart/gxin4.jpg" style="margin-left:20%" />
+                </div>
+                <div class="col-md-3">
+                    <label style="width:100%;margin-top:10%;">喜欢的商品：<span style="color:red">0</span></label>
+                    <label>@Ajax.ActionLink("查看喜欢的商品>", "Index", "Favorites", new { area = "Area_Favorites" }, ajaxmainwindow, new { @class = "" })</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
