@@ -61,7 +61,7 @@
                     <h3 class="btn">我的店铺</h3>
                     <div class="list-group">
                         @Html.ActionLink("新建店铺", "Create", "Shops", new { area = "Area_Shop" }, new { @class = "list-group-item" })
-                        @Html.ActionLink("已有店铺", "Index", "Shops", new { area = "Area_Shop" }, new { @class = "list-group-item" })
+                        @Html.ActionLink("已有店铺", "Index", "Shops", new { area = "Area_Shop", sellerid = int.Parse(@Session["userid"].ToString()) }, new { @class = "list-group-item" })
                      </div>
                     <h3 class="btn">我的订单</h3>
                     <div class="list-group">

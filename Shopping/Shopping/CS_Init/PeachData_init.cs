@@ -134,19 +134,19 @@ namespace Shopping.CS_Init
             //7、8、9是卖家
             var shop = new List<Shop>
             { 
-                new Shop{Image="null",Name="Shop71",SellerId=7,Score=9,Address="河南省开封市XXXX",CreatTime=new DateTime(2009,1,25)
+                new Shop{Image="/Images/shop_pic/1.jpg",Name="Shop71",SellerId=7,Score=9,Address="河南省开封市XXXX",CreatTime=new DateTime(2009,1,25)
                 ,LicenseId="123456789",FansNumber=12345},
 
-                new Shop{Image="null",Name="Shop81",SellerId=8,Score=9,Address="河南省开封市XXXX",CreatTime=new DateTime(2009,1,25)
+                new Shop{Image="/Images/shop_pic/2.jpg",Name="Shop81",SellerId=8,Score=9,Address="河南省开封市XXXX",CreatTime=new DateTime(2009,1,25)
                 ,LicenseId="123456789",FansNumber=12345},
 
-                new Shop{Image="null",Name="Shop91",SellerId=9,Score=9,Address="河南省开封市XXXX",CreatTime=new DateTime(2009,1,25)
+                new Shop{Image="/Images/shop_pic/3.jpg",Name="Shop91",SellerId=9,Score=9,Address="河南省开封市XXXX",CreatTime=new DateTime(2009,1,25)
                 ,LicenseId="123456789",FansNumber=12345},
 
-                new Shop{Image="null",Name="Shop72",SellerId=7,Score=9,Address="河南省开封市XXXX",CreatTime=new DateTime(2009,1,25)
+                new Shop{Image="/Images/shop_pic/4.jpg",Name="Shop72",SellerId=7,Score=9,Address="河南省开封市XXXX",CreatTime=new DateTime(2009,1,25)
                 ,LicenseId="123456789",FansNumber=12345},
 
-                new Shop{Image="null",Name="Shop73",SellerId=7,Score=9,Address="河南省开封市XXXX",CreatTime=new DateTime(2009,1,25)
+                new Shop{Image="/Images/shop_pic/5.jpg",Name="Shop73",SellerId=7,Score=9,Address="河南省开封市XXXX",CreatTime=new DateTime(2009,1,25)
                 ,LicenseId="123456789",FansNumber=12345},
 
             };

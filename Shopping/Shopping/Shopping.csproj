@@ -245,6 +245,11 @@
     <Content Include="Images\peach\download_20201222133843.jpg" />
     <Content Include="Images\peach\download_20201222133954.jpg" />
     <Content Include="Images\peach\download_20201222134117.jpg" />
+    <Content Include="Images\shop_pic\1.jpg" />
+    <Content Include="Images\shop_pic\2.jpg" />
+    <Content Include="Images\shop_pic\3.jpg" />
+    <Content Include="Images\shop_pic\4.jpg" />
+    <Content Include="Images\shop_pic\5.jpg" />
     <Content Include="Images\UserViewCommodity\cloth1.png" />
     <Content Include="Images\UserViewCommodity\cloth2.png" />
     <Content Include="Images\UserViewCommodity\cloth3.png" />

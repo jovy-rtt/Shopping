@@ -15,9 +15,10 @@ namespace Shopping.Areas.Area_Shop.Controllers
         private PeachMd db = new PeachMd();
 
         //GET: Area_Shop/Shops
-        public ActionResult Index()
+        public ActionResult Index(int sellerid)
         {
-            var shop = db.Shop.Include(s => s.User);
+           
+            var shop = db.Shop.Include(s => s.User).Where(s=>s.SellerId==sellerid);
             return View(shop.ToList());
         }
 

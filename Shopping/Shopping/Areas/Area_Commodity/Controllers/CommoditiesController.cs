@@ -143,7 +143,8 @@ public ActionResult Create()
             List<SelectListItem> items = new List<SelectListItem>();
             items.Add(new SelectListItem { Text = "男装", Value = "1" });
             items.Add(new SelectListItem { Text = "女装", Value = "2", Selected = true });
-            ViewData["types"] = items;
+            ViewBag.set = items;
+            
 
             return View();
         }
@@ -156,7 +157,7 @@ public ActionResult Create()
             List<SelectListItem> items = new List<SelectListItem>();
             items.Add(new SelectListItem { Text = "男装", Value = "1" });
             items.Add(new SelectListItem { Text = "女装", Value = "2", Selected = true });
-            ViewData["types"] = items;
+            ViewBag.set = items;
 
             string FileName = DateTime.Now.ToString("yyyyMMddhhmmss");//防止文件夹中出现同名文件
             string DirPath = (@"~\Images\shop_pic\");
