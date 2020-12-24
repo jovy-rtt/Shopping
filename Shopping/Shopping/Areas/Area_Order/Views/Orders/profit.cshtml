@@ -12,7 +12,7 @@
 <link href="~/css/public.css" rel="stylesheet" />
 <link href="~/css/myorder.css" rel="stylesheet" />
 <h2>我的订单</h2>
-
+<h3>目前收益为：@ViewBag.profit</h3>
 @foreach (var item in Model)
 {
 
@@ -36,7 +36,5 @@
         </div>
     </div>
 }
-
-<td>目前收益为：@ViewBag.profit</td>
 
 
