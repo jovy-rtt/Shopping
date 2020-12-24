@@ -313,7 +313,7 @@ namespace Shopping.Areas.Area_User.Controllers
         {
             Session.Remove("username");
             Session.Remove("userid");
-            return Redirect("/Seller/Index");
+            return Redirect("/Area_User/Users/SellerLogin");
         }
 
         //修改密码
@@ -363,6 +363,61 @@ namespace Shopping.Areas.Area_User.Controllers
                 {
                     ViewBag.message = "修改失败";
                     return View();
+                }
+            }
+        }
+        //账号详情
+        [HttpGet]
+        public ActionResult SellerDetail(int? id)
+        {
+            var q1 = from w in db.User
+                     where w.Id == id
+                     select w;
+            if (q1.Count() > 0)
+            {
+                var us = q1.First();
+                return PartialView(us);
+            }
+            else
+            {
+                return PartialView();
+            }
+                
+        }
+        //修改账户信息
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SellerDetail(User user)
+        {
+            int account;
+            if (Session["userid"] == null)
+            {
+                ViewBag.message = "请先进行登录";
+                return PartialView();
+            }
+            else
+            {
+                account = int.Parse(Session["userid"].ToString());
+                var q1 = from w in db.User
+                         where w.Id == account
+                         select w;
+                if (q1.Count() > 0)
+                {
+                    var us = q1.First();
+                    us.Birthday = user.Birthday;
+                    us.Name = user.Name;
+                    us.PhoneNumber = user.PhoneNumber;
+                    us.Sex = user.Sex;
+                    us.Sign = user.Sign;
+                    us.MailBox = user.MailBox;
+                    db.SaveChanges();
+                    ViewBag.message = "修改成功";
+                    return PartialView(us);
+                }
+                else
+                {
+                    ViewBag.message = "修改失败";
+                    return PartialView(user);
                 }
             }
         }

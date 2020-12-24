@@ -76,13 +76,30 @@ namespace Shopping.CS_Init
                 new DeliveryAddress{Province="山东省",City="烟台市",Street="福山区",Address="你好小区17单元",Name="邵海",PhoneNumber="13333346645",UserId=5}
             };
 
+            /*
+             * gz
+             * 2020/12/24
+             * 修改了商品初始化类
+             */
             var com =new List<Commodity>
             { 
-                new Commodity{Name="连衣裙",Type="女装",Price=53,Number=100,Introduction="这是一个物品。",Image="null"},
-                new Commodity{Name="毛衣",Type="女装",Price=89,Number=100,Introduction="这是一个物品。",Image="null"},
-                new Commodity{Name="西服一套",Type="男装",Price=213,Number=100,Introduction="这是一个物品。",Image="null"},
-                new Commodity{Name="T恤",Type="男装",Price=26,Number=100,Introduction="这是一个物品。",Image="null"}
+                new Commodity{Name="男士外套",Type="男装",Price=53,Number=100,Introduction="这是一个物品。",Image="/Images/UserViewCommodity/cloth1.png"},
+                new Commodity{Name="卫衣",Type="男装",Price=89,Number=100,Introduction="这是一个物品。",Image="/Images/UserViewCommodity/cloth2.png"},
+                new Commodity{Name="秋季长袖",Type="女装",Price=213,Number=100,Introduction="这是一个物品。",Image="/Images/UserViewCommodity/cloth3.png"},
+                new Commodity{Name="香奈儿条纹开衫",Type="女装",Price=26,Number=100,Introduction="这是一个物品。",Image="/Images/UserViewCommodity/cloth4.png"},
+                new Commodity{Name="绣花衬衫碎花长袖",Type="女装",Price=53,Number=100,Introduction="这是一个物品。",Image="/Images/UserViewCommodity/cloth5.png"},
+                new Commodity{Name="黑色皮鞋",Type="男鞋",Price=89,Number=100,Introduction="这是一个物品。",Image="/Images/UserViewCommodity/shoes1.png"},
+                new Commodity{Name="黑色高跟",Type="女鞋",Price=213,Number=100,Introduction="这是一个物品。",Image="/Images/UserViewCommodity/shoes2.png"},
+                new Commodity{Name="黑色手表",Type="手表",Price=26,Number=100,Introduction="这是一个物品。",Image="/Images/UserViewCommodity/watch1.jpg"}
             };
+            ////原初始化
+            //var com = new List<Commodity>
+            //{
+            //    new Commodity { Name = "连衣裙", Type = "女装", Price = 53, Number = 100, Introduction = "这是一个物品。", imagepath = "" },
+            //    new Commodity { Name = "毛衣", Type = "女装", Price = 89, Number = 100, Introduction = "这是一个物品。", imagepath = "" },
+            //    new Commodity { Name = "西服一套", Type = "男装", Price = 213, Number = 100, Introduction = "这是一个物品。", imagepath = "" },
+            //    new Commodity { Name = "T恤", Type = "男装", Price = 26, Number = 100, Introduction = "这是一个物品。", imagepath = "" }
+            //};
 
             var fav = new List<Favorites>
             { 
@@ -130,19 +147,19 @@ namespace Shopping.CS_Init
             //7、8、9是卖家
             var shop = new List<Shop>
             { 
-                new Shop{Image="null",Name="Shop71",SellerId=7,Score=9,Address="河南省开封市XXXX",CreatTime=new DateTime(2009,1,25)
+                new Shop{Image="/Images/shop_pic/1.jpg",Name="Shop71",SellerId=7,Score=9,Address="河南省开封市XXXX",CreatTime=new DateTime(2009,1,25)
                 ,LicenseId="123456789",FansNumber=12345},
 
-                new Shop{Image="null",Name="Shop81",SellerId=8,Score=9,Address="河南省开封市XXXX",CreatTime=new DateTime(2009,1,25)
+                new Shop{Image="/Images/shop_pic/2.jpg",Name="Shop81",SellerId=8,Score=9,Address="河南省开封市XXXX",CreatTime=new DateTime(2009,1,25)
                 ,LicenseId="123456789",FansNumber=12345},
 
-                new Shop{Image="null",Name="Shop91",SellerId=9,Score=9,Address="河南省开封市XXXX",CreatTime=new DateTime(2009,1,25)
+                new Shop{Image="/Images/shop_pic/3.jpg",Name="Shop91",SellerId=9,Score=9,Address="河南省开封市XXXX",CreatTime=new DateTime(2009,1,25)
                 ,LicenseId="123456789",FansNumber=12345},
 
-                new Shop{Image="null",Name="Shop72",SellerId=7,Score=9,Address="河南省开封市XXXX",CreatTime=new DateTime(2009,1,25)
+                new Shop{Image="/Images/shop_pic/4.jpg",Name="Shop72",SellerId=7,Score=9,Address="河南省开封市XXXX",CreatTime=new DateTime(2009,1,25)
                 ,LicenseId="123456789",FansNumber=12345},
 
-                new Shop{Image="null",Name="Shop73",SellerId=7,Score=9,Address="河南省开封市XXXX",CreatTime=new DateTime(2009,1,25)
+                new Shop{Image="/Images/shop_pic/5.jpg",Name="Shop73",SellerId=7,Score=9,Address="河南省开封市XXXX",CreatTime=new DateTime(2009,1,25)
                 ,LicenseId="123456789",FansNumber=12345},
 
             };

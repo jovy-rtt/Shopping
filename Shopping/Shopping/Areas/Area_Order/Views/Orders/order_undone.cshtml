@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "order_undone";
+}
+
+@model IEnumerable<Shopping.Models.Order>
+
+
+    <link href="~/css/public.css" rel="stylesheet" />
+    <link href="~/css/myorder.css" rel="stylesheet" />
+
+    @foreach (var item in Model)
+    {
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="@Html.DisplayFor(modelItem => item.Commodity.Image)" width="100" height="100" />
+
+                <ul class="fr">
+                    <li>@Html.DisplayFor(modelItem => item.StartTime)</li>
+                    <li>@Html.DisplayFor(modelItem => item.User.Name)</li>
+                    <li>@Html.DisplayFor(modelItem => item.Logistics)</li>
+                    <li>
+                        @Html.DisplayFor(modelItem => item.Commodity.Name)
+                        @Html.DisplayFor(modelItem => item.Commodity.Price) RMB ×1
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <p class="fr">订单金额：<span>@Html.DisplayFor(modelItem => item.Commodity.Price)</span>元</p>
+
+
+
+    }
+
+
+
+

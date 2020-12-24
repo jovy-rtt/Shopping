@@ -14,14 +14,50 @@ namespace Shopping.Areas.Area_Bankcard.Controllers
     {
         private PeachMd db = new PeachMd();
         #region 商家管理操作
+        [HttpGet]
         public ActionResult SellerCreateBank()
         {
-            return View();
+            return PartialView();
         }
-
-        public ActionResult SellerShowBank()
+        [HttpPost]
+        public ActionResult SellerCreateBank(Bankcard bc)
         {
-            return View();
+            int n = db.Bankcard.Count();
+            bc.Id = n + 1;
+            bc.Money = 0;
+            bc.UserID = int.Parse(Session["userid"].ToString());
+            db.Bankcard.Add(bc);
+            db.SaveChanges();
+            ViewBag.message = "银行卡添加成功！";
+            Session.Add("Bankid", bc.Id);
+            Session.Add("Bankac", bc.BankAcount);
+            Session.Add("Bankmo", bc.Money);
+            return PartialView("SellerShowBank");
+        }
+        public ActionResult SellerShowBank(int? id)
+        {
+            //int n = int.Parse(Session["userid"].ToString());
+            var q = from w in db.Bankcard
+                    where w.UserID == id
+                    select w;
+            
+            if (q.Count()>0)
+            {
+                var us = q.First();
+                Session.Add("Bankid", us.Id);
+                Session.Add("Bankac", us.BankAcount);
+                Session.Add("Bankmo", us.Money);
+                return PartialView();
+            }
+            else
+            {
+                Session.Add("Bankid", null);
+                Session.Add("Bankac", null);
+                Session.Add("Bankmo", null);
+                ViewBag.message = "没有银行卡，请添加银行卡！";
+                return PartialView();
+            }
+           
         }
         #endregion
         // GET: Area_Bankcard/Bankcards

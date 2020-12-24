@@ -14,29 +14,13 @@ namespace Shopping.Areas.Area_Shop.Controllers
     {
         private PeachMd db = new PeachMd();
 
-        // GET: Area_Shop/Shops
-        public ActionResult Index()
+        //GET: Area_Shop/Shops
+        public ActionResult Index(int sellerid)
         {
-            var shop = db.Shop.Include(s => s.User);
+           
+            var shop = db.Shop.Include(s => s.User).Where(s=>s.SellerId==sellerid);
             return View(shop.ToList());
         }
-
-
-        //上传图片
-        //[HttpPost]
-        //public ActionResult UploadImg()
-        //{
-
-
-        //    if (Request.Files.Count > 0)
-        //    {
-        //        HttpPostedFileBase f = Request.Files["图片"];
-        //        f.SaveAs(@"~/Images/commodity_pic" + f.FileName);
-
-        //    }
-        //    return View();
-        //}
-
 
 
         // GET: Area_Shop/Shops/Details/5
@@ -66,6 +50,17 @@ namespace Shopping.Areas.Area_Shop.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name,Image,SellerId,Score,Address,CreatTime,LicenseId,FansNumber")] Shop shop)
         {
+            string FileName = DateTime.Now.ToString("yyyyMMddhhmmss");//防止文件夹中出现同名文件
+            string DirPath = (@"~\Images\shop_pic\");
+            string FilePath = "";
+            if (Request.Files.Count > 0)
+            {
+                HttpPostedFileBase f = Request.Files["shop_pic"];//获得上传的图片
+                FilePath = DirPath + f.FileName;//组成要保存到数据库中的路径
+                f.SaveAs(FilePath);//将图片保存到本地image相应文件夹下
+            }
+            shop.Image = FilePath;
+            ViewBag.path = FilePath;
             if (ModelState.IsValid)
             {
                 db.Shop.Add(shop);
@@ -95,9 +90,6 @@ namespace Shopping.Areas.Area_Shop.Controllers
             return View(shop);
         }
 
-        // POST: Area_Shop/Shops/Edit/5
-        // 为了防止“过多发布”攻击，请启用要绑定到的特定属性；有关
-        // 更多详细信息，请参阅 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Name,Image,SellerId,Score,Address,CreatTime,LicenseId,FansNumber")] Shop shop)
