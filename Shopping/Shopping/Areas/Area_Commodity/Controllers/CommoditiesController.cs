@@ -37,7 +37,7 @@ namespace Shopping.Areas.Area_Commodity.Controllers
         /// <summary>
         /// 作者：                 gz
         /// 创建时间：             2020/12/23
-        /// 函数功能：             实现商品查询
+        /// 函数功能：             商品查询
         /// 入口参数：             search
         /// </summary>
         /// <param name="search"></param>
@@ -78,6 +78,19 @@ namespace Shopping.Areas.Area_Commodity.Controllers
                 return HttpNotFound();
             }
             return PartialView(commodity);
+        }
+        /// <summary>
+        /// 作者：             gz
+        /// 创建时间：         2020/12/24
+        /// 函数功能：         店铺查询
+        /// 入口参数：         searchSeller
+        /// </summary>
+        /// <param name="searchSeller"></param>
+        /// <returns></returns>
+        public ActionResult SellerInfo(string searchSeller)
+        {
+            ViewBag.search = searchSeller;
+            return PartialView();
         }
         #endregion
 
