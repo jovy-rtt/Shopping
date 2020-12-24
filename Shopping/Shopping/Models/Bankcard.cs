@@ -18,12 +18,14 @@ namespace Shopping.Models
 
         [Required]
         [StringLength(30)]
+        [Display(Name = "ÒøĞĞ¿¨¿¨ºÅ")]
         public string BankAcount { get; set; }
 
         public DateTime? Birthday { get; set; }
 
         [Required]
         [StringLength(30)]
+        [Display(Name = "ÒøĞĞ¿¨ÃÜÂë")]
         public string BankPassword { get; set; }
 
         [StringLength(30)]
@@ -37,6 +39,7 @@ namespace Shopping.Models
         [StringLength(30)]
         public string BankTel { get; set; }
 
+        [Display(Name = "Óà¶î")]
         public double Money { get; set; }
 
         public string BankWebSite { get; set; }

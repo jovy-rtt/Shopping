@@ -1,4 +1,7 @@
-﻿
+﻿@{
+    Layout = "~/Views/Seller/SellerLayout.cshtml";
+}
+
 @model Shopping.Models.User
 
 @{
@@ -70,6 +73,7 @@
                 <input type="submit" value="修改" class="btn btn-default" />
             </div>
         </div>
+        <p>@ViewBag.message</p>
     </div>
 
 }

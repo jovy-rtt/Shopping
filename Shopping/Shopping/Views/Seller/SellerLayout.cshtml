@@ -54,8 +54,8 @@
                 <div class="leftMenu">
                     <h3 class="btn">账户信息</h3>
                     <div class="list-group">
-                        @Ajax.ActionLink("我的账户", "SellerDetail", "Users", new { area = "Area_User", id = int.Parse(@Session["userid"].ToString()) }, ajaxOptions, new { @class = "list-group-item" })
-                        @Ajax.ActionLink("我的银行卡", "SellerShowBank", "Bankcards", new { area = "Area_Bankcard" }, ajaxOptions, new { @class = "list-group-item" })
+                        @Ajax.ActionLink("我的账户", "SellerDetail", "Users", new { area = "Area_User" }, ajaxOptions, new { @class = "list-group-item" })
+                        @Ajax.ActionLink("我的银行卡", "SellerShowBank", "Bankcards", new { area = "Area_Bankcard", id = int.Parse(@Session["userid"].ToString()) }, ajaxOptions, new { @class = "list-group-item" })
                         @Html.ActionLink("修改密码", "SellerEditPwd", "Users", new { area = "Area_User" }, new { @class = "list-group-item" })
                     </div>
                     <h3 class="btn">我的店铺</h3>
