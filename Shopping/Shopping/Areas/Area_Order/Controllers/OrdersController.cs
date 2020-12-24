@@ -26,7 +26,7 @@ namespace Shopping.Areas.Area_Order.Controllers
         //已处理订单
         public ActionResult order_done()
         {
-            var order = db.Order.Include(o => o.Commodity).Include(o => o.User).Include(o => o.User1).Where(o=>o.State == "已处理");
+            var order = db.Order.Include(o => o.Commodity).Include(o => o.User).Include(o => o.User1).Where(o=>o.State == "已完成");
              
             return View(order.ToList());
         }
@@ -34,7 +34,7 @@ namespace Shopping.Areas.Area_Order.Controllers
         //未处理订单
         public ActionResult order_undone()
         {
-            var order = db.Order.Include(o => o.Commodity).Include(o => o.User).Include(o => o.User1).Where(o => o.State == "未处理");
+            var order = db.Order.Include(o => o.Commodity).Include(o => o.User).Include(o => o.User1).Where(o => o.State != "已完成");
             return View(order.ToList());
         }
 
@@ -42,13 +42,14 @@ namespace Shopping.Areas.Area_Order.Controllers
         public ActionResult profit()
         {
             double profit = 0.0;
-            var order = db.Order.Include(o => o.Commodity).Include(o => o.User).Include(o => o.User1).Where(o => o.State == "已处理").ToList();
+            var order = db.Order.Include(o => o.Commodity).Include(o => o.User).Include(o => o.User1).Where(o => o.State == "已完成").ToList();
             foreach (var v in order)
             {
                 profit += v.Commodity.Price;
             }
-           
-            return View(order.ToList());
+            ViewBag.profit = profit;
+            var all_order = db.Order.Include(o => o.Commodity).Include(o => o.User).Include(o => o.User1);
+            return View(all_order.ToList());
         }
 
 
