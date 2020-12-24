@@ -1,21 +1,27 @@
 ﻿@model Shopping.Models.Commodity
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "商品上新";
 }
 
-@Html.Partial("~/Views/Shared/fileupload_PartialRef.cshtml")
-
 <script src="~/Scripts/ckeditor.js"></script>
-<h2>Create</h2>
+
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
 <div class="form-horizontal">
-    <h4>Commodity</h4>
+    <h4>商品上新</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group"> 
+         <label>上传商品主图</label>           
+        <input type="file" name="commodity_pic" />
+        <img alt="" width="150" height="180" id="thumbnail" src="data: image/jpg; base64," />
+        @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+    </div>
+
     <div class="form-group">
         @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
@@ -27,27 +33,10 @@
     <div class="form-group">
         @Html.LabelFor(model => model.Type, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Type, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.DropDownList("types", null, htmlAttributes: new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
         </div>
     </div>
-
-    @*<div class="form-group">
-        @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
-        </div>
-    </div>*@
-
-<div class="form-group">
-    @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
-    <input type="file" name="commodity_pic" />
-    <img alt="" width="150" height="180" id="thumbnail" src="data: image/jpg; base64," />
-    <input type="submit" value="submit" />
-    @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
-</div>
-
 
     <div class="form-group">
         @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -101,7 +90,6 @@
 
 
 <script>
-    //查看的详情信息
     function ViewTitleInfor(MaterialReviewTypeID) {
         //清空图片框中的图片
         $("#thumbnail").attr("src", "");
@@ -114,10 +102,6 @@
         $("#Uthumbnail").change(function () {
             var imgfFile = $("#thumbnail").prop('files')[0];
         //加载image标签中
-        if (!regexImageFilter.test(imgfFile.type)) {
-            //alert("选择的不是一个有效的图片文件");
-            layer.msg('选择的不是一个有效的图片文件', { icon: 0 });
-        }
         //readAsDataURL()方法可以获取API异步读取的文件数据，另存为数据URL;将该URL绑定到img标签的src属性上，就可以实现图片的上传预览效果了。
         imgReaderC.readAsDataURL(imgfFile);
     });
