@@ -278,6 +278,7 @@
     <Content Include="Images\UserViewCommodity\shoes1.png" />
     <Content Include="Images\UserViewCommodity\shoes2.png" />
     <Content Include="Images\UserViewCommodity\watch1.jpg" />
+    <Content Include="Images\开店.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\cart.js" />

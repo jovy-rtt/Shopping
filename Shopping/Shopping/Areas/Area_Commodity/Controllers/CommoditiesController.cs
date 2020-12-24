@@ -138,7 +138,7 @@ namespace Shopping.Areas.Area_Commodity.Controllers
       
 
 // GET: Area_Commodity/Commodities/Create
-public ActionResult Create()
+public ActionResult Create(int id)
         {
             List<SelectListItem> items = new List<SelectListItem>();
             items.Add(new SelectListItem { Text = "男装", Value = "1" });
@@ -152,7 +152,7 @@ public ActionResult Create()
         [HttpPost]
         [ValidateInput(false)]
         //[ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Type,Image,Price,Number,Introduction")] Commodity commodity)
+        public ActionResult Create([Bind(Include = "Id,Name,Type,Image,Price,Number,Introduction")] Commodity commodity, int id)
         {
             List<SelectListItem> items = new List<SelectListItem>();
             items.Add(new SelectListItem { Text = "男装", Value = "1" });
@@ -168,7 +168,12 @@ public ActionResult Create()
                 FilePath = DirPath + f.FileName;//组成要保存到数据库中的路径
                 f.SaveAs(FilePath);//将图片保存到本地image相应文件夹下
             }
+            else
+            {
+                FilePath = "/Images/commodity_pic/大衣.jpg";
+            }
             commodity.Image = FilePath;
+            commodity.shopID = id;
             if (ModelState.IsValid)
             {
                 db.Commodity.Add(commodity);
