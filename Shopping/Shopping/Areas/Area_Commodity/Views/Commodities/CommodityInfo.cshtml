@@ -15,7 +15,7 @@
             <div>
                 <br><br><br>
             </div>
-            <label class="col-md-4 control-label">好物搜：</label>
+            @*<label class="col-md-4 control-label">美好等你发现</label>*@
             <div class="col-md-4">
                 <input type="text" name="search" value="@ViewBag.search" class="form-control" placeholder="全部">
             </div>
@@ -25,29 +25,18 @@
         </div>
     </div>
 }
-<h4 class="text-center">搜索结果</h4>
-<table class="table">
-    <thead>
-        <tr>
-            <th>图片</th>
-            <th>商品名</th>
-            <th>类别</th>
-            <th>价格</th>
-            <th>简介</th>
-        </tr>
-    </thead>
-    <tbody>
+<hr>
+
+<section class="lto-items wrapper" id="lto-items">
+    <div class="grid columns-3">
         @foreach (var m in Model)
         {
-            <tr>
-                <th>@Html.DisplayFor(modelItem => m.Image)</th>
-                <th>
-                    @Ajax.ActionLink(m.Name.ToString(), "CommodityDetails", new { id = m.Id }, ajaxOptions)
-                </th>
-                <th>@Html.DisplayFor(modelItem => m.Type)</th>
-                <th>@Html.DisplayFor(modelItem => m.Price)</th>
-                <th>@Html.DisplayFor(modelItem => m.Introduction)</th>
-            </tr>
+        <div class="col-md-4 text-center" style="height:320px">
+            <img alt=@m.Type src=@m.Image style="width:80%">
+            <p>@Ajax.ActionLink(m.Name.ToString(), "CommodityDetails", new { id = m.Id }, ajaxOptions)</p>
+            <p>@Html.DisplayFor(model => m.Introduction)</p>
+            <p>￥ @Html.DisplayFor(model => m.Price)</p>
+        </div>
         }
-    </tbody>
-</table>
+    </div>
+</section>
