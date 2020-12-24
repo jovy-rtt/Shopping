@@ -1,0 +1,96 @@
+﻿
+#footer {
+    border-top: none;
+}
+
+.footer {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 125px;
+    margin-top: 20px;
+    position: relative;
+    padding-bottom: 9px;
+    background-color: #fff;
+    font-size: 12px
+}
+
+    .footer p {
+        padding-bottom: 8px;
+        overflow: hidden;
+        *zoom: 1
+    }
+
+    .footer b {
+        margin: 0 3px;
+        font-weight: 400;
+        color: #ddd
+    }
+
+    .footer em,
+    .footer span {
+        white-space: nowrap;
+        color: #9c9c9c;
+    }
+
+    .footer em {
+        margin-left: 30px;
+        font: 12px/1.5 tahoma,arial,'Hiragino Sans GB','\5b8b\4f53',sans-serif;
+    }
+
+    .footer span {
+        margin: 0 4px;
+    }
+
+    .footer .footer-bd,
+    .footer .footer-ft,
+    .footer .footer-hd {
+        width: 1190px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: left;
+    }
+
+        .footer .footer-bd a,
+        .footer .footer-hd a {
+            white-space: nowrap;
+            color: #6c6c6c;
+            cursor: pointer;
+            text-decoration: none
+        }
+
+            .footer .footer-bd a:hover,
+            .footer .footer-hd a:hover {
+                color: #f40;
+                text-decoration: none;
+            }
+
+    .footer .footer-hd {
+        padding-top: 7px;
+        border-top: 1px solid #ddd
+    }
+
+        .footer .footer-hd p {
+            margin-bottom: 8px;
+            line-height: 27px;
+            border-bottom: 1px solid #ddd
+        }
+
+    .footer .footer-ft {
+        display: none;
+    }
+
+        .footer .footer-ft a {
+            margin-right: 15px;
+            text-decoration: none;
+        }
+
+        .footer .footer-ft .mod {
+            height: 40px;
+            display: inline-block;
+            background-repeat: no-repeat
+        }
+
+.footer-with-logo {
+    min-height: 170px
+}
+

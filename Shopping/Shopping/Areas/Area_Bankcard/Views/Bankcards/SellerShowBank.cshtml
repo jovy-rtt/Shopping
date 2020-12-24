@@ -1,1 +1,43 @@
-﻿
+﻿@{
+    Layout = "~/Views/Seller/SellerLayout.cshtml";
+}
+
+@model Shopping.Models.Bankcard
+@{
+    var ajaxOptions = new AjaxOptions
+    {
+        LoadingElementId = "loading",
+        UpdateTargetId = "mainWindow",
+        OnFailure = "OnFailure"
+    };
+}
+
+<h2 style="margin-left:150px">我的银行卡</h2>
+<hr />
+@{ if (@Session["Bankid"] == null)
+    {
+        <p>@ViewBag.message</p>
+        @Ajax.ActionLink("添加银行卡", "SellerCreateBank", "Bankcards", new { area = "Area_Bankcard" ,id= int.Parse(Session["userid"].ToString()) }, ajaxOptions)
+    }
+   else
+    {
+        <div class="form-group">
+            @Html.LabelFor(model => model.BankAcount, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input class = "form-control" value=@Session["Bankac"] type="text" />
+                @Html.ValidationMessageFor(model => model.BankAcount, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Money, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input class="form-control" value=@Session["Bankmo"] type="text" />
+                @Html.ValidationMessageFor(model => model.Money, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <p>@ViewBag.message</p>
+    }
+
+}

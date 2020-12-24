@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Peach 购物网</title>
-    @Html.Partial("~/Views/Shared/Partialinfo.cshtml")
+    @Html.Partial("~/Views/Shared/fileupload_PartialRef.cshtml")
 
 </head>
 @model Shopping.Models.User
@@ -48,30 +48,31 @@
             </div>
         </div>
     </div>
-    <div class="container body-content"  style="margin-top:60px">
-        <div class="row">
+    <div class="container body-content" >
+        <div class="row"  style="margin-top:60px">
             <div class="col-md-3">
                 <div class="leftMenu">
                     <h3 class="btn">账户信息</h3>
                     <div class="list-group">
-                        @Ajax.ActionLink("我的账户", "SellerDetail", "Users", new { area = "Area_User", id = int.Parse(@Session["userid"].ToString()) }, ajaxOptions, new { @class = "list-group-item" })
-                        @Ajax.ActionLink("我的银行卡", "SellerShowBank", "Bankcards", new { area = "Area_Bankcard" }, ajaxOptions, new { @class = "list-group-item" })
+                        @Html.ActionLink("我的账户", "SellerDetail", "Users", new { area = "Area_User", id = int.Parse(@Session["userid"].ToString()) }, new { @class = "list-group-item" })
+                        @Html.ActionLink("我的银行卡", "SellerShowBank", "Bankcards", new { area = "Area_Bankcard", id = int.Parse(@Session["userid"].ToString()) }, new { @class = "list-group-item" })
                         @Html.ActionLink("修改密码", "SellerEditPwd", "Users", new { area = "Area_User" }, new { @class = "list-group-item" })
                     </div>
                     <h3 class="btn">我的店铺</h3>
                     <div class="list-group">
                         @Html.ActionLink("新建店铺", "Create", "Shops", new { area = "Area_Shop" }, new { @class = "list-group-item" })
-                        @Ajax.ActionLink("已有店铺", "Index", "Shops", new { area = "Area_Shop" }, ajaxOptions, new { @class = "list-group-item" })
+                        @Html.ActionLink("已有店铺", "Index", "Shops", new { area = "Area_Shop" }, new { @class = "list-group-item" })
                         @Ajax.ActionLink("未读评论", "", "", new { area = "" }, ajaxOptions, new { @class = "list-group-item" })
                     </div>
                     <h3 class="btn">我的订单</h3>
                     <div class="list-group">
-                        @Ajax.ActionLink("未处理订单", "Index", "Orders", null, ajaxOptions, new { @class = "list-group-item" })
-                        @Ajax.ActionLink("已处理订单", "Index", "Orders", null, ajaxOptions, new { @class = "list-group-item" })
+                        @Html.ActionLink("未处理订单", "order_undone", "Orders", new { area = "Area_Order"}, new { @class = "list-group-item" })
+                        @Html.ActionLink("已处理订单", "order_done", "Orders", new { area = "Area_Order", id = 2, sellerid = int.Parse(@Session["userid"].ToString()) }, new { @class = "list-group-item" })
+                        @Html.ActionLink("已完成订单", "order_over", "Orders", new { area = "Area_Order", id = 3, sellerid = int.Parse(@Session["userid"].ToString()) }, new { @class = "list-group-item" })
                     </div>
                     <h3 class="btn">我的收益</h3>
                     <div class="list-group">
-                        @Ajax.ActionLink("查看收益", "Index", "Orders", null, ajaxOptions, new { @class = "list-group-item" })
+                        @Html.ActionLink("查看收益", "profit", "Orders", new { area = "Area_Order" }, new { @class = "list-group-item" })
                     </div>
                 </div>
             </div>
@@ -82,9 +83,6 @@
             </div>
         </div>
     </div>
-    @*<div id="mainWindow" sstyle="overflow-y:auto; overflow-x:hidden">
-
-        </div>*@
     <script>
         $(document).ready(function () {
             var body = (document.compatMode && document.compatMode == 'CSS1Compat') ? document.documentElement : document.body;

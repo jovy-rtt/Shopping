@@ -14,13 +14,12 @@ namespace Shopping.Areas.Area_Shop.Controllers
     {
         private PeachMd db = new PeachMd();
 
-        // GET: Area_Shop/Shops
+        //GET: Area_Shop/Shops
         public ActionResult Index()
         {
             var shop = db.Shop.Include(s => s.User);
             return View(shop.ToList());
         }
-
 
 
         // GET: Area_Shop/Shops/Details/5
@@ -90,9 +89,6 @@ namespace Shopping.Areas.Area_Shop.Controllers
             return View(shop);
         }
 
-        // POST: Area_Shop/Shops/Edit/5
-        // 为了防止“过多发布”攻击，请启用要绑定到的特定属性；有关
-        // 更多详细信息，请参阅 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Name,Image,SellerId,Score,Address,CreatTime,LicenseId,FansNumber")] Shop shop)
