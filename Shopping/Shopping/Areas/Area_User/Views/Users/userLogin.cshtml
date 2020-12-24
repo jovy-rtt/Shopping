@@ -1,54 +1,52 @@
 ﻿@{
-    var ajaxop = new AjaxOptions { UpdateTargetId = "leftview", HttpMethod = "Post", Url = Url.Action("userLogin", "Users",new { area="Area_User"}) };
+    var ajaxop = new AjaxOptions { UpdateTargetId = "mainWindow", HttpMethod = "Post", Url = Url.Action("userLogin", "Users",new { area="Area_User"}) };
 }
 @* 登录时，要采用局部刷新的形式 *@
+<style>
+        .form-group{
+            margin-left:50px;
+            width:600px;
+        }
+</style>
+<div class="center-block" style="margin-top:20%;border:2px red solid;width:50%;">
+    @using (Ajax.BeginForm(ajaxop))
+    {
+        <div class="form-horizontal" style="margin-top:20px">
+            <div class="form-group">
+                <label class="col-md-3 control-label">账号：</label>
+                <div class="col-md-6">
+                    <input class="form-control" name="Account" type="text" placeholder="请输入账号" />
+                </div>
+            </div>
 
-@using (Ajax.BeginForm(ajaxop))
-{
-<div class="form-horizontal">
-    <div class="form-group">
-        <label class="col-md-3 control-label">账号：</label>
-        <div class="col-md-6">
-            <input class="form-control" name="Account" type="text" placeholder="请输入账号" />
+            <div class="form-group">
+                <label class="col-md-3 control-label">密码：</label>
+                <div class="col-md-6">
+                    <input class="form-control" name="Password" type="password" placeholder="密码" />
+                </div>
+            </div>
+
+            @*滑动窗口 https://demo.mycodes.net/denglu/useryanzheng/*@
+            <div class="form-group">
+                <label class="col-md-3 control-label">验证码：</label>
+                <div class="col-md-3">
+                    <input class="form-control" name="inputcode" type="text">
+                </div>
+                <input class="col-md-3 btn-default" type="button" id="code" onclick="change();" style="height:35px;width:135px">
+            </div>
+            <div class="row">
+                <button style="width:70%;margin-left:15%" class="btn btn-primary" type="submit" name="btn" value="提交">提交</button>
+            </div>
+
+            <div class="row" style="margin-bottom:5%">
+                <button style="width:10%;background:none;margin-left:15%" class="btn" type="submit" name="btn" value="注册">免费注册</button>
+                <button style="width:20%;background:none;margin-right:15%" class="btn pull-right" type="submit" name="btn" value="忘记密码">忘记密码</button>
+            </div>
         </div>
-    </div>
+        <input type="text" name="mycode" class="mycode" hidden style="display:none"/>
+    }
 
-    <div class="form-group">
-        <label class="col-md-3 control-label">密码：</label>
-        <div class="col-md-6">
-            <input class="form-control" name="Password" type="password" placeholder="密码" />
-        </div>
-    </div>
-
-    @*滑动窗口 https://demo.mycodes.net/denglu/useryanzheng/*@
-    <div class="form-group">
-        <label class="col-md-3 control-label">验证码：</label>
-        <div class="col-md-3">
-            <input class="form-control" type="text">
-        </div>
-        <input class="col-md-3 btn-default" type="button" id="code" onclick="change();">
-    </div>
-
-
-    <div class="form-group">
-        <div class="col-md-3 col-md-offset-3">
-            <button style="width:100%" class="btn btn-primary" type="submit" name="btn" value="提交">提交</button>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-md-3 col-md-offset-3">
-            <button style="width:100%" class="btn btn-primary" type="submit" name="btn" value="注册">注册</button>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-md-3 col-md-offset-3">
-            <button style="width:100%" class="btn btn-primary" type="submit" name="btn" value="忘记密码">忘记密码</button>
-        </div>
-    </div>
 </div>
-}
 
 
 
@@ -88,6 +86,7 @@
 			codes += arrays[r];
 		}
 		// 验证码添加到input里
-		code.val(codes);
+        code.val(codes);
+        $(".mycode").val(codes);
 	}
 </script>

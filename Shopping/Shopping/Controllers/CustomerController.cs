@@ -1,4 +1,5 @@
 ﻿using Shopping.CS_Init;
+using Shopping.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ namespace Shopping.Controllers
 {
     public class CustomerController : Controller
     {
+        PeachMd db = new PeachMd();
         // GET: Customer
         public ActionResult Index(string id)
         {
@@ -31,7 +33,13 @@ namespace Shopping.Controllers
 
         public ActionResult Pay()
         {
-            return Isajax("Pay");
+            var q = from t in db.DeliveryAddress
+                    where t.UserId == UserLoginstate.usstate.Id
+                    select t;
+            //正式启用时要取消注释
+            //db.DeliveryAddress = (System.Data.Entity.DbSet<DeliveryAddress>)q;
+            UserLoginstate.mypeach = db;
+            return Isajax("Pay", UserLoginstate.mypeach);
         }
 
         /*

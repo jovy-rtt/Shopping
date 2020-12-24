@@ -15,9 +15,10 @@ namespace Shopping.Areas.Area_Shop.Controllers
         private PeachMd db = new PeachMd();
 
         //GET: Area_Shop/Shops
-        public ActionResult Index()
+        public ActionResult Index(int sellerid)
         {
-            var shop = db.Shop.Include(s => s.User);
+           
+            var shop = db.Shop.Include(s => s.User).Where(s=>s.SellerId==sellerid);
             return View(shop.ToList());
         }
 
@@ -47,7 +48,7 @@ namespace Shopping.Areas.Area_Shop.Controllers
        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Image,SellerId,Score,Address,CreatTime,LicenseId,FansNumber")] Shop shop)
+        public ActionResult Create([Bind(Include = "Id,Name,Image,SellerId,Score,Address,CreatTime,LicenseId,FansNumber")] Shop shop,int sellerid)
         {
             string FileName = DateTime.Now.ToString("yyyyMMddhhmmss");//防止文件夹中出现同名文件
             string DirPath = (@"~\Images\shop_pic\");
@@ -58,8 +59,15 @@ namespace Shopping.Areas.Area_Shop.Controllers
                 FilePath = DirPath + f.FileName;//组成要保存到数据库中的路径
                 f.SaveAs(FilePath);//将图片保存到本地image相应文件夹下
             }
+            else
+            {
+                FilePath = "/Images/shop_pic/1.jpg";
+        }
             shop.Image = FilePath;
             ViewBag.path = FilePath;
+            shop.SellerId = sellerid;
+            shop.Id = 9;
+            //shop.User = db.User;
             if (ModelState.IsValid)
             {
                 db.Shop.Add(shop);
@@ -67,8 +75,6 @@ namespace Shopping.Areas.Area_Shop.Controllers
                 
                 return RedirectToAction("Index");
             }
-
-
             ViewBag.SellerId = new SelectList(db.User, "Id", "Password", shop.SellerId);
             return View(shop);
         }

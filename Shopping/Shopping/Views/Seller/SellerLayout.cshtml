@@ -9,7 +9,7 @@
     @Html.Partial("~/Views/Shared/fileupload_PartialRef.cshtml")
 
 </head>
-@model Shopping.Models.User
+@*@model Shopping.Models.User*@
 @{
     var ajaxOptions = new AjaxOptions
     {
@@ -60,19 +60,17 @@
                     </div>
                     <h3 class="btn">我的店铺</h3>
                     <div class="list-group">
-                        @Html.ActionLink("新建店铺", "Create", "Shops", new { area = "Area_Shop" }, new { @class = "list-group-item" })
-                        @Html.ActionLink("已有店铺", "Index", "Shops", new { area = "Area_Shop" }, new { @class = "list-group-item" })
-                        @Ajax.ActionLink("未读评论", "", "", new { area = "" }, ajaxOptions, new { @class = "list-group-item" })
-                    </div>
+                        @Html.ActionLink("新建店铺", "Create", "Shops", new { area = "Area_Shop", sellerid = int.Parse(@Session["userid"].ToString()) }, new { @class = "list-group-item" })
+                        @Html.ActionLink("已有店铺", "Index", "Shops", new { area = "Area_Shop", sellerid = int.Parse(@Session["userid"].ToString()) }, new { @class = "list-group-item" })
+                     </div>
                     <h3 class="btn">我的订单</h3>
                     <div class="list-group">
-                        @Html.ActionLink("未处理订单", "order_undone", "Orders", new { area = "Area_Order"}, new { @class = "list-group-item" })
-                        @Html.ActionLink("已处理订单", "order_done", "Orders", new { area = "Area_Order", id = 2, sellerid = int.Parse(@Session["userid"].ToString()) }, new { @class = "list-group-item" })
-                        @Html.ActionLink("已完成订单", "order_over", "Orders", new { area = "Area_Order", id = 3, sellerid = int.Parse(@Session["userid"].ToString()) }, new { @class = "list-group-item" })
-                    </div>
+                        @Html.ActionLink("未处理订单", "order_undone", "Orders", new { area = "Area_Order", sellerid = int.Parse(@Session["userid"].ToString()) }, new { @class = "list-group-item" })
+                        @Html.ActionLink("已处理订单", "order_done", "Orders", new { area = "Area_Order", sellerid = int.Parse(@Session["userid"].ToString()) }, new { @class = "list-group-item" })
+                        </div>
                     <h3 class="btn">我的收益</h3>
                     <div class="list-group">
-                        @Html.ActionLink("查看收益", "profit", "Orders", new { area = "Area_Order" }, new { @class = "list-group-item" })
+                        @Html.ActionLink("查看收益", "profit", "Orders", new { area = "Area_Order",id = 4, sellerid = int.Parse(@Session["userid"].ToString()) }, new { @class = "list-group-item" })
                     </div>
                 </div>
             </div>

@@ -4,16 +4,11 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>我的店铺</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.User.Password)
-        </th>
+       
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
@@ -40,14 +35,12 @@
 
 @foreach (var item in Model) {
 <tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.User.Password)
-    </td>
+   
     <td>
         @Html.DisplayFor(modelItem => item.Name)
     </td>
     <td>
-       <img src = "@Html.DisplayFor(modelItem => item.Image)"/>
+       <img src = "@Html.DisplayFor(modelItem => item.Image)" width="100" height="100"/>
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.Score)
@@ -65,15 +58,13 @@
         @Html.DisplayFor(modelItem => item.FansNumber)
     </td>
     <td>
-        @Html.ActionLink("编辑店铺", "Edit", new { id = item.Id }) |
-        @Html.ActionLink("店铺详情", "Details", new { id = item.Id }) |
-        @Html.ActionLink("删除店铺", "Delete", new { id = item.Id })
+        @Html.ActionLink("编辑店铺", "Edit", new { id = item.Id }, new { @class = "list-group-item" }) 
     </td>
     <td>
         @Html.ActionLink("新品上新", "Create", "Commodities", new { area = "Area_Commodity", id = item.Id }, new { @class = "list-group-item"  })
     </td>
     <td>
-        @Html.ActionLink("查看商品", "Index", "Commodities", new { area = "Area_Commodity", id = item.Id }, new { @class = "list-group-item" })
+        @Html.ActionLink("查看商品", "Index", "Commodities", new { area = "Area_Commodity", id = item.Id  }, new { @class = "list-group-item" })
     </td>
 </tr>
 }

@@ -32,5 +32,16 @@ namespace Shopping.Models
         public virtual User User { get; set; }
 
         public virtual User User1 { get; set; }
+
+        //add by zmx
+        public string imagepath { get; set; }
+
+        public double? price { get; set; }
+
+        public int? number { get; set; }
+
+        public string username { get; set; }
+
+        public string comname { get; set; }
     }
 }

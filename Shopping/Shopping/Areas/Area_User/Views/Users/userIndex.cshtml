@@ -1,0 +1,25 @@
+﻿@{
+    var ajaxop = new AjaxOptions
+    {
+        UpdateTargetId = "leftview",
+        OnFailure = "OnFailure"
+    };
+
+    var ajaxmainwindow = new AjaxOptions
+    {
+        UpdateTargetId = "mainWindow",
+        OnFailure = "OnFailure"
+    };
+}
+
+
+<div style="display:table-cell; vertical-align:middle; text-align:center; width:300px; height:500px;">
+    <div style="display:inline-block; width:100%;">
+        <ul style="list-style-type:none">
+            <li>
+                <h2>请先 @Ajax.ActionLink("登录", "Login", ajaxmainwindow)
+                或 @Ajax.ActionLink("注册", "Login", ajaxmainwindow)</h2>
+            </li>
+        </ul>
+    </div>
+</div>

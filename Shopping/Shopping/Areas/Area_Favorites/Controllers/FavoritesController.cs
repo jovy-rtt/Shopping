@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Shopping.CS_Init;
 using Shopping.Models;
 
 namespace Shopping.Areas.Area_Favorites.Controllers
@@ -17,6 +18,7 @@ namespace Shopping.Areas.Area_Favorites.Controllers
         // GET: Area_Favorites/Favorites
         public ActionResult Index()
         {
+            TempData["us"] = UserLoginstate.usstate;
             return Isajax("Index", db.Favorites.ToList());
         }
 

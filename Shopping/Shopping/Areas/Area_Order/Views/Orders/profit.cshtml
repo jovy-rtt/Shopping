@@ -6,37 +6,34 @@
 
 @model IEnumerable<Shopping.Models.Order>
 
-@{
+    @{
     ViewBag.Title = "Index";
-}
-<link href="~/css/public.css" rel="stylesheet" />
-<link href="~/css/myorder.css" rel="stylesheet" />
-<h2>我的订单</h2>
+    }
+    <link href="~/css/public.css" rel="stylesheet" />
+    <link href="~/css/myorder.css" rel="stylesheet" />
+    <h2>我的订单</h2>
+    <h3>目前收益为：@ViewBag.profit</h3>
+    @foreach (var item in Model)
+    { <div class="panel-heading">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="@Html.DisplayFor(modelItem => item.Commodity.Image)" width="150" height="150" />
 
-@foreach (var item in Model)
-{
+                <ul class="fr">
+                    <li>@Html.DisplayFor(modelItem => item.StartTime)</li>
+                    <li>@Html.DisplayFor(modelItem => item.User.Name)</li>
+                    <li>@Html.DisplayFor(modelItem => item.Logistics)</li>
+                    <li>
+                        @Html.DisplayFor(modelItem => item.Commodity.Name)
+                        @Html.DisplayFor(modelItem => item.Commodity.Price) RMB ×1
+                    </li>
+                </ul>
+            </div>
 
-    <div class="dkuang">
-        <p class="one"> @Html.DisplayFor(modelItem => item.State)</p>
-        <div class="word clearfix">
-            <ul class="fl clearfix">
-                <li>@Html.DisplayFor(modelItem => item.StartTime)</li>
-                <li>@Html.DisplayFor(modelItem => item.User.Name)</li>
-                <li>@Html.DisplayFor(modelItem => item.Logistics)</li>
-                <li>在线支付</li>
-            </ul>
-            <p class="fr">订单金额：<span>@Html.DisplayFor(modelItem => item.Commodity.Price)</span>元</p>
-        </div>
-        <div class="shohou clearfix">
-            <a href="#" class="fl"><img src="@Html.DisplayFor(modelItem => item.Commodity.Image)" /></a>
-            <p class="fl"><a href="#">@Html.DisplayFor(modelItem => item.Commodity.Name)</a><a href="#">@Html.DisplayFor(modelItem => item.Commodity.Price)×1</a></p>
-            <p class="fr">
-                @Html.ActionLink("订单详情", "Details", new { id = item.Id })
-            </p>
         </div>
     </div>
-}
+    <p class="fr">订单金额：<span>@Html.DisplayFor(modelItem => item.Commodity.Price)</span>元</p>
 
-<td>目前收益为：@ViewBag.profit</td>
+    }
 
 

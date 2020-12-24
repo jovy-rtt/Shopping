@@ -15,15 +15,13 @@
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-    <div class="form-group"> 
-         <label>上传商品主图</label>           
-        <input type="file" name="commodity_pic" />
-        <img alt="" width="150" height="180" id="thumbnail" src="data: image/jpg; base64," />
-        @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
-    </div>
+<div class="form-group ">
+    <label class = "control-label col-md-2" >上传商品主图</label>
+    <input type="file" name="commodity_pic" />
+</div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+        <label class="control-label col-md-2">商品名称</label>
         <div class="col-md-10">
             @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
@@ -31,15 +29,16 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Type, htmlAttributes: new { @class = "control-label col-md-2" })
+
+        <label class="control-label col-md-2">商品类别</label>
         <div class="col-md-10">
-            @Html.DropDownList("types", null, htmlAttributes: new { @class = "form-control" })
+            @Html.DropDownListFor(model => model.Type, ViewBag.set as IEnumerable<SelectListItem>, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
+        <label class="control-label col-md-2">商品单价</label>
         <div class="col-md-10">
             @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
@@ -47,7 +46,7 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Number, htmlAttributes: new { @class = "control-label col-md-2" })
+        <label class="control-label col-md-2">库存</label>
         <div class="col-md-10">
             @Html.EditorFor(model => model.Number, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Number, "", new { @class = "text-danger" })
@@ -55,7 +54,8 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Introduction, htmlAttributes: new { @class = "control-label col-md-2" })
+
+        <label class="control-label col-md-2">商品详情</label>
         <div class="col-md-10">
             @Html.TextAreaFor(model => model.Introduction, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Introduction, "", new { @class = "text-danger" })
@@ -64,15 +64,12 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
+            <input type="submit" value="上新" class="btn btn-default" />
         </div>
     </div>
 </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 
 <script>
@@ -88,22 +85,3 @@
 
 </script>
 
-
-<script>
-    function ViewTitleInfor(MaterialReviewTypeID) {
-        //清空图片框中的图片
-        $("#thumbnail").attr("src", "");
-        $.ajaxSettings.async = false;
-    //选择照片：用FileReader对象来读取本地数据，并且将数据结果赋值给image的src、
-    var imgReaderC = new FileReader();
-    imgReaderC.onload = function (evt) {
-        $("#thumbnail").attr('src', evt.target.result);
-    };
-        $("#Uthumbnail").change(function () {
-            var imgfFile = $("#thumbnail").prop('files')[0];
-        //加载image标签中
-        //readAsDataURL()方法可以获取API异步读取的文件数据，另存为数据URL;将该URL绑定到img标签的src属性上，就可以实现图片的上传预览效果了。
-        imgReaderC.readAsDataURL(imgfFile);
-    });
-        }
-</script>

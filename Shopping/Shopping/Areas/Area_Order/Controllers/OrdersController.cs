@@ -14,6 +14,7 @@ namespace Shopping.Areas.Area_Order.Controllers
     {
         private PeachMd db = new PeachMd();
 
+        #region 商家
         // GET: Area_Order/Orders
         public ActionResult Index()
         {
@@ -24,32 +25,33 @@ namespace Shopping.Areas.Area_Order.Controllers
         // GET: Area_Order/Orders/Details/5
 
         //已处理订单
-        public ActionResult order_done()
+        public ActionResult order_done(int sellerid)
         {
-            var order = db.Order.Include(o => o.Commodity).Include(o => o.User).Include(o => o.User1).Where(o=>o.State == "已完成");
-             
-            return View(order.ToList());
+            //var order = db.Order.Include(o => o.Commodity).Include(o => o.User).Include(o => o.User1).Where(o=>o.State == "已完成");
+            var order_new = db.Order.Include(o => o.Commodity).Include(o => o.User).Include(o => o.User1).Where(o => o.State == "已完成").Where(o=>o.SellerID== sellerid);
+            return View(order_new.ToList());
         }
 
         //未处理订单
-        public ActionResult order_undone()
+        public ActionResult order_undone(int sellerid)
         {
-            var order = db.Order.Include(o => o.Commodity).Include(o => o.User).Include(o => o.User1).Where(o => o.State != "已完成");
+            var order = db.Order.Include(o => o.Commodity).Include(o => o.User).Include(o => o.User1).Where(o => o.State != "已完成").Where(o => o.SellerID == sellerid);
             return View(order.ToList());
         }
 
         //订单收益
-        public ActionResult profit()
+        public ActionResult profit(int sellerid)
         {
             double profit = 0.0;
-            var order = db.Order.Include(o => o.Commodity).Include(o => o.User).Include(o => o.User1).Where(o => o.State == "已完成").ToList();
+
+            var order = db.Order.Include(o => o.Commodity).Include(o => o.User).Include(o => o.User1).Where(o => o.State == "已完成").Where(o => o.SellerID == sellerid).ToList();
             foreach (var v in order)
             {
                 profit += v.Commodity.Price;
             }
             ViewBag.profit = profit;
-            var all_order = db.Order.Include(o => o.Commodity).Include(o => o.User).Include(o => o.User1);
-            return View(all_order.ToList());
+            
+            return View(order.ToList());
         }
 
 
@@ -167,5 +169,31 @@ namespace Shopping.Areas.Area_Order.Controllers
             }
             base.Dispose(disposing);
         }
+
+        #endregion
+
+        #region 用户订单操作
+        public ActionResult userindex()
+        {
+            return Isajax("userindex",db.Order.ToList());
+        }
+
+
+
+
+        public ActionResult Isajax(string name)
+        {
+            if (Request.IsAjaxRequest())
+                return PartialView(name);
+            return View(name);
+        }
+        //重载Isajax方法，自动放回视图
+        public ActionResult Isajax(string name, object model)
+        {
+            if (Request.IsAjaxRequest())
+                return PartialView(name, model);
+            return View(name, model);
+        }
+        #endregion
     }
 }

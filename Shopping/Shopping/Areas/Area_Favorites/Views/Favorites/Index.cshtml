@@ -4,65 +4,78 @@
     {
         UpdateTargetId = "mainWindow",
         OnFailure = "OnFailure"
-    }; 
- }
-<hr />
-<div class="row text-center">
-    <div class="col-md-3"><h3 >购物车</h3></div>
-    <div class="col-md-6"><img src="~/Images/Shoppingcart/cartTop01.png" /></div>
-</div>
+    };
 
-
-<table class="table">
-    <tr>
-        <th class="text-center">商品</th>
-        <th class="text-center">单价</th>
-        <th class="text-center">数量</th>
-        <th class="text-center">小计</th>
-        <th class="text-center">操作</th>
-    </tr>
-
-
-    @foreach (var item in Model)
+    var ajaxop = new AjaxOptions
     {
-        <tr class="text-center">
-            <td>
-                <div class="row" style="display: flex; /*Flex布局*/ display: -webkit-flex; /* Safari */ align-items: center; /*指定垂直居中*/">
-                    <input type="checkbox" class="col-md-1" />
-                    <img class="col-md-3" src=@item.imagepath>
-                    <div class="col-md-3">
-                        <p>@Html.DisplayFor(modelItem => item.name)</p>
-                        <p>类别：@Html.DisplayFor(modelItem => item.type)</p>
-                    </div>
-                </div>
-            </td>
-
-            <td class   ="price" style="padding-top:50px">￥@Html.DisplayFor(modelItem => item.price)</td>
-
-            <td class="number" style="padding-top:50px">
-                <img class="sub" src="~/Images/Shoppingcart/sub.jpg" />
-                <span>1</span>
-                <img class="add" src="~/Images/Shoppingcart/add.jpg" />
-            </td>
-
-            <td class="Subtotal" style="padding-top:50px">￥@Html.DisplayFor(modelItem => item.price)</td>
-
-            <td style="padding-top:50px">@Html.ActionLink("Delete", "Delete", new { id = item.Id })</td>
-        </tr>
-    }
-</table>
+        UpdateTargetId = "leftview",
+        OnFailure = "OnFailure"
+    };
+}
 <hr />
-<div class="row">
-    <div class="col-md-2">
-        <input class="checkall" type="checkbox" />
-        <label class="">全选</label>
+@if (TempData["us"] != null || 1==1)
+{
+    <div class="row text-center">
+        <div class="col-md-3"><h3>购物车</h3></div>
+        <div class="col-md-6"><img src="~/Images/Shoppingcart/cartTop01.png" /></div>
     </div>
-    @using (Ajax.BeginForm("Pay","Customer",new {area="" },ajaxmainwindow))
-    {
-        <button class="mybtn btn-default active col-md-2 pull-right" style="margin-right:20px">结算</button>
-        @Html.AntiForgeryToken()
-    }
-    <p class="col-md-2 pull-right">合计<span id="money">￥0.00</span></p>
-    <p class="col-md-2 pull-right">共<span id="allnumber">0</span>件商品</p>
-</div>
-<script src="~/Scripts/cart.js"></script>
+
+
+    <table class="table">
+        <tr>
+            <th class="text-center">商品</th>
+            <th class="text-center">单价</th>
+            <th class="text-center">数量</th>
+            <th class="text-center">小计</th>
+            <th class="text-center">操作</th>
+        </tr>
+
+
+        @foreach (var item in Model)
+        {
+            <tr class="text-center">
+                <td>
+                    <div class="row" style="display: flex; /*Flex布局*/ display: -webkit-flex; /* Safari */ align-items: center; /*指定垂直居中*/">
+                        <input type="checkbox" class="col-md-1" />
+                        <img class="col-md-3" src=@item.imagepath>
+                        <div class="col-md-3">
+                            <p>@Html.DisplayFor(modelItem => item.name)</p>
+                            <p>类别：@Html.DisplayFor(modelItem => item.type)</p>
+                        </div>
+                    </div>
+                </td>
+
+                <td class="price" style="padding-top:50px">￥@Html.DisplayFor(modelItem => item.price)</td>
+
+                <td class="number" style="padding-top:50px">
+                    <img class="sub" src="~/Images/Shoppingcart/sub.jpg" />
+                    <span>@item.number</span>
+                    <img class="add" src="~/Images/Shoppingcart/add.jpg" />
+                </td>
+
+                <td class="Subtotal" style="padding-top:50px">￥@Html.DisplayFor(modelItem => item.price)</td>
+
+                <td style="padding-top:50px">@Html.ActionLink("Delete", "Delete", new { id = item.Id })</td>
+            </tr>
+        }
+    </table>
+    <hr />
+    <div class="row">
+        <div class="col-md-2">
+            <input class="checkall" type="checkbox" />
+            <label class="">全选</label>
+        </div>
+        @using (Ajax.BeginForm("Pay", "Customer", new { area = ""}, ajaxmainwindow))
+        {
+            <button class="mybtn btn-default active col-md-2 pull-right" style="margin-right:20px">结算</button>
+            @Html.AntiForgeryToken()
+        }
+        <p class="col-md-2 pull-right">合计<span id="money">￥0.00</span></p>
+        <p class="col-md-2 pull-right">共<span id="allnumber">0</span>件商品</p>
+    </div>
+    <script src="~/Scripts/cart.js"></script>
+}
+else
+{
+    <h2>请先 @Ajax.ActionLink("登录", "Login", "Users", new { area = "Area_User" }, ajaxmainwindow, new { @class = "" })，再点击购物车</h2>
+}
