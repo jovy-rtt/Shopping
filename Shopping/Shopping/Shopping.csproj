@@ -260,6 +260,15 @@
     <Content Include="Images\UserViewCommodity\item2.png" />
     <Content Include="Images\UserViewCommodity\item3.png" />
     <Content Include="Images\UserViewCommodity\item4.png" />
+    <Content Include="Images\UserViewCommodity\proDet.jpg" />
+    <Content Include="Images\UserViewCommodity\proDet01.jpg" />
+    <Content Include="Images\UserViewCommodity\proDet01_big.jpg" />
+    <Content Include="Images\UserViewCommodity\proDet02.jpg" />
+    <Content Include="Images\UserViewCommodity\proDet02_big.jpg" />
+    <Content Include="Images\UserViewCommodity\proDet03.jpg" />
+    <Content Include="Images\UserViewCommodity\proDet03_big.jpg" />
+    <Content Include="Images\UserViewCommodity\proDet04.jpg" />
+    <Content Include="Images\UserViewCommodity\proDet04_big.jpg" />
     <Content Include="Images\UserViewCommodity\search.png" />
     <Content Include="Images\UserViewCommodity\shoes1.png" />
     <Content Include="Images\UserViewCommodity\shoes2.png" />
@@ -354,6 +363,7 @@
     <Content Include="Areas\Area_Commodity\Views\Commodities\CommodityDetails.cshtml" />
     <Content Include="Areas\Area_Commodity\Views\Commodities\CommodityInfo.cshtml" />
     <Content Include="Areas\Area_Commodity\Views\Commodities\SellerInfo.cshtml" />
+    <Content Include="Areas\Area_Commodity\Views\Commodities\CommodityAd.cshtml" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.5.1.js" />
     <Content Include="Scripts\jquery-3.5.1.min.js" />
