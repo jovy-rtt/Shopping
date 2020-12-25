@@ -80,17 +80,20 @@ namespace Shopping.CS_Init
              * gz
              * 2020/12/24
              * 修改了商品初始化类
+             * oy
+             * 2020/12/24
+             * 修改了商品所属的店铺shopid
              */
             var com =new List<Commodity>
             { 
-                new Commodity{Name="男士外套",Type="男装",Price=53,Number=100,Introduction="这是一个物品。",Image="/Images/UserViewCommodity/cloth1.png"},
-                new Commodity{Name="卫衣",Type="男装",Price=89,Number=100,Introduction="这是一个物品。",Image="/Images/UserViewCommodity/cloth2.png"},
-                new Commodity{Name="秋季长袖",Type="女装",Price=213,Number=100,Introduction="这是一个物品。",Image="/Images/UserViewCommodity/cloth3.png"},
-                new Commodity{Name="香奈儿条纹开衫",Type="女装",Price=26,Number=100,Introduction="这是一个物品。",Image="/Images/UserViewCommodity/cloth4.png"},
-                new Commodity{Name="绣花衬衫碎花长袖",Type="女装",Price=53,Number=100,Introduction="这是一个物品。",Image="/Images/UserViewCommodity/cloth5.png"},
-                new Commodity{Name="黑色皮鞋",Type="男鞋",Price=89,Number=100,Introduction="这是一个物品。",Image="/Images/UserViewCommodity/shoes1.png"},
-                new Commodity{Name="黑色高跟",Type="女鞋",Price=213,Number=100,Introduction="这是一个物品。",Image="/Images/UserViewCommodity/shoes2.png"},
-                new Commodity{Name="黑色手表",Type="手表",Price=26,Number=100,Introduction="这是一个物品。",Image="/Images/UserViewCommodity/watch1.jpg"}
+                new Commodity{Name="男士外套",Type="男装",Price=53,Number=100,Introduction="这是一个物品。",Image="/Images/UserViewCommodity/cloth1.png",shopID=1},
+                new Commodity{Name="卫衣",Type="男装",Price=89,Number=100,Introduction="这是一个物品。",Image="/Images/UserViewCommodity/cloth2.png",shopID=2},
+                new Commodity{Name="秋季长袖",Type="女装",Price=213,Number=100,Introduction="这是一个物品。",Image="/Images/UserViewCommodity/cloth3.png",shopID=3},
+                new Commodity{Name="香奈儿条纹开衫",Type="女装",Price=26,Number=100,Introduction="这是一个物品。",Image="/Images/UserViewCommodity/cloth4.png",shopID=1},
+                new Commodity{Name="绣花衬衫碎花长袖",Type="女装",Price=53,Number=100,Introduction="这是一个物品。",Image="/Images/UserViewCommodity/cloth5.png",shopID=2},
+                new Commodity{Name="黑色皮鞋",Type="男鞋",Price=89,Number=100,Introduction="这是一个物品。",Image="/Images/UserViewCommodity/shoes1.png",shopID=3},
+                new Commodity{Name="黑色高跟",Type="女鞋",Price=213,Number=100,Introduction="这是一个物品。",Image="/Images/UserViewCommodity/shoes2.png",shopID=7},
+                new Commodity{Name="黑色手表",Type="手表",Price=26,Number=100,Introduction="这是一个物品。",Image="/Images/UserViewCommodity/watch1.jpg",shopID=8}
             };
             ////原初始化
             //var com = new List<Commodity>

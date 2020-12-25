@@ -3,31 +3,32 @@
 @{
     ViewBag.Title = "Index";
 }
-
+<link href="~/css/public.css" rel="stylesheet" />
+<link href="~/css/myorder.css" rel="stylesheet" />
 <h2>商品列表</h2>
 
-    @foreach (var item in Model)
-    {
-        <div class="panel-heading">
-            <div class="row">
-                <div class="col-md-6">
-                    <img src="@Html.DisplayFor(modelItem => item.Image)" width="100" height="100" />
+@foreach (var item in Model)
+{
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="@Html.DisplayFor(modelItem => item.Image)" width="100" height="100" />
 
-                    <ul class="fr">
-                        <li>@Html.DisplayFor(modelItem => item.Name)</li>
-                        <li>@Html.DisplayFor(modelItem => item.Type)</li>
-                        <li>@Html.DisplayFor(modelItem => item.Number)</li>
-                        <li>
-                            @Html.DisplayFor(modelItem => item.Price)RMB ×1
-                        </li>
-                        <li>
-                            @Html.Raw(item.Introduction) 
-                        </li>
-                    </ul>
-                </div>
-
+                <ul class="fr">
+                    <li>商品名：@Html.DisplayFor(modelItem => item.Name)</li>
+                    <li>类别：@Html.DisplayFor(modelItem => item.Type)</li>
+                    <li>库存：@Html.DisplayFor(modelItem => item.Number)</li>
+                    <li>
+                        单价：@Html.DisplayFor(modelItem => item.Price)RMB 
+                    </li>
+                    <li>
+                        @Html.Raw(item.Introduction)
+                    </li>
+                </ul>
             </div>
-        </div>
 
-    }
+        </div>
+    </div>
+
+}
 

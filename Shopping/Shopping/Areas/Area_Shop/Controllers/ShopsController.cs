@@ -13,13 +13,19 @@ namespace Shopping.Areas.Area_Shop.Controllers
     public class ShopsController : Controller
     {
         private PeachMd db = new PeachMd();
-
-        //GET: Area_Shop/Shops
-        public ActionResult Index(int sellerid)
+        /*
+         *oy
+         *2020/12/20
+         *通过传进来的商家id返回商家的店铺
+         */
+        public ActionResult Index(int? sellerid)
         {
-           
-            var shop = db.Shop.Include(s => s.User).Where(s=>s.SellerId==sellerid);
-            return View(shop.ToList());
+            int myid =  sellerid == null ? 7 : (int)sellerid;
+            var q = from t in db.Shop
+                    where t.SellerId == myid
+                    select t;
+
+            return View(q.ToList());
         }
 
 
@@ -45,7 +51,11 @@ namespace Shopping.Areas.Area_Shop.Controllers
             return View();
         }
 
-       
+        /*
+         *oy
+         *2020/12/20
+         *上新
+         */
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name,Image,SellerId,Score,Address,CreatTime,LicenseId,FansNumber")] Shop shop,int sellerid)
@@ -66,18 +76,19 @@ namespace Shopping.Areas.Area_Shop.Controllers
             shop.Image = FilePath;
             ViewBag.path = FilePath;
             shop.SellerId = sellerid;
+            var myid = sellerid;
             shop.Id = 9;
-            //shop.User = db.User;
-            if (ModelState.IsValid)
+            shop.User =  db.User.Find(sellerid);
+            if (!ModelState.IsValid)
             {
                 db.Shop.Add(shop);
                 db.SaveChanges();
                 
-                return RedirectToAction("Index");
-            }
-            ViewBag.SellerId = new SelectList(db.User, "Id", "Password", shop.SellerId);
-            return View(shop);
+                return RedirectToAction("Index", "Shops" ,new { sellerid = myid });
         }
+        ViewBag.SellerId = new SelectList(db.User, "Id", "Password", shop.SellerId);
+            return View(shop);
+    }
 
         // GET: Area_Shop/Shops/Edit/5
         public ActionResult Edit(int? id)

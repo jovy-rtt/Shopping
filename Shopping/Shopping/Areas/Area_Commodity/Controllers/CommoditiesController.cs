@@ -123,11 +123,11 @@ namespace Shopping.Areas.Area_Commodity.Controllers
         #region 自动生成的原始代码
         private PeachMd db = new PeachMd();
 
-        // GET: Area_Commodity/Commodities
-        //public ActionResult Index()
-        //{
-        //    return View(db.Commodity.ToList());
-        //}
+        /*
+        *oy
+        *2020/12/20
+        *通过传进来的商店id返回商店的商品
+        */
 
         public ActionResult Index(int? id)
         {
@@ -160,10 +160,14 @@ namespace Shopping.Areas.Area_Commodity.Controllers
         }
 
 
-      
 
-// GET: Area_Commodity/Commodities/Create
-public ActionResult Create(int id)
+
+        /*
+         *oy
+         *2020/12/20
+         *下拉框，上新到对应商铺
+         */
+        public ActionResult Create(int id)
         {
             List<SelectListItem> items = new List<SelectListItem>();
             items.Add(new SelectListItem { Text = "男装", Value = "1" });
@@ -173,6 +177,7 @@ public ActionResult Create(int id)
 
             return View();
         }
+
 
         [HttpPost]
         [ValidateInput(false)]
@@ -199,11 +204,13 @@ public ActionResult Create(int id)
             }
             commodity.Image = FilePath;
             commodity.shopID = id;
-            if (ModelState.IsValid)
+            var myid = id;
+            if (!ModelState.IsValid)
             {
                 db.Commodity.Add(commodity);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+
+                return RedirectToAction("Index","Commodities",new { id = myid });
             }
 
             return View(commodity);
