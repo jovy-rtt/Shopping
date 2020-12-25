@@ -1,4 +1,5 @@
-﻿
+﻿@model IEnumerable<Shopping.Models.Shop>
+
 @{
     var ajaxOptions = new AjaxOptions
     {
@@ -16,7 +17,7 @@
             </div>
             <div class="col-md-4"></div>
             <div class="col-md-4">
-                <input style="border-bottom:1px solid #808080; width:100%" type="text" name="search" value="@ViewBag.searchSeller" class="form-control" placeholder="全部">
+                <input style="border-bottom:1px solid #808080; width:100%" type="text" name="searchSeller" value="@ViewBag.searchSeller" class="form-control" placeholder="全部">
             </div>
             <div class="col-md-1">
                 <button type="submit" style="background:none; border:none; width:100%"><img src="~/Images/UserViewCommodity/search.png"></button>
@@ -26,3 +27,16 @@
 }
 <hr>
 
+<table class="table">
+    <tbody>
+        @foreach(var m in Model)
+        {
+            <tr>
+                <td>@Ajax.ActionLink(m.Name.ToString(), "CommodityInfo", "Commodities", new { area = "Area_Commodity" }, ajaxOptions)</td>
+                <td>评分： @Html.DisplayFor(model => m.Score)</td>
+                <td>开店时间： @Html.DisplayFor(model => m.CreatTime)</td>
+                <td>粉丝数：@Html.DisplayFor(model => m.FansNumber)</td>
+            </tr>
+        }
+    </tbody>
+</table>

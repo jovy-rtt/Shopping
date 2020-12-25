@@ -1,2 +1,25 @@
 ﻿@model IEnumerable<Shopping.Models.Commodity>
-<div>test</div>
+
+@{
+    var ajaxOptions = new AjaxOptions
+    {
+        LoadingElementId = "loading",
+        UpdateTargetId = "mainWindow",
+        OnFailure = "OnFailure"
+    };
+}
+
+<hr>
+<span>同类商品</span>
+<hr>
+<div>
+    @foreach (var m in Model)
+    {
+        <div class="text-center" style="height:320px">
+            <img alt=@m.Type src=@m.Image style="width:80%">
+            <p>@Ajax.ActionLink(m.Name.ToString(), "CommodityDetails", new { id = m.Id }, ajaxOptions)</p>
+            <p>@Html.DisplayFor(model => m.Introduction)</p>
+            <p>￥ @Html.DisplayFor(model => m.Price)</p>
+        </div>
+    }
+</div>

@@ -79,7 +79,22 @@ namespace Shopping.Areas.Area_Commodity.Controllers
             }
             return PartialView(commodity);
         }
-        
+
+        public ActionResult CommodityAd(string stype)
+        {
+            ViewBag.search = stype;
+            var t = dbView.Commodity.ToList();
+            if (string.IsNullOrEmpty(stype) == false)
+            {
+                t = t.Where(m => m.Type.Contains(stype)).ToList();
+            }
+
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView(t);
+            }
+            return PartialView(t);
+        }
         /// <summary>
         /// 作者：             gz
         /// 创建时间：         2020/12/24
@@ -91,7 +106,17 @@ namespace Shopping.Areas.Area_Commodity.Controllers
         public ActionResult SellerInfo(string searchSeller)
         {
             ViewBag.search = searchSeller;
-            return PartialView();
+            var t = dbView.Shop.ToList();
+            if (string.IsNullOrEmpty(searchSeller) == false)
+            {
+                t = t.Where(m => m.Name.Contains(searchSeller)).ToList();
+            }
+
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView(t);
+            }
+            return PartialView(t);
         }
         #endregion
 
@@ -138,7 +163,7 @@ namespace Shopping.Areas.Area_Commodity.Controllers
       
 
 // GET: Area_Commodity/Commodities/Create
-public ActionResult Create()
+public ActionResult Create(int id)
         {
             List<SelectListItem> items = new List<SelectListItem>();
             items.Add(new SelectListItem { Text = "男装", Value = "1" });
@@ -152,7 +177,7 @@ public ActionResult Create()
         [HttpPost]
         [ValidateInput(false)]
         //[ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Type,Image,Price,Number,Introduction")] Commodity commodity)
+        public ActionResult Create([Bind(Include = "Id,Name,Type,Image,Price,Number,Introduction")] Commodity commodity, int id)
         {
             List<SelectListItem> items = new List<SelectListItem>();
             items.Add(new SelectListItem { Text = "男装", Value = "1" });
@@ -168,7 +193,12 @@ public ActionResult Create()
                 FilePath = DirPath + f.FileName;//组成要保存到数据库中的路径
                 f.SaveAs(FilePath);//将图片保存到本地image相应文件夹下
             }
+            else
+            {
+                FilePath = "/Images/commodity_pic/大衣.jpg";
+            }
             commodity.Image = FilePath;
+            commodity.shopID = id;
             if (ModelState.IsValid)
             {
                 db.Commodity.Add(commodity);
