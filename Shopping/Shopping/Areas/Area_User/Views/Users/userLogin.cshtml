@@ -1,14 +1,19 @@
 ﻿@{
-    var ajaxop = new AjaxOptions { UpdateTargetId = "mainWindow", HttpMethod = "Post", Url = Url.Action("userLogin", "Users",new { area="Area_User"}) };
+    var ajaxop = new AjaxOptions { UpdateTargetId = "mainWindow", HttpMethod = "Post", Url = Url.Action("userLogin", "Users", new { area = "Area_User" }) };
 }
 @* 登录时，要采用局部刷新的形式 *@
 <style>
-        .form-group{
-            margin-left:50px;
-            width:600px;
-        }
+    .form-group {
+        margin-left: 50px;
+        width: 600px;
+    }
 </style>
-<div class="center-block" style="margin-top:20%;border:2px red solid;width:50%;">
+    <div class="center-block" style="width:50%;margin-top:20%;background:#000000">
+        <img id="img1" class="myleft" src="~/Images/left0.jpg" style="width:100px;height:100px;" />
+        <label class="text-center" style="width:250px;color:white;font-size:25px">Peach 购物网站</label>
+        <img id="img2" class="myright pull-right" src="~/Images/right0.jpg" style="width:100px;height:100px;" />
+    </div>
+<div class="center-block" style="border:2px black solid;width:50%;">
     @using (Ajax.BeginForm(ajaxop))
     {
         <div class="form-horizontal" style="margin-top:20px">
@@ -22,7 +27,7 @@
             <div class="form-group">
                 <label class="col-md-3 control-label">密码：</label>
                 <div class="col-md-6">
-                    <input class="form-control" name="Password" type="password" placeholder="密码" />
+                    <input class="form-control" id="passwd" name="Password" type="password" placeholder="密码" />
                 </div>
             </div>
 
@@ -43,7 +48,7 @@
                 <button style="width:20%;background:none;margin-right:15%" class="btn pull-right" type="submit" name="btn" value="忘记密码">忘记密码</button>
             </div>
         </div>
-        <input type="text" name="mycode" class="mycode" hidden style="display:none"/>
+        <input type="text" name="mycode" class="mycode" hidden style="display:none" />
     }
 
 </div>
@@ -54,39 +59,48 @@
 
 <script type="text/javascript">
 
-	var SEPARATION = 100, AMOUNTX = 60, AMOUNTY = 40;
-	var container;
-	var camera, scene, renderer;
-	var particles, particle, count = 0;
-	var mouseX = 0, mouseY = 0;
-	var windowHalfX = window.innerWidth / 2;
-	var windowHalfY = window.innerHeight / 2;
+    $('#passwd').focus(function () {
+        $("#img1").attr("src", "/Images/left1.jpg");
+        $("#img2").attr("src", "/Images/right1.jpg");
+    }).blur(function () {
+        $("#img1").attr("src", "/Images/left0.jpg");
+        $("#img2").attr("src", "/Images/right0.jpg");
+    });
 
-	$(function () {
-		change();	//验证码
-	});
 
-	//验证码
-	function change() {
-		code=$("#code");
-		// 验证码组成库
-		var arrays = new Array(
-				'1','2','3','4','5','6','7','8','9','0',
-				'a','b','c','d','e','f','g','h','i','j',
-				'k','l','m','n','o','p','q','r','s','t',
-				'u','v','w','x','y','z',
-				'A','B','C','D','E','F','G','H','I','J',
-				'K','L','M','N','O','P','Q','R','S','T',
-				'U','V','W','X','Y','Z'
-		);
-		codes='';// 重新初始化验证码
-		for(var i = 0; i<4; i++){
-			// 随机获取一个数组的下标
-			var r = parseInt(Math.random()*arrays.length);
-			codes += arrays[r];
-		}
-		// 验证码添加到input里
+    var SEPARATION = 100, AMOUNTX = 60, AMOUNTY = 40;
+    var container;
+    var camera, scene, renderer;
+    var particles, particle, count = 0;
+    var mouseX = 0, mouseY = 0;
+    var windowHalfX = window.innerWidth / 2;
+    var windowHalfY = window.innerHeight / 2;
+
+    $(function () {
+        change();	//验证码
+    });
+
+    //验证码
+    function change() {
+        code = $("#code");
+        // 验证码组成库
+        var arrays = new Array(
+            '1', '2', '3', '4', '5', '6', '7', '8', '9', '0',
+            'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
+            'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
+            'u', 'v', 'w', 'x', 'y', 'z',
+            'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
+            'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
+            'U', 'V', 'W', 'X', 'Y', 'Z'
+        );
+        codes = '';// 重新初始化验证码
+        for (var i = 0; i < 4; i++) {
+            // 随机获取一个数组的下标
+            var r = parseInt(Math.random() * arrays.length);
+            codes += arrays[r];
+        }
+        // 验证码添加到input里
         code.val(codes);
         $(".mycode").val(codes);
-	}
+    }
 </script>
