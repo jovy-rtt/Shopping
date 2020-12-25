@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Shopping.CS_Init;
 using Shopping.Models;
 
 namespace Shopping.Areas.Area_Order.Controllers
@@ -175,6 +176,7 @@ namespace Shopping.Areas.Area_Order.Controllers
         #region 用户订单操作
         public ActionResult userindex()
         {
+            TempData["us"] = UserLoginstate.usstate;
             return Isajax("userindex",db.Order.ToList());
         }
 

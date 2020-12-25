@@ -105,10 +105,10 @@ namespace Shopping.Areas.Area_User.Controllers
             var inputcode = Request["inputcode"];
 
             //验证码
-            //if (code == inputcode)
-            //    return Isajax("userLogin");
+            if (code != inputcode)
+                return Isajax("userLogin");
 
-            if(tt=="注册")
+            if (tt=="注册")
             {
                 return Isajax("userCreate");
             }
