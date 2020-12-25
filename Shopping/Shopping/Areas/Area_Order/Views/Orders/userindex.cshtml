@@ -37,10 +37,18 @@
         <span>待收货</span>
         <span>已关闭</span>
         <div class="col-md-5 pull-right">
-            <input placeholder="请输入商品名称、订单号" type="text" />
-            <a href="#" class="btn btn-info ">
+            @using (Ajax.BeginForm(new AjaxOptions { UpdateTargetId = "mainWindow" }))
+            {
+
+                       <input placeholder="请输入商品名称、订单号" type="text"  name="search" value="@ViewBag.search" class="form-control"/>
+                       <button href="#" class="btn btn-info " type="submit">
+                       <span class="glyphicon glyphicon-search"></span> Search
+                       </button>
+            }
+            @*<input placeholder="请输入商品名称、订单号" type="text" />
+            <button href="#" class="btn btn-info ">
                 <span class="glyphicon glyphicon-search"></span> Search
-            </a>
+            </button>*@
         </div>
     </div>
 
@@ -75,7 +83,7 @@
                 </div>
             </div>
         </div>
-    }
+        }
 </div>
 
 

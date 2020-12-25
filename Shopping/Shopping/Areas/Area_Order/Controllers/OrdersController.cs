@@ -173,12 +173,27 @@ namespace Shopping.Areas.Area_Order.Controllers
         #endregion
 
         #region 用户订单操作
-        public ActionResult userindex()
+        //public ActionResult userindex()
+        //{
+        //    return Isajax("userindex",db.Order.ToList());
+        //}
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        public ActionResult userindex(string search)
         {
-            return Isajax("userindex",db.Order.ToList());
+            var t = db.Order.ToList();
+            if (string.IsNullOrEmpty(search) == false)
+            {
+                t = t.Where(m => m.comname.Contains(search)).ToList();
+            }
+
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView(t);
+            }
+            return PartialView(t);
         }
-
-
 
 
         public ActionResult Isajax(string name)
