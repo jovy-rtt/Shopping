@@ -104,18 +104,21 @@ namespace Shopping.Areas.Area_User.Controllers
             var code = Request["mycode"];
             var inputcode = Request["inputcode"];
 
-            //验证码
-            //if (code == inputcode)
-            //    return Isajax("userLogin");
 
-            if(tt=="注册")
+            if (tt == "注册")
             {
                 return Isajax("userCreate");
             }
-            if(tt=="忘记密码")
+            if (tt == "忘记密码")
             {
                 return Isajax("userForget");
             }
+
+            //验证码
+            if (code != inputcode)
+                return Isajax("userLogin");
+
+            
 
             int account;
             //尝试获取账号信息，账号信息是int类型

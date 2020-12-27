@@ -25,11 +25,13 @@
         <div class="title">
             <h4>[@Html.DisplayFor(model => model.Type)]@Html.DisplayFor(model => model.Name)</h4><br>
             <p>@Html.DisplayFor(model => model.Introduction)</p><br>
-            <span style="color:red; font-size:18px">￥@Html.DisplayFor(model => model.Price)</span><br>
+            <p>￥<span style="color:red; font-size:18px" id="myprice">@Html.DisplayFor(model => model.Price)</span></p>
+            <br>
+            <p>小计￥<span id="mysum">@Html.DisplayFor(model => model.Price)</span></p>
         </div>
         <hr>
 
-        <p>数量&nbsp;&nbsp;库存<span style="color:red">@Html.DisplayFor(model => model.Number)</span>件</p>
+        <p>数量&nbsp;&nbsp;库存<span id="mynum" style="color:red">@Html.DisplayFor(model => model.Number)</span>件</p>
         <div class="num clearfix">
             <img class="sub" src="~/Images/Shoppingcart/sub.jpg" />
             <span id="numspan" contenteditable="true">1</span>
@@ -77,6 +79,13 @@
             var c = parseInt($(this).siblings("#numspan").text());
             c++;
             $(this).siblings("#numspan").text(c);
+            //tt是数量
+            var tt = parseInt($("#numspan").text());
+            //ttt是单价
+            var ttt = parseInt($("#myprice").text());
+
+            //yy是综合
+            $("#mysum").text(tt * ttt);
         });
 
         $(".sub").click(function () {
@@ -85,6 +94,13 @@
                 c--;
                 $(this).siblings("#numspan").text(c);
             }
+
+            var tt = parseInt($("#numspan").text());
+            //ttt是单价
+            var ttt = parseInt($("#myprice").text());
+
+            //yy是综合
+            $("#mysum").text(tt * ttt);
         });
 
     });

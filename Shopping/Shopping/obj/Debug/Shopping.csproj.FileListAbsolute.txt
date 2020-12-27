@@ -229,7 +229,6 @@ C:\Users\24369\source\repos\jovy-rtt\Shopping\Shopping\Shopping\bin\EntityFramew
 C:\Users\24369\source\repos\jovy-rtt\Shopping\Shopping\Shopping\bin\EntityFramework.SqlServer.xml
 C:\Users\24369\source\repos\jovy-rtt\Shopping\Shopping\Shopping\bin\zh-Hans\EntityFramework.resources.dll
 C:\Users\24369\source\repos\jovy-rtt\Shopping\Shopping\Shopping\bin\zh-Hans\EntityFramework.SqlServer.resources.dll
-F:\asus\桌面\ASP.NET\大作业\Shopping\Shopping\Shopping\obj\Debug\Shopping.csprojAssemblyReference.cache
 D:\学校\大三\ASP.NET\大作业\Shopping\Shopping\Shopping\bin\Shopping.dll.config
 D:\学校\大三\ASP.NET\大作业\Shopping\Shopping\Shopping\bin\Shopping.dll
 D:\学校\大三\ASP.NET\大作业\Shopping\Shopping\Shopping\bin\Shopping.pdb
@@ -306,3 +305,4 @@ D:\学校\大三\ASP.NET\大作业\Shopping\Shopping\Shopping\obj\Debug\Shopping
 D:\学校\大三\ASP.NET\大作业\Shopping\Shopping\Shopping\obj\Debug\Shopping.dll
 D:\学校\大三\ASP.NET\大作业\Shopping\Shopping\Shopping\obj\Debug\Shopping.pdb
 D:\学校\大三\ASP.NET\大作业\Shopping\Shopping\Shopping\obj\Debug\Shopping.csprojAssemblyReference.cache
+F:\asus\桌面\ASP.NET\大作业\Shopping\Shopping\Shopping\obj\Debug\Shopping.csprojAssemblyReference.cache

@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Shopping.Models;
+using Shopping.CS_Init;
 
 namespace Shopping.Areas.Area_Order.Controllers
 {
@@ -182,6 +183,7 @@ namespace Shopping.Areas.Area_Order.Controllers
         //[ValidateAntiForgeryToken]
         public ActionResult userindex(string search)
         {
+            TempData["us"] = UserLoginstate.usstate;
             var t = db.Order.ToList();
             if (string.IsNullOrEmpty(search) == false)
             {

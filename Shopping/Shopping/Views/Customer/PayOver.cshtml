@@ -1,23 +1,46 @@
-﻿<hr />
+﻿@{
+    var ajaxop = new AjaxOptions
+    {
+        UpdateTargetId = "leftview",
+        OnFailure = "OnFailure"
+    };
+
+    var ajaxmainwindow = new AjaxOptions
+    {
+        UpdateTargetId = "mainWindow",
+        OnFailure = "OnFailure"
+    };
+}
+<hr />
 <div class="row text-center">
     <div class="col-md-3"><h3>支付成功</h3></div>
     <div class="col-md-6"><img src="~/Images/Shoppingcart/cartTop03.png" /></div>
 </div>
 <hr />
 <div class="row">
-    <h4 class="text-center">支付成功！剩余 <span id="tt">120</span> S将<a>自动跳转...</a></h4>
+    <h4 class="text-center">支付成功！剩余 <span id="tt">120</span> S将 @Ajax.ActionLink("自动跳转...", "userindex", "Orders", new { area = "Area_Order" }, ajaxmainwindow, new { @class = "" })</h4>
 </div>
 <div class="row">
-    <h3 style="color:red">猜你喜欢</h3>
-    <div class="row">
-        <img id="img1" src="~/Images/Shoppingcart/flo1.jpg" style="width:200px;height:200px;"/>
-        <img id="img2" src="~/Images/Shoppingcart/flo2.jpg" style="width:200px;height:200px;"/>
-        <img id="img3" src="~/Images/Shoppingcart/flo3.jpg" style="width:200px;height:200px;"/>
-        <img id="img4" src="~/Images/Shoppingcart/flo4.jpg" style="width:200px;height:200px;"/>
+    <h3 style="color:red" class="text-center">猜你喜欢</h3>
+    <hr />
+    <div class="row center-block" style="width:90%;margin-top:10%">
+        <img id="img1" src="~/Images/UserViewCommodity/cloth1.png" style="width:200px;height:200px;" />
+        <img id="img2" src="~/Images/UserViewCommodity/cloth2.png" style="width:200px;height:200px;" />
+        <img id="img3" src="~/Images/UserViewCommodity/shoes1.png" style="width:200px;height:200px;" />
+        <img id="img4" src="~/Images/UserViewCommodity/watch1.jpg" style="width:200px;height:200px;" />
     </div>
 </div>
+
+<hr />
+<div class="footer" style="padding-bottom:50px; margin-top:10%">
+    <a class="col-md-3" href="#"><img src="~/Images/Shoppingcart/foot1.png" /><span> 七天无理由退货</span></a>
+    <a class="col-md-3" href="#"><img src="~/Images/Shoppingcart/foot2.png" /><span> 15天免费换货</span></a>
+    <a class="col-md-3" href="#"><img src="~/Images/Shoppingcart/foot3.png" /><span> 满49包邮</span></a>
+    <a class="col-md-3" href="#"><img src="~/Images/Shoppingcart/foot4.png" /><span> 贴心售后服务</span></a>
+</div>
+<hr />
 <script>
-    var images = ["flo1.jpg", "flo2.jpg", "flo3.jpg", "flo4.jpg", "flo5.jpg", "flo6.jpg"];
+    var images = ["cloth1.png", "cloth2.png", "shoes1.png", "watch1.jpg","cloth3.png", "cloth4.png", "shoes2.png"];
     var num = 0;
     var num2 = 1;
     var num3 = 2;
@@ -31,27 +54,27 @@
     }
 
     function showimage() {
-        $("#img1").attr("src", "/Images/Shoppingcart/" + images[num]);
-        $("#img2").attr("src", "/Images/Shoppingcart/" + images[num2]);
-        $("#img3").attr("src", "/Images/Shoppingcart/" + images[num3]);
-        $("#img4").attr("src", "/Images/Shoppingcart/" + images[num4]);
+        $("#img1").attr("src", "/Images/UserViewCommodity/" + images[num]);
+        $("#img2").attr("src", "/Images/UserViewCommodity/" + images[num2]);
+        $("#img3").attr("src", "/Images/UserViewCommodity/" + images[num3]);
+        $("#img4").attr("src", "/Images/UserViewCommodity/" + images[num4]);
     }
 
     function autofun() {
         $("#tt").text(time);
         time--;
-        
+
     }
 
     function yy() {
         num++;
-        if (num > 5) num = 0;
+        if (num > 6) num = 0;
         num2++;
-        if (num2 > 5) num2 = 0;
+        if (num2 > 6) num2 = 0;
         num3++;
-        if (num3 > 5) num3 = 0;
+        if (num3 > 6) num3 = 0;
         num4++;
-        if (num4 > 5) num4 = 0;
+        if (num4 > 6) num4 = 0;
         showimage();
     }
 </script>

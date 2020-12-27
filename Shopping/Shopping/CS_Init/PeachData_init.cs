@@ -117,9 +117,10 @@ namespace Shopping.CS_Init
             Random rm = new Random();
             foreach (var item in fav)
             {
-                item.imagepath = "/Images/Shoppingcart/cart0" + tmp.ToString()+".jpg";
+                //item.imagepath = "/Images/Shoppingcart/cart0" + tmp.ToString()+".jpg";
                 item.price = rm.Next(100, 1000) / 10.0;
-                int ww = rm.Next(0, 4);
+                int ww = rm.Next(0, com.Count());
+                item.imagepath = com[ww].Image;
                 item.type = com[ww].Type;
                 item.name = com[ww].Name;
                 tmp++;
@@ -138,12 +139,14 @@ namespace Shopping.CS_Init
             tmp = 1;
             foreach (var item in ord)
             {
-                item.imagepath = "/Images/Shoppingcart/cart0" + tmp.ToString() + ".jpg";
+                //item.imagepath = "/Images/Shoppingcart/cart0" + tmp.ToString() + ".jpg";
                 item.price = rm.Next(100, 1000) / 10.0;
                 int ww = rm.Next(1, 5);
                 item.username = us[item.CustomerID==null?0:(int)item.CustomerID-1].Name;
                 item.number = ww;
                 item.comname = com[item.CommodityID == null ? 0 : (int)item.CommodityID - 1].Name;
+                item.imagepath = com[item.CommodityID == null ? 0 : (int)item.CommodityID - 1].Image;
+
                 tmp++;
             }
 

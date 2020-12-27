@@ -2,6 +2,7 @@
 MVC架构的购物网站
 ### 参考：
 https://www.ebay.com/
+https://www.starbucks.com.cn/
 
 ### 编程语言：
 C#
@@ -20,7 +21,7 @@ MVC
 ### 插件版本：
 - ckeditor+Base64图片上传：5 
 - 直接用的编译好的ckeditor.js+ckeditor.js.map
-- boostrap 4.5.3
+- boostrap 3.3.7
 - Microsoft.jQuery.Unobtrusive.Ajax：3.2.6
 - 其余自带的最新版本（截止到2020/12/14）
 
