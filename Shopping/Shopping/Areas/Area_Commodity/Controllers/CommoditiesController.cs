@@ -170,8 +170,8 @@ namespace Shopping.Areas.Area_Commodity.Controllers
         public ActionResult Create(int id)
         {
             List<SelectListItem> items = new List<SelectListItem>();
-            items.Add(new SelectListItem { Text = "男装", Value = "1" });
-            items.Add(new SelectListItem { Text = "女装", Value = "2", Selected = true });
+            items.Add(new SelectListItem { Text = "男装", Value = "男装" });
+            items.Add(new SelectListItem { Text = "女装", Value = "女装", Selected = true });
             ViewBag.set = items;
             
 
@@ -185,10 +185,9 @@ namespace Shopping.Areas.Area_Commodity.Controllers
         public ActionResult Create([Bind(Include = "Id,Name,Type,Image,Price,Number,Introduction")] Commodity commodity, int id)
         {
             List<SelectListItem> items = new List<SelectListItem>();
-            items.Add(new SelectListItem { Text = "男装", Value = "1" });
-            items.Add(new SelectListItem { Text = "女装", Value = "2", Selected = true });
+            items.Add(new SelectListItem { Text = "男装", Value = "男装" });
+            items.Add(new SelectListItem { Text = "女装", Value = "女装", Selected = true });
             ViewBag.set = items;
-
             string FileName = DateTime.Now.ToString("yyyyMMddhhmmss");//防止文件夹中出现同名文件
             string DirPath = (@"~\Images\shop_pic\");
             string FilePath = "";
@@ -212,7 +211,6 @@ namespace Shopping.Areas.Area_Commodity.Controllers
 
                 return RedirectToAction("Index","Commodities",new { id = myid });
             }
-
             return View(commodity);
         }
 

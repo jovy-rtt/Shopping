@@ -25,7 +25,7 @@ namespace Shopping.Areas.Area_Order.Controllers
 
         // GET: Area_Order/Orders/Details/5
 
-        //已处理订单
+        //已完成订单
         public ActionResult order_done(int sellerid)
         {
             //var order = db.Order.Include(o => o.Commodity).Include(o => o.User).Include(o => o.User1).Where(o=>o.State == "已完成");
@@ -48,7 +48,7 @@ namespace Shopping.Areas.Area_Order.Controllers
             var order = db.Order.Include(o => o.Commodity).Include(o => o.User).Include(o => o.User1).Where(o => o.State == "已完成").Where(o => o.SellerID == sellerid).ToList();
             foreach (var v in order)
             {
-                profit += v.Commodity.Price;
+                profit += v.Commodity.Price;//计算收益
             }
             ViewBag.profit = profit;
             
@@ -102,6 +102,13 @@ namespace Shopping.Areas.Area_Order.Controllers
         // GET: Area_Order/Orders/Edit/5
         public ActionResult Edit(int? id)
         {
+
+            List<SelectListItem> items = new List<SelectListItem>();
+            items.Add(new SelectListItem { Text = "运输中", Value = "运输中" });
+            items.Add(new SelectListItem { Text = "缺货中", Value = "缺货中", Selected = true });
+            items.Add(new SelectListItem { Text = "已发货", Value = "已发货", Selected = true });
+            ViewBag.set = items;
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -124,6 +131,12 @@ namespace Shopping.Areas.Area_Order.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,State,StartTime,Logistics,CustomerID,SellerID,CommodityID")] Order order)
         {
+            List<SelectListItem> items = new List<SelectListItem>();
+            items.Add(new SelectListItem { Text = "运输中", Value = "运输中" });
+            items.Add(new SelectListItem { Text = "缺货中", Value = "缺货中", Selected = true });
+            items.Add(new SelectListItem { Text = "已发货", Value = "已发货", Selected = true });
+            ViewBag.set = items;
+
             if (ModelState.IsValid)
             {
                 db.Entry(order).State = EntityState.Modified;

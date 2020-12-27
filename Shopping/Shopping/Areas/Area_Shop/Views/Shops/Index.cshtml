@@ -35,10 +35,10 @@
 
 @foreach (var item in Model) {
 <tr>
-   
     <td>
         @Html.DisplayFor(modelItem => item.Name)
     </td>
+    <!--显示商店头像-->
     <td>
        <img src = "@Html.DisplayFor(modelItem => item.Image)" width="100" height="100"/>
     </td>

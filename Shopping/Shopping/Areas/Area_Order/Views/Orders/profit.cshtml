@@ -1,9 +1,6 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "profit";
 }
-
-
 @model IEnumerable<Shopping.Models.Order>
 
     @{
@@ -29,11 +26,9 @@
                     </li>
                 </ul>
             </div>
-
         </div>
     </div>
     <p class="fr">订单金额：<span>@Html.DisplayFor(modelItem => item.Commodity.Price)</span>元</p>
-
     }
 
 

@@ -88,7 +88,7 @@ namespace Shopping.Areas.Area_Shop.Controllers
         }
         ViewBag.SellerId = new SelectList(db.User, "Id", "Password", shop.SellerId);
             return View(shop);
-    }
+        }
 
         // GET: Area_Shop/Shops/Edit/5
         public ActionResult Edit(int? id)
